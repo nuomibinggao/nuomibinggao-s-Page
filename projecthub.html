@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chillax:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="projecthub.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>My Projects Hub</h1>
+    </header>
+
+    <div class="back-button">
+      <a href="index.html">← Back to Main Page</a>
+    </div>
+
+    <div class="filters">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="ADOFAI">ADOFAI</button>
+      <button data-filter="JavaScript">JavaScript</button>
+      <button data-filter="Minecraft">Minecraft</button>
+      <button data-filter="HTML 5">HTML 5</button>
+      <button data-filter="CSS">CSS</button>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="projectSearch" placeholder="Search projects..." />
+    </div>
+
+    <div class="sort-bar">
+      <span>Filter By</span>
+      <select id="sortOptions">
+        <option value="date-desc">Date (Newest First)</option>
+        <option value="date-asc">Date (Oldest First)</option>
+        <option value="name-asc">Name (A-Z)</option>
+        <option value="name-desc">Name (Z-A)</option>
+      </select>
+    </div>
+
+    <main class="grid" id="projectsGrid">
+      <div class="card" data-tags="HTML 5 JavaScript CSS" data-date="2025-09-03">
+        <h2>nuomibinggao's Page</h2>
+        <div class="tags">
+          <span class="tag">HTML 5</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">CSS</span>
+        </div>
+        <div class="date">2025-09-03</div>
+        <p>The source code of this website, it is licenced under the <a href="https://opensource.org/license/mit" target="_blank">MIT Licence</a>, so it is free to use if you provide credit.</p>
+        <div class="links">
+          <a href="https://github.com/nuomibinggao/nuomibinggao.github.io" target="_blank" class="link-button github-button">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card" data-tags="ADOFAI JavaScript" data-date="2025-08-03">
+        <h2>Not Enough Tags</h2>
+        <div class="tags">
+          <span class="tag">ADOFAI</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <div class="date">2025-08-03</div>
+        <p>More tags for ADOFAI Overlayer, focusing on customization and functionality.</p>
+        <div class="links">
+          <a href="https://github.com/nuomibinggao/Not-Enough-Tags" target="_blank" class="link-button github-button">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card" data-tags="Minecraft" data-date="2025-08-17">
+        <h2>Vanyllia Modpack</h2>
+        <div class="tags">
+          <span class="tag">Minecraft</span>
+        </div>
+        <div class="date">2025-08-17</div>
+        <p>A Minecraft modpack focusing on improving vanilla features and performance optimizing.</p>
+        <div class="links">
+          <a href="https://modrinth.com/modpack/vanyllia" target="_blank" class="link-button modrinth-button">Modrinth</a>
+        </div>
+      </div>
+
+      <div class="card" data-tags="ADOFAI JavaScript" data-date="2025-07-31">
+        <h2>iTags Extra</h2>
+        <div class="tags">
+          <span class="tag">ADOFAI</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <div class="date">2025-07-31</div>
+        <p>An expansion to the iTags Overlayer Script made by <a href="https://space.bilibili.com/512479134" target="_blank"><strong>SamXU1322</strong></a>, focusing on customization. The original iTags Script is required for iTags Extra to run.</p>
+        <div class="links">
+          <span style="color: red;">Need permission from original creator, not open yet</span>
+        </div>
+      </div>
+
+      <div class="card" data-tags="ADOFAI" data-date="2025-08-25">
+        <h2>ADOFAI Custom</h2>
+        <div class="tags">
+          <span class="tag">ADOFAI</span>
+        </div>
+        <div class="date">2025-08-25</div>
+        <p>All my ADOFAI custom made charts.</p>
+        <div class="links">
+          <a href="custom-levels.html" class="link-button">List of Levels</a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      © 2025 <span id="footerName">nuomibinggao</span>. All rights reserved.
+      <div class="footer-note">This page is partially generated using ChatGPT</div>
+    </footer>
+  </div>
+
+  <script>
+    // Check if today is December 17th (UTC+8)
+    function isBirthday() {
+      // Get current date in UTC+8
+      const now = new Date();
+      const utc8Date = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+      
+      // Check if month is December (12) and date is 17
+      return utc8Date.getUTCMonth() === 12 && utc8Date.getUTCDate() === 17;
+    }
+
+    // Add birthday hat if it's the birthday
+    function addBirthdayHat() {
+      if (isBirthday()) {
+        // Add birthday hat to footer name
+        const footerName = document.getElementById('footerName');
+        if (footerName) {
+          footerName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + footerName.innerHTML;
+        }
+      }
+    }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', addBirthdayHat);
+
+    const filterButtons = document.querySelectorAll('.filters button');
+    const cards = document.querySelectorAll('.card');
+    const searchInput = document.getElementById('projectSearch');
+    const sortSelect = document.getElementById('sortOptions');
+    const grid = document.getElementById('projectsGrid');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filters button.active').classList.remove('active');
+        btn.classList.add('active');
+        filterProjects();
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      filterProjects();
+    });
+
+    sortSelect.addEventListener('change', () => {
+      sortProjects();
+    });
+
+    darkModeToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark', darkModeToggle.checked);
+    });
+
+    function filterProjects() {
+      const activeFilter = document.querySelector('.filters button.active').getAttribute('data-filter');
+      const query = searchInput.value.toLowerCase();
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        const matchesFilter = activeFilter === 'all' || card.dataset.tags.includes(activeFilter);
+        const matchesSearch = title.includes(query) || description.includes(query);
+        card.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
+      });
+    }
+
+    function sortProjects() {
+      const option = sortSelect.value;
+      const cardsArray = Array.from(cards);
+      let sorted;
+
+      if(option === 'date-desc') {
+        sorted = cardsArray.sort((a,b) => b.dataset.date.localeCompare(a.dataset.date));
+      } else if(option === 'date-asc') {
+        sorted = cardsArray.sort((a,b) => a.dataset.date.localeCompare(b.dataset.date));
+      } else if(option === 'name-asc') {
+        sorted = cardsArray.sort((a,b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
+      } else if(option === 'name-desc') {
+        sorted = cardsArray.sort((a,b) => b.querySelector('h2').textContent.localeCompare(a.querySelector('h2').textContent));
+      }
+
+      sorted.forEach(card => grid.appendChild(card));
+    }
+  </script>
+</body>
+</html>

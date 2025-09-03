@@ -1,0 +1,215 @@
+body {
+  font-family: 'Chillax', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+  letter-spacing: -0.2px;
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('back.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: blur(15px);
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+
+.container {
+  width: 75%;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-family: 'Chillax', sans-serif;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: background 0.3s, color 0.3s;
+  text-align: center;
+}
+
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin: 0.5rem 0 1rem;
+}
+
+.links a {
+  color: blue;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+  font-family: 'Chillax', sans-serif;
+}
+
+
+.footer-note {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 0.2rem;
+}
+
+
+.contact {
+  padding: 1rem;
+  font-family: 'Chillax', sans-serif;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0.75rem;
+  margin: 0 1rem 2rem 1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.contact p, .contact ul {
+  max-width: 100%;
+  margin: 0.5rem auto;
+  text-align: center;
+}
+.contact ul {
+  list-style: none;
+  padding: 0;
+}
+.contact ul li {
+  margin: 0.3rem 0;
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.back-button a {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-family: 'Chillax', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.back-button a:hover {
+  background-color: #0056b3;
+}
+
+.sort-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sort-bar label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: 'Chillax', sans-serif;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+}
+
+.sort-bar input[type="checkbox"] {
+  accent-color: #007bff;
+}
+
+.link-button {
+  padding: 0.3rem 1rem;
+  background-color: #007bff;
+  color: white !important;
+  text-decoration: none !important;
+  border-radius: 0.5rem;
+  font-family: 'Chillax', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.link-button:hover {
+  background-color: #0056b3;
+}
+
+.github-button {
+  background-color: #1f2328;
+}
+
+.github-button:hover {
+  background-color: #0d0f11;
+}
+
+.bilibili-button {
+  background-color: #fc8bab;
+}
+
+.bilibili-button:hover {
+  background-color: #f96a90;
+}
+
+.modrinth-button {
+  background-color: #00af5c;
+}
+
+.modrinth-button:hover {
+  background-color: #008c49;
+}
+
+.donate-button {
+  background-color: #dc3545;
+}
+
+.donate-button:hover {
+  background-color: #bd2130;
+}

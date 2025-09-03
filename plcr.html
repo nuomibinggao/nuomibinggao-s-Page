@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Polychrome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chillax:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="plcr.css">
+</head>
+<body>
+  <header>
+    <h1>Team Polychrome</h1>
+  </header>
+
+  <div class="back-button">
+    <a href="index.html">← Back to Main Page</a>
+  </div>
+
+  <div class="content-box">
+    <h2>About Our Team</h2>
+    <p>Welcome to Team Polychrome! We are a dedicated group of ADOFAI players committed to create experimental and fun custom levels through innovation and collaborative teamwork.</p>
+    <p>Feel free to check out some of our previous works here.</p>
+    <p><strong>Note: </strong>We are not able to upload our works to Bilibili yet until September 2025, for now, you can check the <a href="plcr-levels.html">custom level page</a> or search the <a href="https://tuforums.com/levels" target="_blank">TUF Forums</a>.</p>
+    
+    <div class="team-links">
+      <a href="https://space.bilibili.com/3546710827600010" target="_blank" class="link-button bilibili-button">Bilibili Profile</a>
+      <a href="plcr-levels.html" class="link-button">Custom Levels</a>
+      <a href="https://afdian.com/a/nuomibinggao" target="_blank" class="link-button donate-button">Support Us</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 <span id="footerName">nuomibinggao</span>. All rights reserved.
+    <div class="footer-note">This page is partially generated using Lingma AI</div>
+  </footer>
+
+  <script>
+    // Check if today is December 17th (UTC+8)
+    function isBirthday() {
+      // Get current date in UTC+8
+      const now = new Date();
+      const utc8Date = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+      
+      // Check if month is December (12) and date is 17
+      return utc8Date.getUTCMonth() === 12 && utc8Date.getUTCDate() === 17;
+    }
+
+    // Add birthday hat if it's the birthday
+    function addBirthdayHat() {
+      if (isBirthday()) {
+        // Add birthday hat to footer name
+        const footerName = document.getElementById('footerName');
+        if (footerName) {
+          footerName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + footerName.innerHTML;
+        }
+      }
+    }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', addBirthdayHat);
+  </script>
+</body>
+</html>

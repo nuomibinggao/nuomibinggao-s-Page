@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Polychrome Custom Levels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chillax:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="plcr-levels.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Team Polychrome Custom Levels</h1>
+    </header>
+
+    <div class="back-button">
+      <a href="projecthub.html">← Back to Hub</a>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="levelSearch" placeholder="Search levels..." />
+    </div>
+
+    <div class="sort-bar">
+      <span>Filter By</span>
+      <select id="sortOptions">
+        <option value="date-desc" selected>Date (Newest First)</option>
+        <option value="date-asc">Date (Oldest First)</option>
+        <option value="name-asc">Name (A-Z)</option>
+        <option value="name-desc">Name (Z-A)</option>
+      </select>
+    </div>
+
+    <main class="list-view" id="levelsList">
+      <div class="level-card" data-date="2025-04-05">
+        <div class="level-info"><a href="https://tuforums.com/levels/8457" target="_blank">Camellia - Seagull</a></div>
+        <div class="level-meta">Duration: 3:11 | Released: 2025-04-05 | Difficulty: G10</div>
+      </div>
+      <div class="level-card" data-date="2025-03-10">
+        <div class="level-info"><a href="https://tuforums.com/levels/8218" target="_blank">O2i3 - Heart Function</a></div>
+        <div class="level-meta">Duration: 2:29 | Released: 2025-08-01 | Difficulty: P16</div>
+      </div>
+      <div class="level-card" data-date="2025-01-23">
+        <div class="level-info"><a href="https://tuforums.com/levels/7647" target="_blank">rN - opia</a></div>
+        <div class="level-meta">Duration: 2:31 | Released: 2025-01-23 | Difficulty: G13</div>
+      </div>
+      <div class="level-card" data-date="2025-01-01">
+        <div class="level-info"><a href="https://tuforums.com/levels/7405" target="_blank">DJ Raisei - Fractured Angel</a></div>
+        <div class="level-meta">Duration: 5:17 | Release: 2025-01-01 | Difficulty: Q1 (U5)</div>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 <span id="footerName">nuomibinggao</span>. All rights reserved.
+      <div class="footer-note">This page is partially generated using ChatGPT & Lingma AI</div>
+    </footer>
+  </div>
+
+  <script>
+    // Check if today is December 17th (UTC+8)
+    function isBirthday() {
+      // Get current date in UTC+8
+      const now = new Date();
+      const utc8Date = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+      
+      // Check if month is December (12) and date is 17
+      return utc8Date.getUTCMonth() === 12 && utc8Date.getUTCDate() === 17;
+    }
+
+    // Add birthday hat if it's the birthday
+    function addBirthdayHat() {
+      if (isBirthday()) {
+        // Add birthday hat to footer name
+        const footerName = document.getElementById('footerName');
+        if (footerName) {
+          footerName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + footerName.innerHTML;
+        }
+      }
+    }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', addBirthdayHat);
+
+    const sortSelect = document.getElementById('sortOptions');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const levelsList = document.getElementById('levelsList');
+    const levelSearch = document.getElementById('levelSearch');
+
+    // Apply default sorting by date (newest first) on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      sortSelect.dispatchEvent(new Event('change'));
+    });
+
+    sortSelect.addEventListener('change', () => {
+      const option = sortSelect.value;
+      const levels = Array.from(levelsList.children);
+
+      levels.sort((a, b) => {
+        const aDate = new Date(a.getAttribute('data-date'));
+        const bDate = new Date(b.getAttribute('data-date'));
+        const aName = a.querySelector('.level-info a').textContent.toLowerCase();
+        const bName = b.querySelector('.level-info a').textContent.toLowerCase();
+
+        switch (option) {
+          case 'date-desc':
+            return bDate - aDate;
+          case 'date-asc':
+            return aDate - bDate;
+          case 'name-asc':
+            return aName.localeCompare(bName);
+          case 'name-desc':
+            return bName.localeCompare(aName);
+          default:
+            return 0;
+        }
+      });
+
+      levels.forEach(level => levelsList.appendChild(level));
+    });
+
+    levelSearch.addEventListener('input', () => {
+      const searchTerm = levelSearch.value.toLowerCase();
+      const cards = document.querySelectorAll('.level-card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('.level-info a').textContent.toLowerCase();
+        const meta = card.querySelector('.level-meta').textContent.toLowerCase();
+
+        if (title.includes(searchTerm) || meta.includes(searchTerm)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

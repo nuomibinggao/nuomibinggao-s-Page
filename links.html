@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Links</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chillax:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="links.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>My Links</h1>
+    </header>
+
+    <div class="back-button">
+      <a href="index.html">← Back to Main Page</a>
+    </div>
+
+
+    <main class="grid">
+      <div class="card">
+        <h2>GitHub Profile</h2>
+        <p>Check out my coding projects and contributions.</p>
+        <div class="links">
+          <a href="https://github.com/nuomibinggao" target="_blank" class="link-button github-button">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Bilibili Channel</h2>
+        <p>Watch my ADOFAI and content and enjoy some funny moments.</p>
+        <div class="links">
+          <a href="https://space.bilibili.com/1223643343" target="_blank" class="link-button bilibili-button">Bilibili</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Modrinth Profile</h2>
+        <p>Find my Minecraft mods and modpacks.</p>
+        <div class="links">
+          <a href="https://modrinth.com/user/nuomibinggao" target="_blank" class="link-button modrinth-button">Modrinth</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Support Me</h2>
+        <p>Feel free to support my works, thank you.</p>
+        <div class="links">
+          <a href="https://afdian.com/a/nuomibinggao" target="_blank" class="link-button donate-button">Donate</a>
+        </div>
+      </div>
+    </main>
+
+    <div class="contact">
+      <h2>Contact Me</h2>
+      <p>If you need to reach out, you can contact me through</p>
+      <ul>
+        <li>Email: <a href="mailto:nuomibinggao@hotmail.com">nuomibinggao@hotmail.com</a></li>
+      </ul>
+    </div>
+
+    <footer>
+      © 2025 <span id="footerName">nuomibinggao</span>. All rights reserved.
+      <div class="footer-note">This page is partially generated using Lingma AI</div>
+    </footer>
+  </div>
+
+  <script>
+    // Check if today is December 17th (UTC+8)
+    function isBirthday() {
+      // Get current date in UTC+8
+      const now = new Date();
+      const utc8Date = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+      
+      // Check if month is December (12) and date is 17
+      return utc8Date.getUTCMonth() === 12 && utc8Date.getUTCDate() === 17;
+    }
+
+    // Add birthday hat if it's the birthday
+    function addBirthdayHat() {
+      if (isBirthday()) {
+        // Add birthday hat to footer name
+        const footerName = document.getElementById('footerName');
+        if (footerName) {
+          footerName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + footerName.innerHTML;
+        }
+        
+        // Add birthday hat to email address
+        const emailLinks = document.querySelectorAll('a[href^="mailto:nuomibinggao"]');
+        emailLinks.forEach(link => {
+          link.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + link.innerHTML;
+        });
+      }
+    }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', addBirthdayHat);
+
+  </script>
+</body>
+</html>
