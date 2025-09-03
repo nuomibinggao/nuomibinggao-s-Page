@@ -1,6 +1,6 @@
 # nuomibinggao's Page
 
-This is the source code for my personal website, [nuomibinggao.top](http://www.nuomibinggao.top).
+This is the source code for my personal website, [nuomibinggao.top](http://www.nuomibinggao.top), created with the help of some AI tools.
 
 ## Live Demo
 [www.nuomibinggao.top](http://www.nuomibinggao.top)
