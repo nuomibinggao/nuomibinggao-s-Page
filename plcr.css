@@ -26,6 +26,11 @@ body::before {
     transform: scale(1.1);
 }
 
+body.dark {
+    background: #1a1a1a;
+    color: #f0f0f0;
+}
+
 .container {
     width: 75%;
     margin: 0 auto;
@@ -62,6 +67,36 @@ header h1 {
     background-color: #0056b3;
 }
 
+.content-box {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin: 0 1rem 2rem 1rem;
+    text-align: center;
+}
+
+body.dark .content-box {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.content-box h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.content-box p {
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.team-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -77,6 +112,11 @@ header h1 {
     padding: 1rem;
     transition: background 0.3s, color 0.3s;
     text-align: center;
+}
+
+body.dark .card {
+    border: 1px solid #444;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .card h2 {
@@ -95,6 +135,10 @@ header h1 {
     font-weight: bold;
 }
 
+body.dark .links a {
+    color: #6495ed;
+}
+
 footer {
     text-align: center;
     padding: 1rem;
@@ -102,10 +146,18 @@ footer {
     color: #555;
 }
 
+body.dark footer {
+    color: #aaa;
+}
+
 .footer-note {
     font-size: 0.8rem;
     color: #777;
     margin-top: 0.2rem;
+}
+
+body.dark .footer-note {
+    color: #999;
 }
 
 .sort-bar {
@@ -126,6 +178,10 @@ footer {
     border-radius: 0.3rem;
 }
 
+body.dark .sort-bar label {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .link-button {
     padding: 0.3rem 1rem;
     background-color: #007bff;
@@ -142,6 +198,22 @@ footer {
 
 .link-button:hover {
     background-color: #0056b3;
+}
+
+.bilibili-button {
+    background-color: #fc8bab;
+}
+
+.bilibili-button:hover {
+    background-color: #f96a90;
+}
+
+.donate-button {
+    background-color: #dc3545;
+}
+
+.donate-button:hover {
+    background-color: #bd2130;
 }
 
 .levels-button {
