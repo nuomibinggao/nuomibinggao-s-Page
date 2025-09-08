@@ -1,0 +1,112 @@
+body {
+  font-family: 'Chillax', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+  letter-spacing: -0.2px;
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('back.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: blur(15px);
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+.container {
+  width: 75%;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-family: 'Chillax', sans-serif;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #d00;
+}
+
+.error-content {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.error-card {
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  transition: background 0.3s, color 0.3s;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.error-card h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.error-card p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.links a {
+  color: blue;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.link-button {
+  padding: 0.3rem 1rem;
+  background-color: #007bff;
+  color: white !important;
+  text-decoration: none !important;
+  border-radius: 0.5rem;
+  font-family: 'Chillax', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.link-button:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+  font-family: 'Chillax', sans-serif;
+}
+
+.footer-note {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 0.2rem;
+}
