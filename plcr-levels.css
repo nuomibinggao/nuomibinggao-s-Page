@@ -84,6 +84,16 @@ header h1 {
     margin-bottom: 2rem;
 }
 
+.level-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.level-card-link:hover .level-card {
+    background: rgba(230, 230, 255, 0.7);
+}
+
 .level-card {
     border: 1px solid #ddd;
     background: rgba(255, 255, 255, 0.7);
@@ -95,10 +105,30 @@ header h1 {
     transition: background 0.3s, color 0.3s;
 }
 
-.level-info a {
-    text-decoration: underline;
-    color: blue;
+.level-info {
     font-weight: bold;
+}
+
+.icon-container {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.level-icon {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.level-icon-secondary {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: -5px;
+    right: -5px;
 }
 
 .level-meta {
