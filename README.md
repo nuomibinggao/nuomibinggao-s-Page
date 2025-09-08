@@ -18,3 +18,8 @@ This project uses the **Chillax** font family from [Fontshare](https://www.fonts
 ## License
 This project is open source under the [MIT License](./LICENSE).  
 You are free to use, modify, and share the code with attribution.
+
+---
+
+## Credits
+This project uses the [TUF Forums API](https://api.tuforums.com/docs) service, clicking on this text takes you to the docs of the API.
