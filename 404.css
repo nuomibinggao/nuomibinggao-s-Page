@@ -42,6 +42,13 @@ header h1 {
   font-size: 2rem;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin: 2rem 0;
+}
+
 .back-button {
   display: flex;
   justify-content: center;
@@ -63,14 +70,7 @@ header h1 {
   background-color: #0056b3;
 }
 
-.error-content {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-
-.error-card {
+.card {
   border: 1px solid #ddd;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 0.75rem;
@@ -81,12 +81,12 @@ header h1 {
   max-width: 500px;
 }
 
-.error-card h2 {
+.card h2 {
   margin-top: 0;
   font-size: 1.5rem;
 }
 
-.error-card p {
+.card p {
   margin: 1rem 0;
   line-height: 1.6;
 }
@@ -99,16 +99,17 @@ header h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #555;
+.links a {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
   font-family: 'Chillax', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
-.footer-note {
-  font-size: 0.8rem;
-  color: #777;
-  margin-top: 0.2rem;
+.links a:hover {
+  background-color: #0056b3;
 }
