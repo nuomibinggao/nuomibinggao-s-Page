@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADOFAI KeyViewer Profiles - Downloads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chillax:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kv-downloads.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ADOFAI KeyViewer Profiles</h1>
+    </header>
+
+
+    <div class="back-button">
+      <a href="projecthub.html">← Back to Hub</a>
+    </div>
+    <div class="additional-buttons">
+      <a href="kv-install-tut.html">How to Install Profiles</a>
+      <a href="kv-files/Fonts.zip" download>Download Fonts</a>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="profileSearch" placeholder="Search profiles..." />
+    </div>
+
+    <div class="sort-bar">
+      <span>Sort By</span>
+      <select id="sortOptions">
+        <option value="keycount-desc" selected>Key Count (Highest First)</option>
+        <option value="keycount-asc">Key Count (Lowest First)</option>
+      </select>
+    </div>
+
+
+
+    <main class="list-view" id="profilesList">
+      <a href="kv-files/8K.json" download class="level-card-link">
+        <div class="level-card" data-name="8">
+          <div class="level-info">8K Profile</div>
+          <div class="level-meta">Color: <span class="hex-label">#FFFFFFFF</span></div>
+        </div>
+      </a>
+      <a href="kv-files/10K.json" download class="level-card-link">
+        <div class="level-card" data-name="10">
+          <div class="level-info">10K Profile</div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: <span class="hex-label">#CC5F5F5F</span></div>
+        </div>
+      </a>
+      <a href="kv-files/12K.json" download class="level-card-link">
+        <div class="level-card" data-name="12">
+          <div class="level-info">12K Profile</div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: <span class="hex-label">#CC5F5F5F</span></div>
+        </div>
+      </a>
+      <a href="kv-files/16K.json" download class="level-card-link">
+        <div class="level-card" data-name="16">
+          <div class="level-info">16K Profile</div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: <span class="hex-label">#CC5F5F5F</span></div>
+        </div>
+      </a>
+      <a href="kv-files/16K No Text.json" download class="level-card-link">
+        <div class="level-card" data-name="16">
+          <div class="level-info">16K Profile (No Text)</div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: <span class="hex-label">#CC5F5F5F</span></div>
+        </div>
+      </a>
+      <a href="kv-files/16K Color.json" download class="level-card-link">
+        <div class="level-card" data-name="16">
+          <div class="level-info">16K Profile (Color)</div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: Left <span class="hex-label">#CCFFCCFF</span>, Right <span class="hex-label">#CC87CEFA</span></div>
+        </div>
+      </a>
+    </main>
+
+    <footer>
+      © 2025 <span id="footerName">nuomibinggao</span>. This website is licensed under the MIT License.
+      <div class="footer-note">This page is partially generated using ChatGPT</div>
+    </footer>
+  </div>
+
+  <script>
+    // Check if today is December 17th (UTC+8)
+    function isBirthday() {
+      const now = new Date();
+      const utc8Date = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+      return utc8Date.getUTCMonth() === 12 && utc8Date.getUTCDate() === 17;
+    }
+
+    function addBirthdayHat() {
+      if (isBirthday()) {
+        const footerName = document.getElementById('footerName');
+        if (footerName) {
+          footerName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + footerName.innerHTML;
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', addBirthdayHat);
+
+    // Colorize hex labels
+    function colorizeHexLabels() {
+      document.querySelectorAll('.hex-label').forEach(span => {
+        const hex = span.textContent.trim();
+        // Only use first 7 chars for color (e.g. #RRGGBB or #AARRGGBB)
+        let color = hex;
+        if (hex.length === 9) color = '#' + hex.slice(3, 9); // #AARRGGBB to #RRGGBB
+        else if (hex.length > 7) color = hex.slice(0, 7); // fallback
+        span.style.color = color;
+        span.style.fontWeight = 'bold';
+        span.style.background = '#eee';
+        span.style.padding = '0 4px';
+        span.style.borderRadius = '4px';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', colorizeHexLabels);
+
+    const sortSelect = document.getElementById('sortOptions');
+    const profilesList = document.getElementById('profilesList');
+    const profileSearch = document.getElementById('profileSearch');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      sortSelect.dispatchEvent(new Event('change'));
+    });
+
+    sortSelect.addEventListener('change', () => {
+      const option = sortSelect.value;
+      const anchors = Array.from(profilesList.querySelectorAll(':scope > a'));
+
+      anchors.sort((a, b) => {
+        const aCount = parseInt(a.querySelector('.level-card').getAttribute('data-name'), 10) || 0;
+        const bCount = parseInt(b.querySelector('.level-card').getAttribute('data-name'), 10) || 0;
+        if (option === 'keycount-asc') {
+          return aCount - bCount;
+        } else if (option === 'keycount-desc') {
+          return bCount - aCount;
+        }
+        return 0;
+      });
+
+      anchors.forEach(anchor => profilesList.appendChild(anchor));
+    });
+
+    profileSearch.addEventListener('input', () => {
+      const query = profileSearch.value.toLowerCase();
+      Array.from(profilesList.children).forEach(profile => {
+        const title = profile.querySelector('.level-info').textContent.toLowerCase();
+        const meta = profile.querySelector('.level-meta').textContent.toLowerCase();
+        profile.style.display = (title.includes(query) || meta.includes(query)) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

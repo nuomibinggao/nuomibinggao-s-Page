@@ -26,6 +26,25 @@ body::before {
     transform: scale(1.1);
 }
 
+.tutorial-container { max-width: 700px; margin: 32px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 32px 24px 16px 24px; }
+.tutorial-step { margin-bottom: 28px; }
+.tutorial-step h2 { font-size: 1.2rem; margin-bottom: 8px; color: #4a90e2; }
+.tutorial-step p, .tutorial-step ul { font-size: 1rem; }
+.tutorial-step ul { margin: 8px 0 0 24px; }
+.img-guide { display: block; margin: 16px auto; max-width: 90%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.note { background: #f0f4fa; border-left: 4px solid #4a90e2; padding: 10px 16px; border-radius: 6px; margin: 18px 0; color: #333; }
+  .back-button { margin-bottom: 24px; }
+  .back-button a {
+    color: #fff;
+    background: #4a90e2;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 6px;
+    padding: 8px 18px;
+    display: inline-block;
+}
+
 .container {
     width: 75%;
     margin: 0 auto;
@@ -60,29 +79,6 @@ header h1 {
 
 .back-button a:hover {
     background-color: #0056b3;
-}
-.additional-buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    gap: 16px;
-}
-
-.additional-buttons a {
-    padding: 0.5rem 1rem;
-    background-color: #f0f4fa;
-    color: #4a90e2;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    font-family: 'Chillax', sans-serif;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.additional-buttons a:hover {
-    background-color: #e6f0ff;
-    color: #2563a6;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 .search-bar {
@@ -132,16 +128,16 @@ header h1 {
     font-weight: bold;
 }
 
-.icon-container {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
-}
-
 .level-icon {
     width: 32px;
     height: 32px;
+    vertical-align: middle;
+    margin-right: 12px;
+}
+
+.icon-container {
+    position: relative;
+    display: inline-block;
     vertical-align: middle;
     margin-right: 8px;
 }
@@ -151,13 +147,14 @@ header h1 {
     width: 24px;
     height: 24px;
     top: -5px;
-    right: -5px;
+    right: 0;
 }
 
 .level-meta {
     font-size: 0.9rem;
     text-align: right;
 }
+
 
 footer {
     text-align: center;

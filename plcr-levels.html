@@ -17,6 +17,10 @@
       <a href="plcr.html">← Back to Team Page</a>
     </div>
 
+    <div class="additional-buttons">
+      <a href="custom-levels.html">To Indie Levels Page</a>
+    </div>
+
     <div class="search-bar">
       <input type="text" id="levelSearch" placeholder="Search levels..." />
     </div>
@@ -51,7 +55,7 @@
             </div>
             O2i3 - Heart Function
           </div>
-          <div class="level-meta">Duration: 2:29 | Released: 2025-08-01</div>
+          <div class="level-meta">Duration: 2:29 | Released: 2025-03-10</div>
         </div>
       </a>
       <a href="https://tuforums.com/levels/7647" target="_blank" class="level-card-link">
@@ -116,35 +120,47 @@
     const levelSearch = document.getElementById('levelSearch');
 
     // Apply default sorting by date (newest first) on page load
-    window.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       sortSelect.dispatchEvent(new Event('change'));
     });
 
     sortSelect.addEventListener('change', () => {
       const option = sortSelect.value;
-      const levels = Array.from(levelsList.children);
+      // Sort anchor elements (the direct children of levelsList)
+      const anchors = Array.from(levelsList.querySelectorAll(':scope > a'));
 
-      levels.sort((a, b) => {
-        const aDate = new Date(a.getAttribute('data-date'));
-        const bDate = new Date(b.getAttribute('data-date'));
-        const aName = a.querySelector('.level-info a').textContent.toLowerCase();
-        const bName = b.querySelector('.level-info a').textContent.toLowerCase();
+      function getLevelName(anchor) {
+        const card = anchor.querySelector('.level-card');
+        if (!card) return '';
+        const info = card.querySelector('.level-info');
+        if (!info) return '';
+        // Remove extra whitespace and normalize
+        return info.textContent.trim().replace(/\s+/g, ' ').toLowerCase();
+      }
 
-        switch (option) {
-          case 'date-desc':
-            return bDate - aDate;
-          case 'date-asc':
-            return aDate - bDate;
-          case 'name-asc':
-            return aName.localeCompare(bName);
-          case 'name-desc':
-            return bName.localeCompare(aName);
-          default:
-            return 0;
+      anchors.sort((a, b) => {
+        const aCard = a.querySelector('.level-card');
+        const bCard = b.querySelector('.level-card');
+        const aDate = aCard ? aCard.getAttribute('data-date') : '';
+        const bDate = bCard ? bCard.getAttribute('data-date') : '';
+        const aName = getLevelName(a);
+        const bName = getLevelName(b);
+
+        if (option === 'name-asc') {
+          // A-Z
+          return aName.localeCompare(bName, undefined, { sensitivity: 'base' });
+        } else if (option === 'name-desc') {
+          // Z-A
+          return bName.localeCompare(aName, undefined, { sensitivity: 'base' });
+        } else if (option === 'date-asc') {
+          return aDate.localeCompare(bDate);
+        } else if (option === 'date-desc') {
+          return bDate.localeCompare(aDate);
         }
+        return 0;
       });
 
-      levels.forEach(level => levelsList.appendChild(level));
+      anchors.forEach(anchor => levelsList.appendChild(anchor));
     });
 
     levelSearch.addEventListener('input', () => {
@@ -152,17 +168,16 @@
       const cards = document.querySelectorAll('.level-card');
 
       cards.forEach(card => {
-        const title = card.querySelector('.level-info a').textContent.toLowerCase();
+        const title = card.querySelector('.level-info').textContent.toLowerCase();
         const meta = card.querySelector('.level-meta').textContent.toLowerCase();
 
         if (title.includes(searchTerm) || meta.includes(searchTerm)) {
-          card.style.display = 'flex';
+          card.parentElement.style.display = 'block';
         } else {
-          card.style.display = 'none';
+          card.parentElement.style.display = 'none';
         }
       });
     });
   </script>
 </body>
 </html>
-

@@ -55,6 +55,19 @@
         </div>
       </div>
 
+      <div class="card" data-tags="ADOFAI JavaScript" data-date="2025-09-14">
+        <h2>ADOFAI KeyViewer Profiles</h2>
+        <div class="tags">
+          <span class="tag">ADOFAI</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <div class="date">2025-09-14</div>
+        <p>KeyViewer profiles for all major keysets, ranging from 8 keys to 16 keys. These profiles only theoretically work on KeyViewer version 4.0.0 or later, as they were configured using version 4.9.7.</p>
+        <div class="links">
+          <a href="kv-downloads.html" class="link-button">Downloads</a>
+        </div>
+      </div>
+
       <div class="card" data-tags="ADOFAI JavaScript" data-date="2025-08-03">
         <h2>Not Enough Tags</h2>
         <div class="tags">
@@ -112,6 +125,45 @@
   </div>
 
   <script>
+    // Function to fetch latest level date from custom-levels.html
+    async function updateLatestLevelDate() {
+      try {
+        const response = await fetch('custom-levels.html');
+        const htmlText = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+        
+        // Get all level cards with data-date attributes
+        const levelCards = doc.querySelectorAll('.level-card');
+        let latestDate = '';
+        
+        // Find the latest date among all level cards
+        levelCards.forEach(card => {
+          const date = card.getAttribute('data-date');
+          if (date && (!latestDate || new Date(date) > new Date(latestDate))) {
+            latestDate = date;
+          }
+        });
+        
+        // Update the ADOFAI Custom Levels card with the latest date
+        if (latestDate) {
+          const adofaiCard = document.querySelector('.card[data-tags="ADOFAI"]');
+          if (adofaiCard) {
+            adofaiCard.setAttribute('data-date', latestDate);
+            const dateElement = adofaiCard.querySelector('.date');
+            if (dateElement) {
+              dateElement.textContent = latestDate;
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching latest level date:', error);
+      } finally {
+        // Re-select the cards collection to ensure it's up to date
+        window.cards = document.querySelectorAll('.card');
+      }
+    }
+
     // Check if today is December 17th (UTC+8)
     function isBirthday() {
       // Get current date in UTC+8
@@ -134,7 +186,11 @@
     }
 
     // Run on page load
-    document.addEventListener('DOMContentLoaded', addBirthdayHat);
+    document.addEventListener('DOMContentLoaded', async () => {
+      addBirthdayHat();
+      await updateLatestLevelDate();
+      sortProjects();
+    });
 
     const filterButtons = document.querySelectorAll('.filters button');
     const cards = document.querySelectorAll('.card');
@@ -195,5 +251,3 @@
   </script>
 </body>
 </html>
-
-

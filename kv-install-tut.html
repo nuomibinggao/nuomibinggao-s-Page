@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Install KeyViewer Profiles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chillax:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kv-install-tut.css">
+  <style>
+  </style>
+</head>
+<body>
+  <div class="tutorial-container">
+    <header>
+      <h1>How to Install KeyViewer Profiles</h1>
+    </header>
+    <div class="back-button">
+      <a href="kv-downloads.html">← Back to Downloads</a>
+    </div>
+    <div class="tutorial-step">
+      <h2>1. Download a Profile</h2>
+      <p>Go to the <a href="kv-downloads.html">KeyViewer Downloads</a> page and click the download button for the profile you want (e.g., 8K, 10K, 16K, etc.). The file will be saved as a <code>.json</code> file.</p>
+    </div>
+    <div class="tutorial-step">
+      <h2>2. Open KeyViewer Config</h2>
+      <p>Launch ADOFAI, make sure to install KeyViewer 4.0.0 or later. In game, press <strong>Ctrl + F10</strong> (Default) to open Unity Mod Manager, look for the <strong>KeyViewer</strong> mod, and click the options button.</p>
+    </div>
+    <div class="tutorial-step">
+      <h2>3. Import the Profile</h2>
+      <ul>
+        <li>In KeyViewer, click <strong>Import Profile</strong>.</li>
+        <li>Click it and select the downloaded <code>.json</code> file from your computer.</li>
+        <li>The profile should now appear in your list. Select it to activate.</li>
+      </ul>
+    </div>
+    <div class="tutorial-step">
+      <h2>4. Adjust and Save</h2>
+      <p>When imported, the font will not load, you need to manually change the font in the mod config. Recommended fonts can be downloaded <a href="kv-files/Fonts.zip" download>here</a>. Make sure to save your changes.</p>
+    </div>
+    <div class="note">
+      <strong>Note:</strong> If you have trouble importing, make sure you are using KeyViewer version 4.0.0 or later. If the profile does not appear, check that the file was not renamed or corrupted during download.
+    </div>
+    <footer style="text-align:center; color:#888; font-size:0.95rem; margin-top:24px;">
+      © 2025 <span id="footerName">nuomibinggao</span>. This website is licensed under the MIT License.
+      <div class="footer-note" style="font-size:0.85rem; color:#bbb; margin-top:4px;">This page is partially generated using ChatGPT & Lingma AI</div>
+    </footer>
+  </div>
+  <script>
+    // Birthday hat logic (optional, for consistency)
+    function isBirthday() {
+      const now = new Date();
+      const utc8Date = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+      return utc8Date.getUTCMonth() === 12 && utc8Date.getUTCDate() === 17;
+    }
+    function addBirthdayHat() {
+      if (isBirthday()) {
+        const footerName = document.getElementById('footerName');
+        if (footerName) {
+          footerName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + footerName.innerHTML;
+        }
+      }
+    }
+    document.addEventListener('DOMContentLoaded', addBirthdayHat);
+  </script>
+</body>
+</html>
