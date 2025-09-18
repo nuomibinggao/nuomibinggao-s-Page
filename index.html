@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nuomibinggao's Page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Chillax:wght@600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -58,49 +58,6 @@
     </footer>
   </div>
 
-  <script>
-    // Check if today is December 17th (UTC+8)
-    function isBirthday() {
-      // Get current date in UTC+8
-      const now = new Date();
-      const utc8Date = new Date(now.getTime() + (8 * 60 * 60 * 1000));
-      
-      // Check if month is December (11, since months are zero-indexed) and date is 17
-      return utc8Date.getUTCMonth() === 11 && utc8Date.getUTCDate() === 17;
-    }
-
-    // Flag to track if birthday effect has been applied
-    let birthdayEffectApplied = false;
-
-    // Add birthday hat if it's the birthday
-    function addBirthdayHat() {
-      // Only apply the effect if it's actually December 17th
-      if (isBirthday() && !birthdayEffectApplied) {
-        // Add birthday hat to page title
-        const pageTitle = document.getElementById('pageTitle');
-        if (pageTitle && !pageTitle.innerHTML.includes('bdayhat.png')) {
-          pageTitle.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 30px; height: auto; vertical-align: middle; margin-right: 10px;">' + pageTitle.innerHTML;
-        }
-        
-        // Add birthday hat to user name
-        const userName = document.getElementById('userName');
-        if (userName && !userName.innerHTML.includes('bdayhat.png')) {
-          userName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 20px; height: auto; vertical-align: middle; margin-right: 5px;">' + userName.innerHTML;
-        }
-        
-        // Add birthday hat to footer name
-        const footerName = document.getElementById('footerName');
-        if (footerName && !footerName.innerHTML.includes('bdayhat.png')) {
-          footerName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + footerName.innerHTML;
-        }
-        
-        // Mark the effect as applied
-        birthdayEffectApplied = true;
-      }
-    }
-
-    // Run on page load
-    document.addEventListener('DOMContentLoaded', addBirthdayHat);
-  </script>
+  <script src="birthday.js"></script>
 </body>
 </html>

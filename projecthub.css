@@ -81,6 +81,21 @@ header h1 {
     font-family: 'Chillax', sans-serif;
 }
 
+/* Clear filters button adjacent to search input */
+.search-bar .clear-filters {
+    margin-left: 12px;
+    padding: 0.35rem 0.6rem;
+    border-radius: 0.45rem;
+    border: 1px solid #bbb;
+    background: #fff;
+    cursor: pointer;
+    font-family: 'Chillax', sans-serif;
+}
+
+.search-bar .clear-filters:hover {
+    background: #f4f4f4;
+}
+
 .sort-bar {
     display: flex;
     justify-content: center;

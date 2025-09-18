@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Chillax:wght@600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="projecthub.css">
 </head>
 <body>
@@ -27,7 +27,8 @@
     </div>
 
     <div class="search-bar">
-      <input type="text" id="projectSearch" placeholder="Search projects..." />
+      <input type="text" id="projectSearch" placeholder="Search projects..."/>
+      <button id="clearFilters" class="clear-filters" title="Clear filters">Clear Filters</button>
     </div>
 
     <div class="sort-bar">
@@ -164,68 +165,72 @@
       }
     }
 
-    // Check if today is December 17th (UTC+8)
-    function isBirthday() {
-      // Get current date in UTC+8
-      const now = new Date();
-      const utc8Date = new Date(now.getTime() + (8 * 60 * 60 * 1000));
-      
-      // Check if month is December (12) and date is 17
-      return utc8Date.getUTCMonth() === 12 && utc8Date.getUTCDate() === 17;
-    }
-
-    // Add birthday hat if it's the birthday
-    function addBirthdayHat() {
-      if (isBirthday()) {
-        // Add birthday hat to footer name
-        const footerName = document.getElementById('footerName');
-        if (footerName) {
-          footerName.innerHTML = '<img src="bdayhat.png" alt="Birthday Hat" style="width: 15px; height: auto; vertical-align: middle; margin-right: 3px;">' + footerName.innerHTML;
-        }
-      }
-    }
-
     // Run on page load
     document.addEventListener('DOMContentLoaded', async () => {
-      addBirthdayHat();
       await updateLatestLevelDate();
       sortProjects();
     });
 
-    const filterButtons = document.querySelectorAll('.filters button');
-    const cards = document.querySelectorAll('.card');
-    const searchInput = document.getElementById('projectSearch');
-    const sortSelect = document.getElementById('sortOptions');
-    const grid = document.getElementById('projectsGrid');
-    const darkModeToggle = document.getElementById('darkModeToggle');
+    // Only select tag filter buttons (buttons with data-filter attribute)
+    const tagButtons = document.querySelectorAll('.filters button[data-filter]');
+     const cards = document.querySelectorAll('.card');
+     const searchInput = document.getElementById('projectSearch');
+     const sortSelect = document.getElementById('sortOptions');
+     const grid = document.getElementById('projectsGrid');
+     const darkModeToggle = document.getElementById('darkModeToggle');
+     const clearFiltersBtn = document.getElementById('clearFilters');
 
-    filterButtons.forEach(btn => {
+    // Multi-select tag buttons. "All" behaves as a reset: activating it clears other tags.
+    tagButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelector('.filters button.active').classList.remove('active');
-        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        if (filter === 'all') {
+          // Activate All, deactivate others
+          tagButtons.forEach(b => {
+            if (b.getAttribute('data-filter') === 'all') b.classList.add('active');
+            else b.classList.remove('active');
+          });
+        } else {
+          // Toggle this tag, and ensure 'All' is deactivated when any specific tag is active
+          btn.classList.toggle('active');
+          const anySpecificActive = Array.from(tagButtons).some(b => b.getAttribute('data-filter') !== 'all' && b.classList.contains('active'));
+          tagButtons.forEach(b => {
+            if (b.getAttribute('data-filter') === 'all') {
+              b.classList.toggle('active', !anySpecificActive);
+            }
+          });
+        }
         filterProjects();
       });
     });
 
-    searchInput.addEventListener('input', () => {
-      filterProjects();
-    });
-
-    sortSelect.addEventListener('change', () => {
-      sortProjects();
-    });
-
-    darkModeToggle.addEventListener('change', () => {
-      document.body.classList.toggle('dark', darkModeToggle.checked);
-    });
+    // Clear filters button: reset to All and clear search
+    if (clearFiltersBtn) {
+      clearFiltersBtn.addEventListener('click', () => {
+        tagButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === 'all'));
+        searchInput.value = '';
+        filterProjects();
+      });
+    }
 
     function filterProjects() {
-      const activeFilter = document.querySelector('.filters button.active').getAttribute('data-filter');
+      // Gather active filters (excluding any buttons without data-filter)
+      const activeButtons = Array.from(document.querySelectorAll('.filters button.active')).filter(b => b.hasAttribute('data-filter'));
+      const activeFilters = activeButtons.map(b => b.getAttribute('data-filter'));
       const query = searchInput.value.toLowerCase();
+
       cards.forEach(card => {
         const title = card.querySelector('h2').textContent.toLowerCase();
         const description = card.querySelector('p').textContent.toLowerCase();
-        const matchesFilter = activeFilter === 'all' || card.dataset.tags.includes(activeFilter);
+
+        // If 'all' is active or no specific tag is selected, show all tags
+        let matchesFilter = true;
+        if (activeFilters.length > 0 && !activeFilters.includes('all')) {
+          const cardTagsStr = (card.dataset.tags || '').toLowerCase();
+          // OR semantics: display the card if its data-tags string contains any of the selected tags
+          matchesFilter = activeFilters.some(f => cardTagsStr.includes(f.toLowerCase()));
+        }
+
         const matchesSearch = title.includes(query) || description.includes(query);
         card.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
       });
