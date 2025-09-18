@@ -26,14 +26,46 @@ body::before {
     transform: scale(1.1);
 }
 
-body.dark {
-    background: #1a1a1a;
-    color: #f0f0f0;
-}
-
 .container {
     width: 75%;
     margin: 0 auto;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    header {
+        padding: 1rem 0.5rem;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .content-box {
+        padding: 1rem;
+    }
+    
+    .team-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .back-button {
+        justify-content: center;
+    }
+    
+    .link-button {
+        width: 90%;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 header {
@@ -77,10 +109,6 @@ header h1 {
     min-width: 300px;
 }
 
-body.dark .content-box {
-    background: rgba(255, 255, 255, 0.1);
-}
-
 .content-box h2 {
     margin-top: 0;
     font-size: 1.5rem;
@@ -116,11 +144,6 @@ body.dark .content-box {
     text-align: center;
 }
 
-body.dark .card {
-    border: 1px solid #444;
-    background: rgba(255, 255, 255, 0.1);
-}
-
 .card h2 {
     margin-top: 0;
     font-size: 1.25rem;
@@ -137,10 +160,6 @@ body.dark .card {
     font-weight: bold;
 }
 
-body.dark .links a {
-    color: #6495ed;
-}
-
 footer {
     text-align: center;
     padding: 1rem;
@@ -148,18 +167,10 @@ footer {
     color: #555;
 }
 
-body.dark footer {
-    color: #aaa;
-}
-
 .footer-note {
     font-size: 0.8rem;
     color: #777;
     margin-top: 0.2rem;
-}
-
-body.dark .footer-note {
-    color: #999;
 }
 
 .sort-bar {
@@ -180,10 +191,6 @@ body.dark .footer-note {
     border-radius: 0.3rem;
 }
 
-body.dark .sort-bar label {
-    background: rgba(255, 255, 255, 0.1);
-}
-
 .link-button {
     padding: 0.3rem 1rem;
     background-color: #007bff;
@@ -196,6 +203,7 @@ body.dark .sort-bar label {
     text-align: center;
     white-space: nowrap;
     display: inline-block;
+    max-width: 300px;
 }
 
 .link-button:hover {
