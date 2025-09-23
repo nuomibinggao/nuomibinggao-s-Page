@@ -2,6 +2,9 @@
 
 This is the source code for my personal website, [nuomibinggao.top](http://www.nuomibinggao.top), created with the help of some AI tools.
 
+### v2 Update
+Since Sept. 23, 2025, the website has been updated to v2, featuring a UI & UX redesign.
+
 ## Live Demo
 [www.nuomibinggao.top](http://www.nuomibinggao.top)
 
