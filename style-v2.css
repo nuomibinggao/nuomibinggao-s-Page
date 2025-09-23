@@ -44,14 +44,14 @@ body {
 
 /* Material Icons */
 @font-face {
-  font-family: 'Material Icons';
+  font-family: 'Material Symbols Rounded';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v142/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v1/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOc7TOVpeRL2w5rwZu2rIelXxc.woff2) format('woff2');
 }
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: 'Material Symbols Rounded';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -1055,6 +1055,57 @@ header.scrolled .nav {
       font-size: 0.9rem;
       font-weight: 600;
     }
+
+/* Changelog Styles */
+.changelog {
+  background: var(--card-background-color);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.changelog-entry {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.changelog-entry:last-child {
+  border-bottom: none;
+  margin-bottom: 2rem;
+}
+
+.changelog-date {
+  color: var(--text-color-darkest);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.changelog-content h4 {
+  color: var(--text-color-lightest);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.changelog-content ul {
+  padding-left: 1.5rem;
+  color: var(--text-color-light);
+}
+
+.changelog-content li {
+  margin-bottom: 0.3rem;
+}
+
+.changelog-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color-light);
+}
+
+.changelog-footer p {
+  margin-bottom: 0.5rem;
+}
 
 @media (max-width: 600px) {
   .container {

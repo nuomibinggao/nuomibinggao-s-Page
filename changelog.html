@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog | nuomibinggao</title>
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+  <div class="container" id="container">
+    <header id="header">
+      <div class="header-content">
+        <h1>nuomibinggao</h1>
+        <p class="subtitle">Changelog</p>
+        <nav class="nav">
+          <a href="index.html"><span class="material-icons icon-inline">arrow_back</span>Back to Home Page</a>
+          <a href="https://github.com/nuomibinggao/nuomibinggao-s-Page/issues" target="_blank" rel="noopener"><span class="material-icons icon-inline">report</span>Report an Issue</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="intro">
+      <h2><span class="material-icons icon-large">history</span>Website Updates & Changes</h2>
+      <p>Track the evolution of this website with detailed release notes and improvements.</p>
+      <div>
+        <a href="index.html" class="link-button"><span class="material-icons icon-inline">arrow_back</span>Back to Home Page</a>
+        <a href="https://github.com/nuomibinggao/nuomibinggao-s-Page/issues" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">report</span>Report an Issue</a>
+      </div>
+
+    </section>
+
+    <section class="changelog">
+      <div class="changelog-entries">
+        <div class="changelog-entry">
+          <div class="changelog-date">2025-09-23</div>
+          <div class="changelog-content">
+            <h4>v2 - Website Refurbish</h4>
+            <ul>
+              <li>Initial release of personal website with modern dark theme</li>
+              <li>Added smooth scrolling navigation and responsive design</li>
+              <li>Improved the Team Levels Page for consistancy.</li>
+              <li>Integrated splash text system with randomized footer messages</li>
+              <li>Added this changelog, future changes will be logged here.</li>
+            </ul>
+          <div class="changelog-date">2025-09-22</div>
+          <div class="changelog-content">
+            <h4>v1 - Final Update</h4>
+            <h5>v1 is no longer supported, this is its final update</h5>
+            <ul>
+              <li>Removed the clear filters button.</li>
+              <li>v1, the old version of this website is archived on <a href="https://github.com/nuomibinggao/nuomibinggao-s-Page/tree/v1" target="_blank" rel="noopener"><span class="material-icons icon-inline">code</span>GitHub</a>.</p>
+            </ul>
+          </div>
+        </div>
+
+      <div class="changelog-footer">
+        <p>For technical details and source code changes, visit the <a href="https://github.com/nuomibinggao/nuomibinggao-s-Page/commits" target="_blank" rel="noopener"><span class="material-icons icon-inline">code</span>commit history</a>.</p>
+        <p>Have suggestions or found a bug? <a href="https://github.com/nuomibinggao/nuomibinggao-s-Page/issues" target="_blank" rel="noopener"><span class="material-icons icon-inline">bug_report</span>Report an issue</a>.</p>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 nuomibinggao • MIT License
+      <div class="footer-note" id="splashText">Loading...</div>
+    </footer>
+  </div>
+
+  <script>
+    // Splash text functionality - load from splash.json
+    const splashElement = document.getElementById('splashText');
+    
+    fetch('splash.json')
+      .then(response => response.json())
+      .then(splashTexts => {
+        function getRandomSplash() {
+          const randomIndex = Math.floor(Math.random() * splashTexts.length);
+          return splashTexts[randomIndex];
+        }
+        
+        function updateSplashText() {
+          splashElement.textContent = getRandomSplash();
+        }
+        
+        // Initialize with a random splash text
+        updateSplashText();
+        
+        // Change splash text on click
+        splashElement.addEventListener('click', updateSplashText);
+      })
+      .catch(error => {
+        console.error('Error loading splash texts:', error);
+        splashElement.textContent = 'Track every change';
+      });
+
+    // Scroll header functionality
+    const header = document.getElementById('header');
+    const container = document.getElementById('container');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      if (scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
+  </script>
+</body>
+</html>

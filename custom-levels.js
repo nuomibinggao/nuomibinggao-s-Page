@@ -1,4 +1,4 @@
-import { levelsData, legacyLevel } from './levels.js';
+import { indieLevels, legacyLevel } from './levels.js';
 
 function createLevelCard(level) {
   const levelCardContainer = document.createElement('div');
@@ -40,7 +40,7 @@ function createLevelCard(level) {
 
   const levelMeta = document.createElement('div');
   levelMeta.classList.add('level-meta');
-  levelMeta.innerHTML = `<span class="material-icons icon-small">access_time</span>Duration: ${level.duration} | <span class="material-icons icon-small">event</span>Released: ${level.date}`;
+  levelMeta.innerHTML = `<div><span class="material-icons icon-small">access_time</span>Duration: ${level.duration}</div><div><span class="material-icons icon-small">event</span>Released: ${level.date}</div>`;
   levelCard.appendChild(levelMeta);
 
   levelCardContainer.appendChild(levelCard);
@@ -75,10 +75,10 @@ function createLevelCard(level) {
     const levelActions = document.createElement('div');
     levelActions.classList.add('level-actions');
     if (level.tuf_link) {
-      levelActions.innerHTML += `<a href="${level.tuf_link}" target="_blank" class="link-button"><span class="material-icons icon-inline">open_in_new</span>View Level on TUF Forums</a>`;
+      levelActions.innerHTML += `<a href="${level.tuf_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">open_in_new</span>View Level on TUF Forums</a>`;
     }
     if (level.soundcloud_link) {
-      levelActions.innerHTML += `<a href="${level.soundcloud_link}" target="_blank" class="link-button"><span class="material-icons icon-inline">music_note</span>Listen on Soundcloud</a>`;
+      levelActions.innerHTML += `<a href="${level.soundcloud_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">music_note</span>Listen on Soundcloud</a>`;
     }
     levelExpanded.appendChild(levelActions);
   }
@@ -92,6 +92,7 @@ function createLegacyLevelCard(legacyLevel) {
   const levelCardLink = document.createElement('a');
   levelCardLink.href = legacyLevel.link;
   levelCardLink.target = '_blank';
+  levelCardLink.rel = 'noopener';
   levelCardLink.classList.add('level-card-link');
 
   const levelCard = document.createElement('div');
@@ -116,11 +117,7 @@ function renderLevels(levelsToRender) {
   const levelsList = document.getElementById('levelsList');
   levelsList.innerHTML = ''; // Clear existing levels
   levelsToRender.forEach(level => {
-    // Only render levels that have a bilibili_bvid property (i.e., not PLCR levels)
-    // For custom-levels.html, we only want to render the levels that have a bilibili_bvid property.
-    if (level.bilibili_bvid) {
-      levelsList.appendChild(createLevelCard(level));
-    }
+    levelsList.appendChild(createLevelCard(level));
   });
   levelsList.appendChild(createLegacyLevelCard(legacyLevel)); // Add legacy level at the end
   attachExpandCollapseListeners(); // Re-attach listeners after rendering
@@ -152,14 +149,13 @@ const levelSearch = document.getElementById('levelSearch');
 
 // Initial render
 document.addEventListener('DOMContentLoaded', () => {
-  const customLevels = levelsData.filter(level => level.bilibili_bvid);
-  renderLevels(customLevels); // Render all levels initially
+  renderLevels(indieLevels); // Render indie levels directly
   sortSelect.dispatchEvent(new Event('change')); // Trigger initial sort
 });
 
 sortSelect.addEventListener('change', () => {
   const option = sortSelect.value;
-  let sortedLevels = levelsData.filter(level => level.bilibili_bvid); // Filter for custom levels
+  let sortedLevels = [...indieLevels]; // Create copy of indie levels
 
   sortedLevels.sort((a, b) => {
     const aDate = a.date;
@@ -183,8 +179,8 @@ sortSelect.addEventListener('change', () => {
 
 levelSearch.addEventListener('input', () => {
   const query = levelSearch.value.toLowerCase();
-  const filteredLevels = levelsData.filter(level => {
-    return level.bilibili_bvid && (level.title.toLowerCase().includes(query) || (level.description && level.description.toLowerCase().includes(query)));
+  const filteredLevels = indieLevels.filter(level => {
+    return level.title.toLowerCase().includes(query) || (level.description && level.description.toLowerCase().includes(query));
   });
   renderLevels(filteredLevels);
 });

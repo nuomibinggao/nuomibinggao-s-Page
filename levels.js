@@ -1,4 +1,5 @@
-export const levelsData = [
+// Indie/Custom Levels - Solo work with videos
+export const indieLevels = [
   {
     title: "Ludicin - Echoes of Memoria",
     icon: "https://api.tuforums.com/v2/media/image/icon/Unranked.png",
@@ -40,28 +41,34 @@ export const levelsData = [
     description: "<p>This is the 100% judgment version of the level, it does not contain timing scale/judgment limits.</p><p>This song was made for COEGTS 2025 Main Mappool NM2.</p>",
     tuf_link: "https://tuforums.com/levels/9728",
     soundcloud_link: "https://soundcloud.com/trung-nova_727/reflectionrefraction"
-  },
-  // PLCR Levels
+  }
+];
+
+// PLCR/Team Levels - Collaborative work
+export const plcrLevels = [
   {
     title: "Camellia - Seagull",
     icon: "https://api.tuforums.com/v2/media/image/icon/G10.png",
     date: "2025-04-05",
     duration: "3:11",
-    tuf_link: "https://tuforums.com/levels/8457"
+    tuf_link: "https://tuforums.com/levels/8457",
+    youtube_link: "https://www.youtube.com/watch?v=YuhEZdg2wvE"
   },
   {
     title: "O2i3 - Heart Function",
     icon: "https://api.tuforums.com/v2/media/image/icon/P16.png",
     date: "2025-03-10",
     duration: "2:29",
-    tuf_link: "https://tuforums.com/levels/8218"
+    tuf_link: "https://tuforums.com/levels/8218",
+    youtube_link: "https://www.youtube.com/watch?v=bvyKv4AwH7o"
   },
   {
     title: "rN - opia",
     icon: "https://api.tuforums.com/v2/media/image/icon/G13.png",
     date: "2025-01-23",
     duration: "2:31",
-    tuf_link: "https://tuforums.com/levels/7647"
+    tuf_link: "https://tuforums.com/levels/7647",
+    soundcloud_link: "https://soundcloud.com/rurinn/opia"
   },
   {
     title: "DJ Raisei - Fractured Angel",
@@ -69,10 +76,12 @@ export const levelsData = [
     secondary_icon: "https://api.tuforums.com/v2/media/image/icon/U5.png",
     date: "2025-01-01",
     duration: "5:17",
-    tuf_link: "https://tuforums.com/levels/7405"
+    tuf_link: "https://tuforums.com/levels/7405",
+    soundcloud_link: "https://soundcloud.com/raisei/fractured-angel"
   }
 ];
 
+// Legacy level data
 export const legacyLevel = {
   title: "Legacy Levels",
   icon: "archive", // Material icon name
@@ -80,3 +89,6 @@ export const legacyLevel = {
   meta: "Latest Release: 2025-07-07 | Difficulty Varies From G2 - U6",
   link: "https://www.123865.com/s/HUz5jv-wxY93"
 };
+
+// Backward compatibility - combined data (deprecated, use separate arrays above)
+export const levelsData = [...indieLevels, ...plcrLevels];

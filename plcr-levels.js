@@ -1,10 +1,8 @@
-import { levelsData } from './levels.js';
+import { plcrLevels } from './levels.js';
 
 function createLevelCard(level) {
-  const levelCardLink = document.createElement('a');
-  levelCardLink.href = level.tuf_link;
-  levelCardLink.target = '_blank';
-  levelCardLink.classList.add('level-card-link');
+  const levelCardContainer = document.createElement('div');
+  levelCardContainer.classList.add('level-card-container');
 
   const levelCard = document.createElement('div');
   levelCard.classList.add('level-card');
@@ -42,22 +40,99 @@ function createLevelCard(level) {
 
   const levelMeta = document.createElement('div');
   levelMeta.classList.add('level-meta');
-  levelMeta.innerHTML = `<span class="material-icons icon-small">access_time</span> Duration: ${level.duration} | <span class="material-icons icon-small">event</span> Released: ${level.date}`;
+  levelMeta.innerHTML = `<div><span class="material-icons icon-small">access_time</span>Duration: ${level.duration}</div><div><span class="material-icons icon-small">event</span>Released: ${level.date}</div>`;
   levelCard.appendChild(levelMeta);
 
-  levelCardLink.appendChild(levelCard);
-  return levelCardLink;
+  levelCardContainer.appendChild(levelCard);
+
+  const levelExpanded = document.createElement('div');
+  levelExpanded.classList.add('level-expanded');
+
+  // Add video missing box for PLCR levels
+  const videoContainer = document.createElement('div');
+  videoContainer.classList.add('video-container');
+  videoContainer.innerHTML = `
+    <div style="
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px dashed var(--border-color-dark);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-color-darkest);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    ">
+      <span class="material-icons icon-large" style="margin-right: 0.5rem; font-size: 2rem;">videocam_off</span>
+      Video Missing
+    </div>
+  `;
+  levelExpanded.appendChild(videoContainer);
+
+  if (level.description) { // Only add description if it exists
+    const levelDescription = document.createElement('div');
+    levelDescription.classList.add('level-description');
+    levelDescription.innerHTML = level.description;
+    levelExpanded.appendChild(levelDescription);
+  }
+
+  // Add actions section for PLCR levels if there are any links
+  if (level.tuf_link || level.soundcloud_link || level.youtube_link) {
+    const levelActions = document.createElement('div');
+    levelActions.classList.add('level-actions');
+    
+    if (level.tuf_link) {
+      levelActions.innerHTML += `<a href="${level.tuf_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">open_in_new</span>View Level on TUF Forums</a>`;
+    }
+    
+    if (level.youtube_link) {
+      levelActions.innerHTML += `<a href="${level.youtube_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">play_arrow</span>Watch on YouTube</a>`;
+    }
+    
+    if (level.soundcloud_link) {
+      levelActions.innerHTML += `<a href="${level.soundcloud_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">music_note</span>Listen on Soundcloud</a>`;
+    }
+    
+    // Only show placeholder if no music links exist at all
+    if (!level.soundcloud_link && !level.youtube_link) {
+      levelActions.innerHTML += `<a href="#" onclick="return false;" class="link-button" style="opacity: 0.5; cursor: not-allowed;"><span class="material-icons icon-inline">music_note</span>Music Link Unavailable</a>`;
+    }
+    
+    levelExpanded.appendChild(levelActions);
+  }
+
+  levelCardContainer.appendChild(levelExpanded);
+
+  return levelCardContainer;
 }
 
 function renderLevels(levelsToRender) {
   const levelsList = document.getElementById('levelsList');
   levelsList.innerHTML = ''; // Clear existing levels
   levelsToRender.forEach(level => {
-    // Only render levels that have a bilibili_bvid property (i.e., not PLCR levels)
-    // For plcr-levels.html, we only want to render the PLCR levels.
-    // I will assume PLCR levels do NOT have a bilibili_bvid property.
-    if (!level.bilibili_bvid) {
-      levelsList.appendChild(createLevelCard(level));
+    levelsList.appendChild(createLevelCard(level));
+  });
+  attachExpandCollapseListeners(); // Re-attach listeners after rendering
+}
+
+function attachExpandCollapseListeners() {
+  const expandableContainers = document.querySelectorAll('.level-card-container');
+  expandableContainers.forEach(container => {
+    const card = container.querySelector('.level-card');
+    const expandedSection = container.querySelector('.level-expanded');
+    if (card && expandedSection) {
+      card.style.cursor = 'pointer';
+      card.onclick = function(e) { // Use onclick to avoid multiple event listeners
+        e.preventDefault();
+        expandedSection.classList.toggle('open');
+        if (expandedSection.classList.contains('open')) {
+          card.style.borderRadius = '0.75rem 0.75rem 0 0';
+        } else {
+          card.style.borderRadius = '0.75rem';
+        }
+      };
     }
   });
 }
@@ -66,15 +141,13 @@ const sortSelect = document.getElementById('sortOptions');
 const levelSearch = document.getElementById('levelSearch');
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Filter levelsData to only include PLCR levels for this page
-  const plcrLevels = levelsData.filter(level => !level.bilibili_bvid);
-  renderLevels(plcrLevels); // Render PLCR levels initially
+  renderLevels(plcrLevels); // Render PLCR levels directly
   sortSelect.dispatchEvent(new Event('change')); // Trigger initial sort
 });
 
 sortSelect.addEventListener('change', () => {
   const option = sortSelect.value;
-  let sortedLevels = levelsData.filter(level => !level.bilibili_bvid); // Filter for PLCR levels
+  let sortedLevels = [...plcrLevels]; // Create copy of PLCR levels
 
   sortedLevels.sort((a, b) => {
     const aDate = a.date;
@@ -98,9 +171,8 @@ sortSelect.addEventListener('change', () => {
 
 levelSearch.addEventListener('input', () => {
   const query = levelSearch.value.toLowerCase();
-  const filteredLevels = levelsData.filter(level => {
-    // Filter for PLCR levels and then search within them
-    return !level.bilibili_bvid && (level.title.toLowerCase().includes(query) || (level.description && level.description.toLowerCase().includes(query)));
+  const filteredLevels = plcrLevels.filter(level => {
+    return level.title.toLowerCase().includes(query) || (level.description && level.description.toLowerCase().includes(query));
   });
   renderLevels(filteredLevels);
 });
