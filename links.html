@@ -80,12 +80,38 @@
     </div>
 
     <footer>
-      © 2025 <span id="footerName">nuomibinggao</span>. This website is licensed under the MIT License.
-      <div class="footer-note">This page is partially generated using Lingma AI</div>
+      © 2025 nuomibinggao • MIT License
+      <div class="footer-note" id="splashText">Loading...</div>
     </footer>
   </div>
 
   <script>
+    // Splash text functionality - load from splash.json
+    const splashElement = document.getElementById('splashText');
+    
+    fetch('splash.json')
+      .then(response => response.json())
+      .then(splashTexts => {
+        function getRandomSplash() {
+          const randomIndex = Math.floor(Math.random() * splashTexts.length);
+          return splashTexts[randomIndex];
+        }
+        
+        function updateSplashText() {
+          splashElement.textContent = getRandomSplash();
+        }
+        
+        // Initialize with a random splash text
+        updateSplashText();
+        
+        // Change splash text on click
+        splashElement.addEventListener('click', updateSplashText);
+      })
+      .catch(error => {
+        console.error('Error loading splash texts:', error);
+        splashElement.textContent = 'Crafted with care';
+      });
+
     // Scroll header functionality
     const header = document.getElementById('header');
     const container = document.querySelector('.container');
