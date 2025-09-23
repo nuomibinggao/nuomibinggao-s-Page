@@ -1242,3 +1242,25 @@ header.scrolled .nav {
     font-size: 0.8rem;
   }
 }
+
+/* Hide icons on Apple devices */
+@media screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .material-icons {
+    display: none;
+  }
+}
+
+/* Hide icons on Android devices */
+@media screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),
+       screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .material-icons {
+    display: none;
+  }
+}
+
+/* Additional rule to ensure icons are hidden on mobile touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .material-icons {
+    display: none;
+  }
+}
