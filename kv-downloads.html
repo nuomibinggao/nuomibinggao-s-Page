@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADOFAI KeyViewer Profiles Downloads | nuomibinggao</title>
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+  <div class="container">
+    <header id="header">
+      <div class="header-content">
+        <h1>nuomibinggao</h1>
+        <p class="subtitle">ADOFAI KeyViewer Profiles</p>
+        <nav class="nav">
+          <a href="kv-install-tut.html">
+            <span class="material-icons icon-small">help</span>How to Install Profiles
+          </a>
+          <a href="https://api.fontshare.com/v2/fonts/download/chillax" download>
+            <span class="material-icons icon-small">download</span>Download Fonts
+          </a>
+          <a href="projecthub.html">
+            <span class="material-icons icon-inline">arrow_back</span>Back to Hub
+          </a>
+          <a href="index.html">
+            <span class="material-icons icon-inline">arrow_back</span>Back to Main Page
+          </a>
+        </nav>
+      </div>
+    </header>
+
+  <div class="intro">
+    <h2><span class="material-icons icon-large">keyboard</span>KeyViewer Profile Collection</h2>
+    <p>This is the page for all my premade KeyViewer profiles, here you can download all of them.</p>
+    <p>You can watch <a href="https://www.bilibili.com/video/BV1xRHZz7Eeq" target="_blank">this video</a> for preview.</p>
+    <div style="margin-top: 1rem;">
+      <a href="kv-install-tut.html" class="link-button">
+        <span class="material-icons icon-small">help</span>How to Install Profiles
+      </a>
+      <a href="https://api.fontshare.com/v2/fonts/download/chillax" download class="link-button">
+        <span class="material-icons icon-small">download</span>Download Fonts
+      </a>
+      <a href="projecthub.html" class="link-button">
+        <span class="material-icons icon-inline">arrow_back</span>Back to Hub
+      </a>
+      <a href="index.html" class="link-button">
+        <span class="material-icons icon-inline">arrow_back</span>Back to Main Page
+      </a>
+
+    </div>
+  </div>
+
+    <div class="search-bar">
+      <input type="text" id="profileSearch" placeholder="Search profiles..." />
+    </div>
+
+    <div class="sort-bar">
+      <span>Sort By</span>
+      <select id="sortOptions">
+        <option value="keycount-desc" selected>Key Count (Highest First)</option>
+        <option value="keycount-asc">Key Count (Lowest First)</option>
+      </select>
+    </div>
+
+    <main class="list-view" id="profilesList">
+      <a href="kv-files/8K.json" download class="level-card-link">
+        <div class="level-card" data-name="8">
+          <div class="level-info">
+            <span class="material-icons icon-inline">keyboard</span>8K Profile
+          </div>
+          <div class="level-meta">Color: <span class="hex-label">#FFFFFFFF</span></div>
+        </div>
+      </a>
+      
+      <a href="kv-files/10K.json" download class="level-card-link">
+        <div class="level-card" data-name="10">
+          <div class="level-info">
+            <span class="material-icons icon-inline">keyboard</span>10K Profile
+          </div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: <span class="hex-label">#CC5F5F5F</span></div>
+        </div>
+      </a>
+      
+      <a href="kv-files/12K.json" download class="level-card-link">
+        <div class="level-card" data-name="12">
+          <div class="level-info">
+            <span class="material-icons icon-inline">keyboard</span>12K Profile
+          </div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: <span class="hex-label">#CC5F5F5F</span></div>
+        </div>
+      </a>
+      
+      <a href="kv-files/16K.json" download class="level-card-link">
+        <div class="level-card" data-name="16">
+          <div class="level-info">
+            <span class="material-icons icon-inline">keyboard</span>16K Profile
+          </div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: <span class="hex-label">#CC5F5F5F</span></div>
+        </div>
+      </a>
+      
+      <a href="kv-files/16K No Text.json" download class="level-card-link">
+        <div class="level-card" data-name="16">
+          <div class="level-info">
+            <span class="material-icons icon-inline">keyboard_hide</span>16K Profile (No Text)
+          </div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: <span class="hex-label">#CC5F5F5F</span></div>
+        </div>
+      </a>
+      
+      <a href="kv-files/16K Color.json" download class="level-card-link">
+        <div class="level-card" data-name="16">
+          <div class="level-info">
+            <span class="material-icons icon-inline">palette</span>16K Profile (Color)
+          </div>
+          <div class="level-meta">Primary Color: <span class="hex-label">#FFFFFFFF</span> | Secondary Color: Left <span class="hex-label">#CCFFCCFF</span>, Right <span class="hex-label">#CC87CEFA</span></div>
+        </div>
+      </a>
+    </main>
+
+    <footer>
+      © 2025 <span id="footerName">nuomibinggao</span>. This website is licensed under the MIT License.
+      <div class="footer-note">This page is partially generated using ChatGPT</div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll header functionality
+    const header = document.getElementById('header');
+    const container = document.querySelector('.container');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      if (scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
+
+    // Colorize hex labels
+    function colorizeHexLabels() {
+      document.querySelectorAll('.hex-label').forEach(span => {
+        const hex = span.textContent.trim();
+        // Only use first 7 chars for color (e.g. #RRGGBB or #AARRGGBB)
+        let color = hex;
+        if (hex.length === 9) color = '#' + hex.slice(3, 9); // #AARRGGBB to #RRGGBB
+        else if (hex.length > 7) color = hex.slice(0, 7); // fallback
+        span.style.color = color;
+        span.style.fontWeight = 'bold';
+        span.style.background = 'rgba(255, 255, 255, 0.1)';
+        span.style.padding = '2px 6px';
+        span.style.borderRadius = '4px';
+        span.style.fontSize = '0.85em';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', colorizeHexLabels);
+
+    const sortSelect = document.getElementById('sortOptions');
+    const profilesList = document.getElementById('profilesList');
+    const profileSearch = document.getElementById('profileSearch');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      sortSelect.dispatchEvent(new Event('change'));
+    });
+
+    sortSelect.addEventListener('change', () => {
+      const option = sortSelect.value;
+      const anchors = Array.from(profilesList.querySelectorAll(':scope > a'));
+
+      anchors.sort((a, b) => {
+        const aCount = parseInt(a.querySelector('.level-card').getAttribute('data-name'), 10) || 0;
+        const bCount = parseInt(b.querySelector('.level-card').getAttribute('data-name'), 10) || 0;
+        if (option === 'keycount-asc') {
+          return aCount - bCount;
+        } else if (option === 'keycount-desc') {
+          return bCount - aCount;
+        }
+        return 0;
+      });
+
+      anchors.forEach(anchor => profilesList.appendChild(anchor));
+    });
+
+    profileSearch.addEventListener('input', () => {
+      const query = profileSearch.value.toLowerCase();
+      Array.from(profilesList.children).forEach(profile => {
+        const title = profile.querySelector('.level-info').textContent.toLowerCase();
+        const meta = profile.querySelector('.level-meta').textContent.toLowerCase();
+        profile.style.display = (title.includes(query) || meta.includes(query)) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

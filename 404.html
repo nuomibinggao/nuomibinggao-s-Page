@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | nuomibinggao</title>
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-v2.css">
+  <style>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header id="header">
+      <div class="header-content">
+        <h1><a href="index.html" style="color: inherit; text-decoration: none;">nuomibinggao</a></h1>
+      </div>
+    </header>
+
+    <div class="error-container">
+      <div class="error-code">404</div>
+      <h2 class="error-title"><span class="material-icons icon-large">error</span>Page Not Found</h2>
+      <p class="error-message">
+        Oops! The page you're looking for seems to have wandered off into the digital void. 
+        Don't worry though, it happens to the best of us.
+      </p>
+      
+      <div class="error-actions">
+        <a href="index.html" class="error-button primary"><span class="material-icons icon-inline">home</span>Go Home</a>
+        <a href="javascript:history.back()" class="error-button"><span class="material-icons icon-inline">arrow_back</span>Go Back</a>
+      </div>
+
+      <div class="suggestions">
+        <h3><span class="material-icons icon-large">help</span>What you can do:</h3>
+        <ul>
+          <li><span class="material-icons icon-small">spellcheck</span>Check the URL for typos</li>
+          <li><span class="material-icons icon-small">home</span>Visit the <a href="index.html">homepage</a> to start over</li>
+          <li><span class="material-icons icon-small">work</span>Browse my <a href="projecthub.html">projects</a></li>
+          <li><span class="material-icons icon-small">groups</span>Check out <a href="plcr.html">Team Polychrome</a></li>
+          <li><span class="material-icons icon-small">link</span>Find my <a href="links.html">social links</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 nuomibinggao • MIT License
+      <div class="footer-note">Even errors can look good</div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll header functionality (same as index.html)
+    const header = document.getElementById('header');
+    const container = document.getElementById('container');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      if (scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
+
+    // Add some fun interaction
+    document.querySelector('.error-code').addEventListener('click', () => {
+      const colors = ['#4a9eff', '#ff4a9e', '#9eff4a', '#ff9e4a', '#9e4aff'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.querySelector('.error-code').style.color = randomColor;
+    });
+  </script>
+</body>
+</html>

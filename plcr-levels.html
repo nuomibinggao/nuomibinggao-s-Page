@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Polychrome Custom Levels | nuomibinggao</title>
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+  <div class="container">
+    <header id="header">
+      <div class="header-content">
+        <h1>nuomibinggao</h1>
+        <p class="subtitle">Team Polychrome Custom Levels</p>
+        <nav class="nav">
+          <a href="custom-levels.html">
+            <span class="material-icons icon-inline">person</span>To Indie Levels Page
+          </a>
+          <a href="projecthub.html">
+            <span class="material-icons icon-inline">arrow_back</span>Back to Hub
+          </a>
+          <a href="index.html">
+            <span class="material-icons icon-inline">arrow_back</span>Back to Main Page
+          </a>
+        </nav>
+      </div>
+    </header>
+
+  <div class="intro">
+    <h2><span class="material-icons icon-large">groups</span>Team Polychrome Level Collection</h2>
+    <p>This is the custom levels page for our team. Here you can find all our carefully crafted levels, use the filters below to explore.</p>
+    <p>You can also check out my indie levels.</p>
+    <div style="margin-top: 1rem;">
+      <a href="custom-levels.html" class="link-button">
+        <span class="material-icons icon-inline">person</span>To Indie Levels Page
+      </a>
+      <a href="projecthub.html" class="link-button">
+        <span class="material-icons icon-inline">arrow_back</span>Back to Hub
+      </a>
+      <a href="index.html" class="link-button">
+        <span class="material-icons icon-inline">arrow_back</span>Back to Main Page
+      </a>
+    </div>
+  </div>
+
+    <div class="search-bar">
+      <input type="text" id="levelSearch" placeholder="Search levels..." />
+    </div>
+
+    <div class="sort-bar">
+      <span>Filter By</span>
+      <select id="sortOptions">
+        <option value="date-desc" selected>Date (Newest First)</option>
+        <option value="date-asc">Date (Oldest First)</option>
+        <option value="name-asc">Name (A-Z)</option>
+        <option value="name-desc">Name (Z-A)</option>
+      </select>
+    </div>
+
+    <main class="list-view" id="levelsList">
+      <!-- Level cards will be dynamically generated here -->
+    </main>
+
+    <footer>
+      © 2025 nuomibinggao • MIT License
+      <div class="footer-note">Teamwork makes the dream work</div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll header functionality
+    const header = document.getElementById('header');
+    const container = document.querySelector('.container');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      if (scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
+  </script>
+
+  <script type="module" src="levels.js"></script>
+  <script type="module" src="plcr-levels.js"></script>
+</body>
+</html>

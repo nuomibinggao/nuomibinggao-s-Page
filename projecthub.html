@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Hub | nuomibinggao</title>
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+  <div class="container" id="mainContainer">
+    <header id="mainHeader">
+      <div class="header-content">
+        <h1>nuomibinggao</h1>
+        <p class="subtitle">Projects Hub</p>
+        <nav class="nav">
+          <a href="index.html">
+            <span class="material-icons icon-inline">arrow_back</span>Back to Main Page
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="intro">
+      <h2><span class="material-icons icon-large">folder</span>Project Collection</h2>
+      <p>Welcome to my projects hub! Here you'll find all my coding projects, custom levels, and creative works. Use the filters and search below to explore different categories.</p>
+      <div style="margin-top: 1rem;">
+        <a href="index.html" class="link-button">
+          <span class="material-icons icon-inline">arrow_back</span>Back to Main Page
+        </a>
+      </div>
+    </div>
+
+    <div class="filters">
+      <button data-filter="all" class="active">All Projects</button>
+      <button data-filter="ADOFAI">ADOFAI</button>
+      <button data-filter="JavaScript">JavaScript</button>
+      <button data-filter="Minecraft">Minecraft</button>
+      <button data-filter="HTML 5">HTML 5</button>
+      <button data-filter="CSS">CSS</button>
+    </div>
+
+    <div class="controls">
+      <div class="search-section">
+        <input type="text" id="projectSearch" placeholder="Search projects..." />
+        <label>Sort by:</label>
+        <select id="sortOptions">
+          <option value="date-desc">Date (Newest First)</option>
+          <option value="date-asc">Date (Oldest First)</option>
+          <option value="name-asc">Name (A-Z)</option>
+          <option value="name-desc">Name (Z-A)</option>
+        </select>
+      </div>
+    </div>
+
+    <main class="grid" id="projectsGrid">
+      <div class="card" data-tags="HTML 5 JavaScript CSS" data-date="2025-09-03" data-project="nuomibinggao-page" id="nuomibinggao-page">
+        <h2><span class="material-icons icon-inline">web</span>nuomibinggao's Page</h2>
+        <div class="date">2025-09-03</div>
+        <div class="tags">
+          <span class="tag">HTML 5</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">CSS</span>
+        </div>
+        <p>The source code of this website, licensed under the <a href="https://opensource.org/license/mit" target="_blank">MIT License</a>, so it's free to use if you provide credit.</p>
+        <div class="links">
+          <a href="https://github.com/nuomibinggao/nuomibinggao-s-Page" target="_blank" class="link-button github-button">
+            <span class="material-icons icon-inline">code</span>GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="card" data-tags="ADOFAI JavaScript" data-date="2025-09-14" data-project="keyviewer" id="keyviewer">
+        <h2><span class="material-icons icon-inline">keyboard</span>ADOFAI KeyViewer Profiles</h2>
+        <div class="date">2025-09-14</div>
+        <div class="tags">
+          <span class="tag">ADOFAI</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <p>KeyViewer profiles for all major keysets, ranging from 8 keys to 16 keys. These profiles work on KeyViewer version 4.0.0 or later, configured using version 4.9.7.</p>
+        <div class="links">
+          <a href="kv-downloads.html" class="link-button">
+            <span class="material-icons icon-inline">download</span>Downloads
+          </a>
+        </div>
+      </div>
+
+      <div class="card" data-tags="ADOFAI JavaScript" data-date="2025-08-03" data-project="not-enough-tags" id="not-enough-tags">
+        <h2><span class="material-icons icon-inline">label</span>Not Enough Tags</h2>
+        <div class="date">2025-08-03</div>
+        <div class="tags">
+          <span class="tag">ADOFAI</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <p>More tags for ADOFAI Overlayer, focusing on customization and functionality to enhance your rhythm gaming experience.</p>
+        <div class="links">
+          <a href="https://github.com/nuomibinggao/Not-Enough-Tags" target="_blank" class="link-button github-button">
+            <span class="material-icons icon-inline">code</span>GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="card" data-tags="Minecraft" data-date="2025-08-17" data-project="vanyllia" id="vanyllia">
+        <h2><span class="material-icons icon-inline">extension</span>Vanyllia Modpack</h2>
+        <div class="date">2025-08-17</div>
+        <div class="tags">
+          <span class="tag">Minecraft</span>
+        </div>
+        <p>A Minecraft modpack focusing on improving vanilla features and performance optimization while maintaining the core gameplay experience.</p>
+        <div class="links">
+          <a href="https://modrinth.com/modpack/vanyllia" target="_blank" class="link-button modrinth-button">
+            <span class="material-icons icon-inline">sports_esports</span>Modrinth
+          </a>
+        </div>
+      </div>
+
+      <div class="card" data-tags="ADOFAI JavaScript" data-date="2025-07-31" data-project="itags-extra" id="itags-extra">
+        <h2><span class="material-icons icon-inline">add_circle</span>iTags Extra</h2>
+        <div class="date">2025-07-31</div>
+        <div class="tags">
+          <span class="tag">ADOFAI</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <p>An expansion to the iTags Overlayer Script made by <a href="https://space.bilibili.com/512479134" target="_blank"><strong>SamXU1322</strong></a>, focusing on customization. Requires the original iTags Script to run.</p>
+        <div class="links">
+          <span style="color: #dc3545; font-size: 0.9rem;">
+            <span class="material-icons icon-inline" style="font-size: 16px;">lock</span>
+            Need permission from original creator
+          </span>
+        </div>
+      </div>
+
+      <div class="card" data-tags="ADOFAI" data-date="2025-09-08" data-project="custom-levels" id="custom-levels">
+        <h2><span class="material-icons icon-inline">music_note</span>ADOFAI Custom Levels</h2>
+        <div class="date">2025-09-08</div>
+        <div class="tags">
+          <span class="tag">ADOFAI</span>
+        </div>
+        <p>All my custom-made ADOFAI charts, featuring various difficulty levels and unique musical experiences for rhythm game enthusiasts.</p>
+        <div class="links">
+          <a href="custom-levels.html" class="link-button">
+            <span class="material-icons icon-inline">playlist_play</span>View Levels
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 <span id="footerName">nuomibinggao</span>. This website is licensed under the MIT License.
+      <div class="footer-note">This page is enhanced with modern design elements</div>
+    </footer>
+  </div>
+
+  <script>
+    // Function to fetch latest level date from levels.js
+    async function updateLatestLevelDate() {
+      try {
+        const response = await fetch('levels.js');
+        const jsText = await response.text();
+        const match = jsText.match(/export const levelsData = ([\s\S]*?);/);
+        if (match && match[1]) {
+          // The matched string is a JS array, not JSON. We need to parse it.
+          // Using Function constructor for safer evaluation than eval().
+          const levelsData = new Function('return ' + match[1])();
+
+          if (levelsData && levelsData.length > 0) {
+            // Sort levels by date to find the latest one
+            levelsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const latestDate = levelsData[0].date;
+
+            // Update the custom levels card with the latest date
+            const customLevelsCard = document.getElementById('custom-levels');
+            if (customLevelsCard) {
+              customLevelsCard.setAttribute('data-date', latestDate);
+              const dateElement = customLevelsCard.querySelector('.date');
+              if (dateElement) {
+                dateElement.textContent = latestDate;
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching or processing latest level date:', error);
+      } finally {
+        // Ensure cards are re-sorted after date update
+        sortProjects();
+      }
+    }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', updateLatestLevelDate);
+
+    // Only select tag filter buttons (buttons with data-filter attribute)
+    const tagButtons = document.querySelectorAll('.filters button[data-filter]');
+    const cards = document.querySelectorAll('.card');
+    const searchInput = document.getElementById('projectSearch');
+    const sortSelect = document.getElementById('sortOptions');
+    const grid = document.getElementById('projectsGrid');
+
+    // Navigation and scroll handling
+    const header = document.getElementById('mainHeader');
+    const container = document.getElementById('mainContainer');
+    const navLinks = document.querySelectorAll('.nav a[data-project]');
+
+    // Handle scroll for sticky header
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
+
+    // Handle navigation clicks - scroll to specific projects
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectId = link.getAttribute('data-project');
+        const targetCard = document.getElementById(projectId);
+        
+        if (targetCard) {
+          // Update active nav link
+          navLinks.forEach(l => l.classList.remove('active-nav'));
+          link.classList.add('active-nav');
+          
+          // Clear all filters to ensure target is visible
+          tagButtons.forEach(btn => {
+            if (btn.getAttribute('data-filter') === 'all') {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          });
+          
+          // Clear search
+          searchInput.value = '';
+          
+          // Apply filters to show all projects
+          filterProjects();
+          
+          // Scroll to the specific project card with offset for fixed header
+          setTimeout(() => {
+            const headerHeight = header.classList.contains('scrolled') ? 100 : 0;
+            const targetPosition = targetCard.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Add highlight effect to the target card
+            targetCard.style.transform = 'scale(1.02)';
+            targetCard.style.boxShadow = '0 8px 32px rgba(74, 158, 255, 0.3)';
+            targetCard.style.borderColor = '#4a9eff';
+            
+            // Remove highlight after animation
+            setTimeout(() => {
+              targetCard.style.transform = '';
+              targetCard.style.boxShadow = '';
+              targetCard.style.borderColor = '';
+            }, 2000);
+          }, 100);
+        }
+      });
+    });
+
+    // Update nav active state when scrolling to show which project is in view
+    function updateNavOnScroll() {
+      const scrollPosition = window.scrollY + 200; // Offset for header
+      
+      cards.forEach(card => {
+        const cardTop = card.offsetTop;
+        const cardBottom = cardTop + card.offsetHeight;
+        const projectId = card.getAttribute('data-project');
+        
+        if (scrollPosition >= cardTop && scrollPosition <= cardBottom) {
+          navLinks.forEach(link => {
+            if (link.getAttribute('data-project') === projectId) {
+              navLinks.forEach(l => l.classList.remove('active-nav'));
+              link.classList.add('active-nav');
+            }
+          });
+        }
+      });
+    }
+
+    // Add scroll listener for nav highlighting
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateNavOnScroll, 100);
+    });
+    // Multi-select tag buttons. "All" behaves as a reset: activating it clears other tags.
+    tagButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        if (filter === 'all') {
+          // Activate All, deactivate others
+          tagButtons.forEach(b => {
+            if (b.getAttribute('data-filter') === 'all') b.classList.add('active');
+            else b.classList.remove('active');
+          });
+        } else {
+          // Toggle this tag, and ensure 'All' is deactivated when any specific tag is active
+          btn.classList.toggle('active');
+          const anySpecificActive = Array.from(tagButtons).some(b => b.getAttribute('data-filter') !== 'all' && b.classList.contains('active'));
+          tagButtons.forEach(b => {
+            if (b.getAttribute('data-filter') === 'all') {
+              b.classList.toggle('active', !anySpecificActive);
+            }
+          });
+        }
+        filterProjects();
+      });
+    });
+
+    // Search input event
+    searchInput.addEventListener('input', filterProjects);
+
+    // Sort select event
+    sortSelect.addEventListener('change', sortProjects);
+
+    function filterProjects() {
+      // Gather active filters (excluding any buttons without data-filter)
+      const activeButtons = Array.from(document.querySelectorAll('.filters button.active')).filter(b => b.hasAttribute('data-filter'));
+      const activeFilters = activeButtons.map(b => b.getAttribute('data-filter'));
+      const query = searchInput.value.toLowerCase();
+
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+
+        // If 'all' is active or no specific tag is selected, show all tags
+        let matchesFilter = true;
+        if (activeFilters.length > 0 && !activeFilters.includes('all')) {
+          const cardTagsStr = (card.dataset.tags || '').toLowerCase();
+          // OR semantics: display the card if its data-tags string contains any of the selected tags
+          matchesFilter = activeFilters.some(f => cardTagsStr.includes(f.toLowerCase()));
+        }
+
+        const matchesSearch = title.includes(query) || description.includes(query);
+        card.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
+      });
+    }
+
+    function sortProjects() {
+      const option = sortSelect.value;
+      const cardsArray = Array.from(cards);
+      let sorted;
+
+      if(option === 'date-desc') {
+        sorted = cardsArray.sort((a,b) => b.dataset.date.localeCompare(a.dataset.date));
+      } else if(option === 'date-asc') {
+        sorted = cardsArray.sort((a,b) => a.dataset.date.localeCompare(b.dataset.date));
+      } else if(option === 'name-asc') {
+        sorted = cardsArray.sort((a,b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
+      } else if(option === 'name-desc') {
+        sorted = cardsArray.sort((a,b) => b.querySelector('h2').textContent.localeCompare(a.querySelector('h2').textContent));
+      }
+
+      sorted.forEach(card => grid.appendChild(card));
+    }
+  </script>
+</body>
+</html>

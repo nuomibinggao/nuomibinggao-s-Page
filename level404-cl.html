@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Level Not Found | nuomibinggao</title>
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+  <div class="container" id="container">
+    <header id="header">
+      <div class="header-content">
+        <h1 id="pageTitle"><a href="index.html" style="color: inherit; text-decoration: none;">nuomibinggao</a></h1>
+      </div>
+    </header>
+
+    <div class="error-container">
+      <div class="error-code">404</div>
+      <h2 class="error-title"><span class="material-icons icon-large">cloud_upload</span>Level Still Uploading</h2>
+      <p class="error-message">
+        The level you're looking for is currently being uploaded to the TUF Forums. 
+        Please check back later or browse other available levels.
+      </p>
+      
+      <div class="error-actions">
+        <a href="custom-levels.html" class="error-button primary">
+          <span class="material-icons icon-inline">list</span>Back to Levels List
+        </a>
+        <a href="https://tuforums.com" target="_blank" class="error-button">
+          <span class="material-icons icon-inline">forum</span>Visit TUF Forums
+        </a>
+      </div>
+
+      <div class="suggestions">
+        <h3><span class="material-icons icon-large">help</span>What you can do:</h3>
+        <ul>
+          <li><span class="material-icons icon-small">refresh</span>Check back in a few minutes</li>
+          <li><span class="material-icons icon-small">list</span>Browse other <a href="custom-levels.html">custom levels</a></li>
+          <li><span class="material-icons icon-small">forum</span>Visit the <a href="https://tuforums.com" target="_blank">TUF Forums</a> directly</li>
+          <li><span class="material-icons icon-small">home</span>Return to the <a href="index.html">homepage</a></li>
+          <li><span class="material-icons icon-small">work</span>Check out my other <a href="projecthub.html">projects</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 <span id="footerName">nuomibinggao</span>. This website is licensed under the MIT License.
+      <div class="footer-note">This page is partially generated using Lingma AI</div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll header functionality
+    const header = document.getElementById('header');
+    const container = document.getElementById('container');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      if (scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
+
+    // Add fun interaction to 404 number
+    document.querySelector('.error-code').addEventListener('click', () => {
+      const colors = ['#4a9eff', '#ff4a9e', '#9eff4a', '#ff9e4a', '#9e4aff'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.querySelector('.error-code').style.color = randomColor;
+    });
+
+
+  </script>
+</body>
+</html>
