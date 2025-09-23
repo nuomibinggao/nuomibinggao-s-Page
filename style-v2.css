@@ -42,18 +42,12 @@ body {
   overflow-x: hidden;
 }
 
-/* Material Icons - Fixed for Apple devices */
-@font-face {
-  font-family: 'Material Symbols Rounded';
-  font-style: normal;
-  font-weight: 100 700;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/materialsymbolsrounded/v147/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOc7TOVpeRL2w5rwZu2rKelXxc.woff2') format('woff2'),
-       url('https://fonts.gstatic.com/s/materialsymbolsrounded/v147/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOc7TOVpeRL2w5rwZu2rKelXxc.woff') format('woff');
-}
+/* Import Material Symbols Rounded (simpler version for compatibility) */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded');
 
+/* Base Material Icons class */
 .material-icons {
-  font-family: 'Material Symbols Rounded', 'Material Icons', 'Apple Color Emoji', sans-serif;
+  font-family: 'Material Symbols Rounded';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -61,24 +55,13 @@ body {
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
-  word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-/* Alternative approach using Google Fonts API */
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
-
-/* Fallback for when font doesn't load */
-.material-icons::before {
-  content: attr(data-fallback);
-}
-
+/* Optional sizes */
 .icon-inline {
   vertical-align: middle;
   font-size: 18px;
@@ -95,6 +78,13 @@ body {
   vertical-align: middle;
   font-size: 16px;
   margin-right: 4px;
+}
+
+/* Safari/iOS fallback */
+@supports (-webkit-appearance: none) {
+  .material-icons {
+    font-variation-settings: normal; /* ensures icons render properly */
+  }
 }
 
 body::before {
