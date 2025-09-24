@@ -51,6 +51,7 @@ export const plcrLevels = [
     icon: "https://api.tuforums.com/v2/media/image/icon/G10.png",
     date: "2025-04-05",
     duration: "3:11",
+    description: "This level is my take on curved charting. It also includes holds from the Neo Cosmos DLC.",
     tuf_link: "https://tuforums.com/levels/8457",
     youtube_link: "https://www.youtube.com/watch?v=YuhEZdg2wvE"
   },
@@ -59,6 +60,7 @@ export const plcrLevels = [
     icon: "https://api.tuforums.com/v2/media/image/icon/P16.png",
     date: "2025-03-10",
     duration: "2:29",
+    description: "This is a fun level featuring simple but fresh VFX, and includes a fun 4k part in the middle. It is perfect for beginners.",
     tuf_link: "https://tuforums.com/levels/8218",
     youtube_link: "https://www.youtube.com/watch?v=bvyKv4AwH7o"
   },
@@ -67,6 +69,7 @@ export const plcrLevels = [
     icon: "https://api.tuforums.com/v2/media/image/icon/G13.png",
     date: "2025-01-23",
     duration: "2:31",
+    description: "This is our first take on 5 / 7 beat odd patterns. This is also our first try at adding VFX to levels.",
     tuf_link: "https://tuforums.com/levels/7647",
     soundcloud_link: "https://soundcloud.com/rurinn/opia"
   },
@@ -76,6 +79,7 @@ export const plcrLevels = [
     secondary_icon: "https://api.tuforums.com/v2/media/image/icon/U5.png",
     date: "2025-01-01",
     duration: "5:17",
+    description: "This level was originally made for the 2025 New Year celebration. It is also the hardest level that I made at that time.",
     tuf_link: "https://tuforums.com/levels/7405",
     soundcloud_link: "https://soundcloud.com/raisei/fractured-angel"
   }

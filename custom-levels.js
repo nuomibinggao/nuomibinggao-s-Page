@@ -75,10 +75,10 @@ function createLevelCard(level) {
     const levelActions = document.createElement('div');
     levelActions.classList.add('level-actions');
     if (level.tuf_link) {
-      levelActions.innerHTML += `<a href="${level.tuf_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">open_in_new</span>View Level on TUF Forums</a>`;
+      levelActions.innerHTML += `<a href="${level.tuf_link}" target="_blank" rel="noopener" class="link-button"><img src="icons/open_in_new.svg" alt="Open" class="icon icon-inline">View Level on TUF Forums</a>`;
     }
     if (level.soundcloud_link) {
-      levelActions.innerHTML += `<a href="${level.soundcloud_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">music_note</span>Listen on Soundcloud</a>`;
+      levelActions.innerHTML += `<a href="${level.soundcloud_link}" target="_blank" rel="noopener" class="link-button"><img src="icons/music_note.svg" alt="Music" class="icon icon-inline">Listen on Soundcloud</a>`;
     }
     levelExpanded.appendChild(levelActions);
   }

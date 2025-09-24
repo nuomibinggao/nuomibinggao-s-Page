@@ -65,7 +65,7 @@ function createLevelCard(level) {
       justify-content: center;
       min-height: 200px;
     ">
-      <span class="material-icons icon-large" style="margin-right: 0.5rem; font-size: 2rem;">videocam_off</span>
+      <img src="icons/videocam_off.svg" alt="Video Missing" class="icon icon-large" style="margin-right: 0.5rem; width: 2rem; height: 2rem;">
       Video Missing
     </div>
   `;
@@ -84,20 +84,20 @@ function createLevelCard(level) {
     levelActions.classList.add('level-actions');
     
     if (level.tuf_link) {
-      levelActions.innerHTML += `<a href="${level.tuf_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">open_in_new</span>View Level on TUF Forums</a>`;
+      levelActions.innerHTML += `<a href="${level.tuf_link}" target="_blank" rel="noopener" class="link-button"><img src="icons/open_in_new.svg" alt="Open" class="icon icon-inline">View Level on TUF Forums</a>`;
     }
     
     if (level.youtube_link) {
-      levelActions.innerHTML += `<a href="${level.youtube_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">play_arrow</span>Watch on YouTube</a>`;
+      levelActions.innerHTML += `<a href="${level.youtube_link}" target="_blank" rel="noopener" class="link-button"><img src="icons/play_circle.svg" alt="Play" class="icon icon-inline">Watch on YouTube</a>`;
     }
     
     if (level.soundcloud_link) {
-      levelActions.innerHTML += `<a href="${level.soundcloud_link}" target="_blank" rel="noopener" class="link-button"><span class="material-icons icon-inline">music_note</span>Listen on Soundcloud</a>`;
+      levelActions.innerHTML += `<a href="${level.soundcloud_link}" target="_blank" rel="noopener" class="link-button"><img src="icons/music_note.svg" alt="Music" class="icon icon-inline">Listen on Soundcloud</a>`;
     }
     
     // Only show placeholder if no music links exist at all
     if (!level.soundcloud_link && !level.youtube_link) {
-      levelActions.innerHTML += `<a href="#" onclick="return false;" class="link-button" style="opacity: 0.5; cursor: not-allowed;"><span class="material-icons icon-inline">music_note</span>Music Link Unavailable</a>`;
+      levelActions.innerHTML += `<a href="#" onclick="return false;" class="link-button" style="opacity: 0.5; cursor: not-allowed;"><img src="icons/music_note.svg" alt="Music" class="icon icon-inline">Music Link Unavailable</a>`;
     }
     
     levelExpanded.appendChild(levelActions);

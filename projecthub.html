@@ -109,13 +109,13 @@
         <p>A Minecraft modpack focusing on improving vanilla features and performance optimization while maintaining the core gameplay experience.</p>
         <div class="links">
           <a href="https://modrinth.com/modpack/vanyllia" target="_blank" rel="noopener" class="link-button modrinth-button">
-            <img src="icons/sports_esports.svg" alt="Gaming" class="icon icon-inline">Modrinth
+            <img src="icons/sports_esports.svg" alt="Modrinth" class="icon icon-inline">Modrinth
           </a>
         </div>
       </div>
 
       <div class="card" data-tags="ADOFAI JavaScript" data-date="2025-07-31" data-project="itags-extra" id="itags-extra">
-        <h2><img src="icons/label.svg" alt="Label" class="icon icon-inline">iTags Extra</h2>
+        <h2><img src="icons/label.svg" alt="Add" class="icon icon-inline">iTags Extra</h2>
         <div class="date">2025-07-31</div>
         <div class="tags">
           <span class="tag">ADOFAI</span>
@@ -124,7 +124,7 @@
         <p>An expansion to the iTags Overlayer Script made by <a href="https://space.bilibili.com/512479134" target="_blank" rel="noopener"><strong>SamXU1322</strong></a>, focusing on customization. Requires the original iTags Script to run.</p>
         <div class="links">
           <span style="color: #dc3545; font-size: 0.9rem;">
-            <img src="icons/lock.svg" alt="Lock" class="icon icon-inline icon-red" style="font-size: 16px;">
+            <img src="icons/lock.svg" alt="Lock" class="icon icon-inline icon-red">
             Need permission from original creator
           </span>
         </div>
@@ -139,7 +139,7 @@
         <p>All my custom-made ADOFAI charts, featuring various difficulty levels and unique musical experiences for rhythm game enthusiasts.</p>
         <div class="links">
           <a href="custom-levels.html" class="link-button">
-            <img src="icons/music_note.svg" alt="Music" class="icon icon-inline">View Levels
+            <img src="icons/play_circle.svg" alt="Play" class="icon icon-inline">View Levels
           </a>
         </div>
       </div>
@@ -302,7 +302,8 @@
             if (b.getAttribute('data-filter') === 'all') b.classList.add('active');
             else b.classList.remove('active');
           });
-        } else {
+        }
+        else {
           // Toggle this tag, and ensure 'All' is deactivated when any specific tag is active
           btn.classList.toggle('active');
           const anySpecificActive = Array.from(tagButtons).some(b => b.getAttribute('data-filter') !== 'all' && b.classList.contains('active'));
@@ -353,7 +354,7 @@
       if(option === 'date-desc') {
         sorted = cardsArray.sort((a,b) => b.dataset.date.localeCompare(a.dataset.date));
       } else if(option === 'date-asc') {
-        sorted = cardsArray.sort((a,b) => a.dataset.date.localeCompare(b.dataset.date));
+        sorted = cardsArray.sort((a,b) => a.dataset.date.localeCompare(a.dataset.date));
       } else if(option === 'name-asc') {
         sorted = cardsArray.sort((a,b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
       } else if(option === 'name-desc') {
