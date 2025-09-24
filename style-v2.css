@@ -42,49 +42,110 @@ body {
   overflow-x: hidden;
 }
 
-/* Import Material Symbols Rounded (simpler version for compatibility) */
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded');
-
-/* Base Material Icons class */
-.material-icons {
-  font-family: 'Material Symbols Rounded';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  white-space: nowrap;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Icon styles for local SVG icons */
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  fill: currentColor;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
-/* Optional sizes */
 .icon-inline {
-  vertical-align: middle;
-  font-size: 18px;
+  width: 18px;
+  height: 18px;
   margin-right: 6px;
+  position: relative;
+  top: -1px;
 }
 
 .icon-large {
-  vertical-align: middle;
-  font-size: 24px;
+  width: 24px;
+  height: 24px;
   margin-right: 8px;
 }
 
 .icon-small {
-  vertical-align: middle;
-  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  position: relative;
+  top: -1px;
+}
+
+/* Level meta icons need special alignment */
+.level-meta .icon {
+  vertical-align: -3px;
+}
+
+/* Icon color overrides for specific contexts */
+.intro a:not(.link-button):not(.button) .icon,
+.additional-buttons a:not(.link-button):not(.button) .icon,
+.nav a.active-nav .icon,
+.card p a:not(.link-button):not(.button) .icon,
+.tutorial-step p a:not(.link-button):not(.button) .icon,
+.suggestions a:not(.link-button):not(.button) .icon,
+p a[href]:not(.link-button):not(.button) .icon {
+  /* Filter to convert white (#FFFFFF) to primary blue (#4a9eff) */
+  filter: brightness(0) saturate(100%) invert(55%) sepia(96%) saturate(1731%) hue-rotate(198deg) brightness(100%) contrast(107%);
+}
+
+/* Button icons stay white */
+.link-button .icon,
+.button .icon,
+.bilibili-button .icon,
+.donate-button .icon,
+.button .icon {
+  filter: none;
+}
+
+/* Color override for intro section button icons */
+.intro .link-button .icon {
+  filter: brightness(0) saturate(100%) invert(55%) sepia(96%) saturate(1731%) hue-rotate(198deg) brightness(100%) contrast(107%);
+}
+
+.icon-red {
+  /* #dc3545 */
+  filter: brightness(0) saturate(100%) invert(32%) sepia(93%) saturate(1354%) hue-rotate(330deg) brightness(92%) contrast(93%);
+}
+
+.icon-yellow {
+  /* #ffc107 */
+  filter: brightness(0) saturate(100%) invert(81%) sepia(52%) saturate(483%) hue-rotate(329deg) brightness(102%) contrast(101%);
+}
+
+.github-button .icon {
+  color: white;
+}
+
+.modrinth-button .icon {
+  color: white;
+}
+
+/* Nav specific icon adjustments */
+.nav a .icon {
   margin-right: 4px;
 }
 
-/* Safari/iOS fallback */
-@supports (-webkit-appearance: none) {
-  .material-icons {
-    font-variation-settings: normal; /* ensures icons render properly */
-  }
+/* Button and link icon alignments */
+.back-button a,
+.additional-buttons a,
+.level-actions a,
+.filters button,
+.error-button,
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.level-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 body::before {
@@ -202,6 +263,14 @@ header.scrolled .nav {
   transition: color 0.3s ease;
   padding: 0.5rem 0;
   border-bottom: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav a .material-icons {
+  position: relative;
+  top: 0;
+  margin-right: 4px;
 }
 
 .nav a:hover {
@@ -240,13 +309,15 @@ header.scrolled .nav {
   color: var(--text-color-light);
 }
 
-.intro a {
+.intro a,
+.changelog a {
   color: var(--primary-color);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.intro a:hover {
+.intro a:hover,
+.changelog a:hover {
   color: var(--primary-color-light);
 }
 
@@ -736,6 +807,23 @@ footer {
   background: rgba(255, 255, 255, 0.05);
   padding: 0.3rem 0.6rem;
   border-radius: 0.3rem;
+}
+
+/* Icon alignment for buttons and links in other pages */
+.back-button a,
+.additional-buttons a,
+.level-actions a,
+.filters button,
+.error-button,
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-info {
+  display: flex;
+  align-items: center;
 }
 
 .page-subheader {

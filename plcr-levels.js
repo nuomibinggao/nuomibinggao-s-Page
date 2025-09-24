@@ -40,7 +40,7 @@ function createLevelCard(level) {
 
   const levelMeta = document.createElement('div');
   levelMeta.classList.add('level-meta');
-  levelMeta.innerHTML = `<div><span class="material-icons icon-small">access_time</span>Duration: ${level.duration}</div><div><span class="material-icons icon-small">event</span>Released: ${level.date}</div>`;
+  levelMeta.innerHTML = `<div><img src="icons/schedule.svg" alt="Duration" class="icon icon-small">Duration: ${level.duration}</div><div><img src="icons/event.svg" alt="Release date" class="icon icon-small">Released: ${level.date}</div>`;
   levelCard.appendChild(levelMeta);
 
   levelCardContainer.appendChild(levelCard);

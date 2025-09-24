@@ -40,7 +40,7 @@ function createLevelCard(level) {
 
   const levelMeta = document.createElement('div');
   levelMeta.classList.add('level-meta');
-  levelMeta.innerHTML = `<div><span class="material-icons icon-small">access_time</span>Duration: ${level.duration}</div><div><span class="material-icons icon-small">event</span>Released: ${level.date}</div>`;
+  levelMeta.innerHTML = `<div><img src="icons/schedule.svg" alt="Duration" class="icon icon-small">Duration: ${level.duration}</div><div><img src="icons/event.svg" alt="Release date" class="icon icon-small">Released: ${level.date}</div>`;
   levelCard.appendChild(levelMeta);
 
   levelCardContainer.appendChild(levelCard);
@@ -101,12 +101,14 @@ function createLegacyLevelCard(legacyLevel) {
 
   const levelInfo = document.createElement('div');
   levelInfo.classList.add('level-info');
-  levelInfo.innerHTML = `<span class="material-icons icon-large">${legacyLevel.icon}</span>${legacyLevel.title}`;
+  levelInfo.innerHTML = `<img src="icons/${legacyLevel.icon}.svg" alt="${legacyLevel.title}" class="icon icon-large">${legacyLevel.title}`;
   levelCard.appendChild(levelInfo);
 
   const levelMeta = document.createElement('div');
   levelMeta.classList.add('level-meta');
-  levelMeta.innerHTML = `<span class="material-icons icon-small">event</span>${legacyLevel.meta}`;
+  levelMeta.innerHTML = `
+    <div><img src="icons/event.svg" alt="Release date" class="icon icon-small">Latest Release: ${legacyLevel.date}</div>
+    <div>Difficulty Varies From G2 - U6</div>`;
   levelCard.appendChild(levelMeta);
 
   levelCardLink.appendChild(levelCard);
