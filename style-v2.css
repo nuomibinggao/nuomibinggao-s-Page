@@ -135,10 +135,8 @@ p a[href]:not(.link-button):not(.button) .icon {
 /* Button and link icon alignments */
 .back-button a,
 .additional-buttons a,
-.level-actions a,
 .filters button,
-.error-button,
-.link-button {
+.error-button {
   display: inline-flex;
   align-items: center;
   gap: 0.15rem;
@@ -751,11 +749,9 @@ footer {
 }
 
 .level-expanded .missing-video {
-  position: relative;
-  padding-bottom: 40%;
-  height: 0;
-  overflow: hidden;
+  display: block;
   margin-bottom: 1rem;
+  min-height: 200px;
 }
 
 .level-expanded .video-container iframe {
@@ -781,7 +777,7 @@ footer {
   margin-top: 1rem;
   margin-bottom: 1rem;
   text-align: center;
-  display: flex;
+  display: block;
   gap: 12px;
 }
 
@@ -822,10 +818,8 @@ footer {
 /* Icon alignment for buttons and links in other pages */
 .back-button a,
 .additional-buttons a,
-.level-actions a,
 .filters button,
-.error-button,
-.link-button {
+.error-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
