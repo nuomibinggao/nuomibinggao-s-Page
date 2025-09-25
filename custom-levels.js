@@ -62,6 +62,27 @@ function createLevelCard(level) {
       </iframe>
     `;
     levelExpanded.appendChild(videoContainer);
+  } else {
+    const videoContainer = document.createElement('div');
+    videoContainer.classList.add('missing-video');
+    videoContainer.innerHTML = `
+      <div style="
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px dashed var(--border-color-dark);
+        border-radius: 8px;
+        text-align: center;
+        color: var(--text-color-darkest);
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+      ">
+        <img src="icons/videocam_off.svg" alt="Video Missing" class="icon icon-large" style="margin-right: 0.5rem; width: 2rem; height: 2rem;">
+        Video Missing
+      </div>
+    `;
+    levelExpanded.appendChild(videoContainer);
   }
 
   if (level.description) { // Only add description if it exists

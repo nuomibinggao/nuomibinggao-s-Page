@@ -17,7 +17,7 @@
 
     <div class="error-container">
       <div class="error-code">404</div>
-      <h2 class="error-title"><span class="material-icons icon-large">cloud_upload</span>Level Still Uploading</h2>
+      <h2 class="error-title"><img src="icons/upload.svg" alt="Upload" class="icon icon-large">Level Still Uploading</h2>
       <p class="error-message">
         The level you're looking for is currently being uploaded to the TUF Forums. 
         Please check back later or browse other available levels.
@@ -25,32 +25,58 @@
       
       <div class="error-actions">
         <a href="plcr-levels.html" class="error-button primary">
-          <span class="material-icons icon-inline">list</span>Back to PLCR Levels List
+          <img src="icons/music_note.svg" alt="List" class="icon icon-inline">Back to Team Levels List
         </a>
         <a href="https://tuforums.com" target="_blank" rel="noopener" class="error-button">
-          <span class="material-icons icon-inline">forum</span>Visit TUF Forums
+          <img src="icons/open_in_new.svg" alt="Forum" class="icon icon-inline">Visit TUF Forums
         </a>
       </div>
 
       <div class="suggestions">
-        <h3><span class="material-icons icon-large">help</span>What you can do:</h3>
+        <h3><img src="icons/help.svg" alt="Help" class="icon icon-large">What you can do:</h3>
         <ul>
-          <li><span class="material-icons icon-small">refresh</span>Check back in a few minutes</li>
-          <li><span class="material-icons icon-small">list</span>Browse other <a href="plcr-levels.html">PLCR levels</a></li>
-          <li><span class="material-icons icon-small">groups</span>Learn more about <a href="plcr.html">Team Polychrome</a></li>
-          <li><span class="material-icons icon-small">forum</span>Visit the <a href="https://tuforums.com" target="_blank" rel="noopener">TUF Forums</a> directly</li>
-          <li><span class="material-icons icon-small">home</span>Return to the <a href="index.html">homepage</a></li>
+          <li><img src="icons/update.svg" alt="Refresh" class="icon icon-small">Check back in a few minutes</li>
+          <li><img src="icons/video_library.svg" alt="List" class="icon icon-small">Browse other <a href="plcr-levels.html">Team levels</a></li>
+          <li><img src="icons/groups_3.svg" alt="Groups" class="icon icon-small">Learn more about <a href="plcr.html">Team Polychrome</a></li>
+          <li><img src="icons/open_in_new.svg" alt="Forum" class="icon icon-small">Visit the <a href="https://tuforums.com" target="_blank" rel="noopener">TUF Forums</a> directly</li>
+          <li><img src="icons/home.svg" alt="Home" class="icon icon-small">Return to the <a href="index.html">homepage</a></li>
         </ul>
       </div>
     </div>
 
     <footer>
-      © 2025 <span id="footerName">nuomibinggao</span>. This website is licensed under the MIT License.
-      <div class="footer-note">This page is partially generated using Lingma AI</div>
+      © 2025 nuomibinggao • MIT License
+      <div class="footer-note" id="splashText">Loading...</div>
     </footer>
   </div>
 
   <script>
+    // Splash text functionality - load from splash.json
+    const splashElement = document.getElementById('splashText');
+    
+    fetch('splash.json')
+      .then(response => response.json())
+      .then(splashTexts => {
+        function getRandomSplash() {
+          const randomIndex = Math.floor(Math.random() * splashTexts.length);
+          return splashTexts[randomIndex];
+        }
+        
+        function updateSplashText() {
+          splashElement.textContent = getRandomSplash();
+        }
+        
+        // Initialize with a random splash text
+        updateSplashText();
+        
+        // Change splash text on click
+        splashElement.addEventListener('click', updateSplashText);
+      })
+      .catch(error => {
+        console.error('Error loading splash texts:', error);
+        splashElement.textContent = 'Crafted with care';
+      });
+
     // Scroll header functionality
     const header = document.getElementById('header');
     const container = document.getElementById('container');

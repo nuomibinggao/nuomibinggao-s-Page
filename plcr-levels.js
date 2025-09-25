@@ -48,28 +48,42 @@ function createLevelCard(level) {
   const levelExpanded = document.createElement('div');
   levelExpanded.classList.add('level-expanded');
 
-  // Add video missing box for PLCR levels
-  const videoContainer = document.createElement('div');
-  videoContainer.classList.add('video-container');
-  videoContainer.innerHTML = `
-    <div style="
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px dashed var(--border-color-dark);
-      border-radius: 8px;
-      padding: 2rem;
-      text-align: center;
-      color: var(--text-color-darkest);
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 200px;
-    ">
-      <img src="icons/videocam_off.svg" alt="Video Missing" class="icon icon-large" style="margin-right: 0.5rem; width: 2rem; height: 2rem;">
-      Video Missing
-    </div>
-  `;
-  levelExpanded.appendChild(videoContainer);
+  if (level.bilibili_bvid) { // Only add video for levels with bilibili_bvid
+    const videoContainer = document.createElement('div');
+    videoContainer.classList.add('video-container');
+    videoContainer.innerHTML = `
+      <iframe 
+        src="https://player.bilibili.com/player.html?bvid=${level.bilibili_bvid}&page=1&muted=false&high-quality=1&autoplay=0" 
+        scrolling="no" 
+        border="0"
+        frameborder="no" 
+        framespacing="0" 
+        allowfullscreen="true">
+      </iframe>
+    `;
+    levelExpanded.appendChild(videoContainer);
+  } else {
+    const videoContainer = document.createElement('div');
+    videoContainer.classList.add('missing-video');
+    videoContainer.innerHTML = `
+      <div style="
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px dashed var(--border-color-dark);
+        border-radius: 8px;
+        text-align: center;
+        color: var(--text-color-darkest);
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+      ">
+        <img src="icons/videocam_off.svg" alt="Video Missing" class="icon icon-large" style="margin-right: 0.5rem; width: 2rem; height: 2rem;">
+        Video Missing
+      </div>
+    `;
+    levelExpanded.appendChild(videoContainer);
+  }
 
   if (level.description) { // Only add description if it exists
     const levelDescription = document.createElement('div');
