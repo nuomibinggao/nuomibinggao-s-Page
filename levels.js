@@ -2,7 +2,8 @@
 export const indieLevels = [
   {
     title: "Ludicin - Echoes of Memoria",
-    icon: "https://api.tuforums.com/v2/media/image/icon/Unranked.png",
+    icon: "https://api.tuforums.com/v2/media/image/icon/Q1.png",
+    secondary_icon: "https://api.tuforums.com/v2/media/image/icon/U8.png",
     date: "2025-09-08",
     duration: "6:41",
     bilibili_bvid: "BV1MLaZz3EGT",
