@@ -781,8 +781,6 @@ footer {
   gap: 12px;
 }
 
-
-
 .sort-bar {
   display: flex;
   justify-content: center;
@@ -1335,28 +1333,6 @@ header.scrolled .nav {
   }
 }
 
-/* Hide icons on Apple devices */
-@media screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-  .material-icons {
-    display: none;
-  }
-}
-
-/* Hide icons on Android devices */
-@media screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),
-       screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  .material-icons {
-    display: none;
-  }
-}
-
-/* Additional rule to ensure icons are hidden on mobile touch devices */
-@media (hover: none) and (pointer: coarse) {
-  .material-icons {
-    display: none;
-  }
-}
-
 /* Documentation-specific styles */
 .doc-section {
   background: var(--card-background-color);
@@ -1433,10 +1409,56 @@ header.scrolled .nav {
 
 .doc-section pre code {
   background: none;
-  color: var(--text-color-lighter);
-  padding: 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
+}
+
+/* Mobile responsiveness improvements */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+    max-width: 100%;
+  }
+  
+  header .header-content {
+    padding: 1rem 0.5rem;
+  }
+  
+  .intro {
+    padding: 1rem 0.5rem;
+  }
+  
+  .doc-section {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .doc-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .doc-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .doc-section pre {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+  
+  .nav, .intro div[style*="margin-top"] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .nav a, .intro .link-button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .nav a .icon-inline, .intro .link-button .icon-inline {
+    margin-right: 8px;
+  }
 }
 
 .note-text {
