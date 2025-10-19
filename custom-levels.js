@@ -92,17 +92,52 @@ function createLevelCard(level) {
     levelExpanded.appendChild(levelDescription);
   }
 
-  if (level.tuf_link || level.soundcloud_link) { // Only add actions if links exist
-    const levelActions = document.createElement('div');
-    levelActions.classList.add('level-actions');
-    if (level.tuf_link) {
-      levelActions.innerHTML += `<a href="${level.tuf_link}" target="_blank" rel="noopener" class="link-button"><img src="icons/open_in_new.svg" alt="Open" class="icon icon-inline">View Level on TUF Forums</a>`;
-    }
-    if (level.soundcloud_link) {
-      levelActions.innerHTML += `<a href="${level.soundcloud_link}" target="_blank" rel="noopener" class="link-button"><img src="icons/music_note.svg" alt="Music" class="icon icon-inline">Listen on Soundcloud</a>`;
-    }
-    levelExpanded.appendChild(levelActions);
+  const levelActions = document.createElement('div');
+  levelActions.classList.add('level-actions');
+
+  // TUF Link Button
+  if (level.tuf_link) {
+    const tufButton = document.createElement('a');
+    tufButton.href = level.tuf_link;
+    tufButton.target = '_blank';
+    tufButton.rel = 'noopener';
+    tufButton.classList.add('link-button');
+    tufButton.innerHTML = `<img src="icons/open_in_new.svg" alt="Open" class="icon icon-inline">View Level on TUF Forums`;
+    levelActions.appendChild(tufButton);
+  } else {
+    const tufButton = document.createElement('button');
+    tufButton.classList.add('link-button');
+    tufButton.disabled = true;
+    tufButton.innerHTML = `<img src="icons/open_in_new_off.svg" alt="Open" class="icon icon-inline">Level Still Uploading`;
+    levelActions.appendChild(tufButton);
   }
+
+  // Music Link Button
+  if (level.soundcloud_link) {
+    const musicButton = document.createElement('a');
+    musicButton.href = level.soundcloud_link;
+    musicButton.target = '_blank';
+    musicButton.rel = 'noopener';
+    musicButton.classList.add('link-button');
+    musicButton.innerHTML = `<img src="icons/music_note.svg" alt="Music" class="icon icon-inline">Listen on Soundcloud`;
+    levelActions.appendChild(musicButton);
+  } else if (level.youtube_link) {
+    const musicButton = document.createElement('a');
+    musicButton.href = level.youtube_link;
+    musicButton.target = '_blank';
+    musicButton.rel = 'noopener';
+    musicButton.classList.add('link-button');
+    musicButton.innerHTML = `<img src="icons/play_circle.svg" alt="Play" class="icon icon-inline">Watch on YouTube`;
+    levelActions.appendChild(musicButton);
+  } else {
+    const musicButton = document.createElement('button');
+    musicButton.classList.add('link-button');
+    musicButton.disabled = true;
+    musicButton.innerHTML = `<img src="icons/open_in_new_off.svg" alt="Music" class="icon icon-inline">No Music Link Avaliable`;
+    levelActions.appendChild(musicButton);
+  }
+
+  levelExpanded.appendChild(levelActions);
 
   levelCardContainer.appendChild(levelExpanded);
 

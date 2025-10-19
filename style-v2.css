@@ -364,6 +364,7 @@ header.scrolled .nav {
   text-decoration: none;
   border-radius: 6px;
   border: 1px solid var(--border-color-dark);
+  font-family: 'Chillax', sans-serif;
   font-size: 0.9rem;
   transition: all 0.3s ease;
   margin-right: 0.5rem;
@@ -375,6 +376,21 @@ header.scrolled .nav {
   border-color: var(--border-color-darker);
   transform: translateY(-1px);
   outline: none;
+}
+
+.link-button:disabled,
+.link-button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--button-background-color);
+  border-color: var(--border-color-dark);
+}
+
+.link-button:disabled:hover,
+.link-button[disabled]:hover {
+  transform: none;
+  background: var(--button-background-color);
+  border-color: var(--border-color-dark);
 }
 
 .bilibili-button {

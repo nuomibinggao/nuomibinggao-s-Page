@@ -1,6 +1,15 @@
 // Indie/Custom Levels - Solo work with videos
 export const indieLevels = [
   {
+    title: "Frums - stop-motion",
+    icon: "https://api.tuforums.com/v2/media/image/icon/Unranked.png",
+    date: "2025-10-18",
+    duration: "3:17",
+    bilibili_bvid: "BV1QKWbz5EHF",
+    description: "<p>Tried to create the hardest level for this song, this is what came out.</p><p>This song was originaly made for the rhythm game <a href=\"https://store.steampowered.com/app/2093940/vividstasis/\" target=\"_blank\">vivid/stasis.</a></p>",
+    soundcloud_link: "https://soundcloud.com/frums/stop-motion"
+  },
+  {
     title: "Ludicin - Echoes of Memoria",
     icon: "https://api.tuforums.com/v2/media/image/icon/Q1.png",
     secondary_icon: "https://api.tuforums.com/v2/media/image/icon/U8.png",
@@ -80,7 +89,7 @@ export const plcrLevels = [
     secondary_icon: "https://api.tuforums.com/v2/media/image/icon/U5.png",
     date: "2025-01-01",
     duration: "5:17",
-    description: "This level was originally made for the 2025 New Year celebration. It is also the hardest level that I made at that time.",
+    description: "This level was originally made for the 2025 New Year celebration. It is also the first U level that I made.",
     tuf_link: "https://tuforums.com/levels/7405",
     soundcloud_link: "https://soundcloud.com/raisei/fractured-angel"
   }
