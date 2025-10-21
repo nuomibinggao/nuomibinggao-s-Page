@@ -1,13 +1,9 @@
-# nuomibinggao's Page
+# Melty Pages
 
-This is the source code for my personal website, [nuomibinggao.top](http://www.nuomibinggao.top), created with the help of some AI tools.
-
-### v2 Update
-Since Sept. 23, 2025, the website has been updated to v2, featuring a UI & UX redesign.
-You can access v1 by visiting /v1 of the website.
+This is the source code for my personal website, Melty Pages (formally known as nuomibinggao's Page), created with the help of some AI tools.
 
 ## Live Demo
-[www.nuomibinggao.top](http://www.nuomibinggao.top)
+Live demo is currently down due to website rebranding
 
 ---
 
