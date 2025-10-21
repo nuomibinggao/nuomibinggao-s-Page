@@ -1,4 +1,74 @@
-import { indieLevels, legacyLevel } from './levels.js';
+import { comingSoonLevel, indieLevels, legacyLevel } from './levels.js';
+function createComingSoonCard() {
+  const levelCardContainer = document.createElement('div');
+  levelCardContainer.classList.add('level-card-container', 'coming-soon-container');
+
+  const levelCard = document.createElement('div');
+  levelCard.classList.add('level-card', 'coming-soon-card');
+
+  const levelInfo = document.createElement('div');
+  levelInfo.classList.add('level-info');
+  
+  const icon = document.createElement('img');
+  icon.src = comingSoonLevel.icon;
+  icon.alt = 'Coming Soon';
+  icon.classList.add('level-icon', 'coming-soon-icon');
+  levelInfo.appendChild(icon);
+  
+  const titleSpan = document.createElement('span');
+  titleSpan.textContent = comingSoonLevel.title;
+  levelInfo.appendChild(titleSpan);
+  
+  levelCard.appendChild(levelInfo);
+
+  const levelMeta = document.createElement('div');
+  levelMeta.classList.add('level-meta');
+  levelMeta.innerHTML = `
+    <div><img src="icons/schedule.svg" alt="Duration" class="icon icon-small">Duration: ${comingSoonLevel.duration}</div>
+    <div><img src="icons/event.svg" alt="Release date" class="icon icon-small">Released: ${comingSoonLevel.date}</div>
+  `;
+  levelCard.appendChild(levelMeta);
+
+  levelCardContainer.appendChild(levelCard);
+
+  const levelExpanded = document.createElement('div');
+  levelExpanded.classList.add('level-expanded');
+
+  const placeholderContainer = document.createElement('div');
+  placeholderContainer.classList.add('coming-soon-placeholder');
+  placeholderContainer.innerHTML = `
+    <div style="
+      background: linear-gradient(135deg, rgba(74, 158, 255, 0.1) 0%, rgba(120, 119, 198, 0.1) 100%);
+      border: 2px dashed var(--primary-color);
+      border-radius: 8px;
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      gap: 1rem;
+    ">
+      <img src="icons/hourglass_empty.svg" alt="Coming Soon" class="icon" style="width: 3rem; height: 3rem; animation: pulse 2s ease-in-out infinite;">
+      <div style="font-weight: 600;">Work in Progress</div>
+      <div style="font-size: 0.9rem; color: var(--text-color-light);">Check back soon for the next level!</div>
+    </div>
+  `;
+  levelExpanded.appendChild(placeholderContainer);
+
+  if (comingSoonLevel.description) {
+    const levelDescription = document.createElement('div');
+    levelDescription.classList.add('level-description');
+    levelDescription.innerHTML = comingSoonLevel.description;
+    levelExpanded.appendChild(levelDescription);
+  }
+
+  levelCardContainer.appendChild(levelExpanded);
+
+  return levelCardContainer;
+}
 
 function createLevelCard(level) {
   const levelCardContainer = document.createElement('div');
@@ -48,7 +118,7 @@ function createLevelCard(level) {
   const levelExpanded = document.createElement('div');
   levelExpanded.classList.add('level-expanded');
 
-  if (level.bilibili_bvid) { // Only add video for levels with bilibili_bvid
+  if (level.bilibili_bvid) {
     const videoContainer = document.createElement('div');
     videoContainer.classList.add('video-container');
     videoContainer.innerHTML = `
@@ -85,7 +155,7 @@ function createLevelCard(level) {
     levelExpanded.appendChild(videoContainer);
   }
 
-  if (level.description) { // Only add description if it exists
+  if (level.description) {
     const levelDescription = document.createElement('div');
     levelDescription.classList.add('level-description');
     levelDescription.innerHTML = level.description;
@@ -95,7 +165,6 @@ function createLevelCard(level) {
   const levelActions = document.createElement('div');
   levelActions.classList.add('level-actions');
 
-  // TUF Link Button
   if (level.tuf_link) {
     const tufButton = document.createElement('a');
     tufButton.href = level.tuf_link;
@@ -112,7 +181,6 @@ function createLevelCard(level) {
     levelActions.appendChild(tufButton);
   }
 
-  // Music Link Button
   if (level.soundcloud_link) {
     const musicButton = document.createElement('a');
     musicButton.href = level.soundcloud_link;
@@ -173,12 +241,20 @@ function createLegacyLevelCard(legacyLevel) {
 
 function renderLevels(levelsToRender) {
   const levelsList = document.getElementById('levelsList');
-  levelsList.innerHTML = ''; // Clear existing levels
+  levelsList.innerHTML = '';
+  
+  // Always add coming soon card at the top
+  levelsList.appendChild(createComingSoonCard());
+  
+  // Add regular levels
   levelsToRender.forEach(level => {
     levelsList.appendChild(createLevelCard(level));
   });
-  levelsList.appendChild(createLegacyLevelCard(legacyLevel)); // Add legacy level at the end
-  attachExpandCollapseListeners(); // Re-attach listeners after rendering
+  
+  // Add legacy level at the end
+  levelsList.appendChild(createLegacyLevelCard(legacyLevel));
+  
+  attachExpandCollapseListeners();
 }
 
 function attachExpandCollapseListeners() {
@@ -188,7 +264,7 @@ function attachExpandCollapseListeners() {
     const expandedSection = container.querySelector('.level-expanded');
     if (card && expandedSection) {
       card.style.cursor = 'pointer';
-      card.onclick = function(e) { // Use onclick to avoid multiple event listeners
+      card.onclick = function(e) {
         e.preventDefault();
         expandedSection.classList.toggle('open');
         if (expandedSection.classList.contains('open')) {
@@ -205,15 +281,14 @@ const sortSelect = document.getElementById('sortOptions');
 const levelsList = document.getElementById('levelsList');
 const levelSearch = document.getElementById('levelSearch');
 
-// Initial render
 document.addEventListener('DOMContentLoaded', () => {
-  renderLevels(indieLevels); // Render indie levels directly
-  sortSelect.dispatchEvent(new Event('change')); // Trigger initial sort
+  renderLevels(indieLevels);
+  sortSelect.dispatchEvent(new Event('change'));
 });
 
 sortSelect.addEventListener('change', () => {
   const option = sortSelect.value;
-  let sortedLevels = [...indieLevels]; // Create copy of indie levels
+  let sortedLevels = [...indieLevels];
 
   sortedLevels.sort((a, b) => {
     const aDate = a.date;

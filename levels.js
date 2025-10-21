@@ -1,3 +1,12 @@
+// Coming Soon Level - displayed at the top
+export const comingSoonLevel = {
+  title: "Coming Soon...",
+  icon: "icons/hourglass_empty.svg",
+  date: "2025-10-24",
+  duration: "5:27",
+  description: "<p>A new level is currently in the works! Stay tuned for updates.</p>",
+};
+
 // Indie/Custom Levels - Solo work with videos
 export const indieLevels = [
   {
@@ -7,6 +16,7 @@ export const indieLevels = [
     duration: "3:17",
     bilibili_bvid: "BV1QKWbz5EHF",
     description: "<p>Tried to create the hardest level for this song, this is what came out.</p><p>This song was originaly made for the rhythm game <a href=\"https://store.steampowered.com/app/2093940/vividstasis/\" target=\"_blank\">vivid/stasis.</a></p>",
+    tuf_link: "https://tuforums.com/levels/10993",
     soundcloud_link: "https://soundcloud.com/frums/stop-motion"
   },
   {
