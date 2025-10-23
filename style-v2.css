@@ -1232,6 +1232,8 @@ header.scrolled .nav {
   }
 
   .intro, .section-card {
+    padding-left: 2rem;
+    padding-right: 2rem;
     padding: 1.5rem;
   }
 
@@ -1435,10 +1437,6 @@ header.scrolled .nav {
   }
   
   header .header-content {
-    padding: 1rem 0.5rem;
-  }
-  
-  .intro {
     padding: 1rem 0.5rem;
   }
   
