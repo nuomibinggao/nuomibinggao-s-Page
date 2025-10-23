@@ -113,6 +113,3 @@ export const legacyLevel = {
   meta: "Latest Release: 2025-07-07 | Difficulty Varies From G2 - U6",
   link: "https://www.123865.com/s/HUz5jv-wxY93"
 };
-
-// Backward compatibility - combined data (deprecated, use separate arrays above)
-export const levelsData = [...indieLevels, ...plcrLevels];
