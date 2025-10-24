@@ -307,6 +307,22 @@
 
       sorted.forEach(card => grid.appendChild(card));
     }
+
+    // Scroll header functionality
+    const header = document.getElementById('mainHeader');
+    const container = document.getElementById('mainContainer');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      if (scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
   </script>
 </body>
 </html>
