@@ -1174,30 +1174,49 @@ header.scrolled .nav {
 
 .changelog-entry {
   margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color-light);
 }
 
 .changelog-entry:last-child {
-  border-bottom: none;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .changelog-date {
   color: var(--text-color-darkest);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.changelog-content {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.changelog-content:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .changelog-content h4 {
   color: var(--text-color-lightest);
   margin-bottom: 0.5rem;
   font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.changelog-content h5 {
+  color: var(--text-color-light);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  font-size: 1rem;
 }
 
 .changelog-content ul {
   padding-left: 1.5rem;
   color: var(--text-color-light);
+  margin-bottom: 1rem;
 }
 
 .changelog-content li {
