@@ -24,6 +24,8 @@
   --soundcloud-color-hover: #ff3300;
   --modrinth-color: #1bd96a;
   --modrinth-color-hover: #17c85e;
+  --tuf-color: #331d4b;
+  --tuf-color-hover: #220f36;
 }
 
 * {
@@ -76,6 +78,15 @@ body {
   margin-right: 4px;
   position: relative;
   top: -1px;
+}
+
+.icon-adofai {
+  width: auto;
+  height: 32px;
+  margin-left: -2px;
+  margin-right: 4px;
+  position: relative;
+  top: -4px;
 }
 
 /* Level meta icons need special alignment */
@@ -391,6 +402,15 @@ header.scrolled .nav {
   transform: none;
   background: var(--button-background-color);
   border-color: var(--border-color-dark);
+}
+
+.tuf-button {
+  background-color: var(--tuf-color);
+  text-decoration: none;
+}
+
+.tuf-button:hover {
+  background-color: var(--tuf-color-hover);
 }
 
 .bilibili-button {
