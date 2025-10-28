@@ -26,6 +26,7 @@
   --modrinth-color-hover: #17c85e;
   --tuf-color: #331d4b;
   --tuf-color-hover: #220f36;
+  --error-color: #dc3545;
 }
 
 * {

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADOFAI - Submit New Level</title>
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-v2.css">
+  <style>
+    /* Form Styles */
+    .upload-form {
+      background: var(--card-background-color);
+      border: 1px solid var(--border-color-light);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color-light);
+    }
+
+    .form-section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .form-section h3 {
+      font-size: 1.3rem;
+      color: var(--text-color-lightest);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--text-color-lighter);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .required {
+      color: var(--error-color);
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="url"],
+    .form-group input[type="date"],
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--button-background-color);
+      border: 1px solid var(--border-color-dark);
+      border-radius: 6px;
+      color: var(--text-color-lighter);
+      font-family: 'Chillax', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="url"]:focus,
+    .form-group input[type="date"]:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background: var(--button-background-hover-color);
+    }
+
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.8);
+      cursor: pointer;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .form-group small {
+      display: block;
+      color: var(--text-color-darkest);
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .form-group select {
+      cursor: pointer;
+    }
+
+    /* Required field validation hint */
+    .form-group input:invalid,
+    .form-group select:invalid,
+    .form-group textarea:invalid {
+      border-color: var(--border-color-dark);
+    }
+
+    .form-group input:invalid:not(:placeholder-shown),
+    .form-group select:invalid:not([value=""]),
+    .form-group textarea:invalid:not(:placeholder-shown) {
+      border-color: rgba(220, 53, 69, 0.5);
+    }
+
+    /* Custom validation tooltip styles */
+    .form-group input:required:invalid:focus,
+    .form-group select:required:invalid:focus,
+    .form-group textarea:required:invalid:focus {
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    }
+
+    .submit-section {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .submit-button {
+      padding: 0.8rem 2rem;
+      background: var(--primary-color);
+      color: var(--text-color-lightest);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Chillax', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .submit-button:hover {
+      background: var(--primary-color-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+    }
+
+    .submit-button:active {
+      transform: translateY(0);
+    }
+
+    /* Custom validation error messages */
+    .error-message {
+      display: none;
+      color: var(--error-color);
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      padding: 0.5rem;
+      background: rgba(220, 53, 69, 0.1);
+      border: 1px solid rgba(220, 53, 69, 0.3);
+      border-radius: 4px;
+    }
+
+    .error-message.show {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: var(--error-color);
+    }
+
+    .success-message {
+      background: rgba(40, 167, 69, 0.1);
+      border: 1px solid rgba(40, 167, 69, 0.3);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      color: #28a745;
+      display: none;
+      text-align: center;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    .success-message strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .upload-form {
+        padding: 1.5rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .submit-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1>Melty Pages</h1>
+        <p class="subtitle">ADOFAI - Submit New Level</p>
+        <nav class="nav">
+          <a href="adofai-index.html"><img src="icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">Back to ADOFAI Hub</a>
+        </nav>
+      </div>
+    </header>
+
+  <div class="intro">
+    <h2><img src="icons/upload.svg" alt="Upload" class="icon icon-large">Submit New Custom Level</h2>
+    <p>Fill out this form to submit a new level to show on the website. Make sure to check critical information to avoid misinformation.</p>
+    <div style="margin-top: 1rem;">
+      <a href="adofai-index.html" class="link-button"><img src="icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">Back to ADOFAI Hub</a>
+    </div>
+  </div>
+
+    <div class="upload-form">
+      <form id="levelForm">
+        <!-- Basic Information -->
+        <div class="form-section">
+          <h3>Basic Information</h3>
+          
+          <div class="form-group">
+            <label for="title">Title <span class="required">*</span></label>
+            <input type="text" id="title" name="title" required placeholder="e.g., XH - Secret Malware">
+            <small>The full title of your level including artist name</small>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Release Date <span class="required">*</span></label>
+              <input type="date" id="date" name="date" required>
+              <small>When the level was released</small>
+            </div>
+
+            <div class="form-group">
+              <label for="duration">Duration <span class="required">*</span></label>
+              <input type="text" id="duration" name="duration" required placeholder="e.g., 5:27">
+              <small>Length of the level (MM:SS format)</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description <span class="required">*</span></label>
+            <textarea id="description" name="description" required placeholder="Describe your level, include HTML tags for formatting"></textarea>
+            <small>Use HTML tags like &lt;p&gt; for paragraphs and &lt;a href="..."&gt; for links</small>
+          </div>
+        </div>
+
+        <!-- Difficulty Icons -->
+        <div class="form-section">
+          <h3>Difficulty & Icons</h3>
+          
+          <div class="form-group">
+            <label for="icon">Primary Icon URL <span class="required">*</span></label>
+            <input type="url" id="icon" name="icon" required placeholder="https://api.tuforums.com/v2/media/image/icon/Unranked.png">
+            <small>URL to the primary difficulty icon image</small>
+          </div>
+
+          <div class="form-group">
+            <label for="secondary_icon">Secondary Icon URL</label>
+            <input type="url" id="secondary_icon" name="secondary_icon" placeholder="https://api.tuforums.com/v2/media/image/icon/U8.png">
+            <small>Optional: URL to a secondary difficulty icon (e.g., judgment difficulty)</small>
+          </div>
+        </div>
+
+        <!-- Media Links -->
+        <div class="form-section">
+          <h3>Media & Links</h3>
+          
+          <div class="form-group">
+            <label for="bilibili_bvid">Bilibili BV ID</label>
+            <input type="text" id="bilibili_bvid" name="bilibili_bvid" placeholder="e.g., BV1n6sEzNE2n">
+            <small>The BV ID from Bilibili video URL (bilibili.com/video/<strong>BV1n6sEzNE2n</strong>)</small>
+          </div>
+
+          <div class="form-group">
+            <label for="youtube_link">YouTube Link</label>
+            <input type="url" id="youtube_link" name="youtube_link" placeholder="https://www.youtube.com/watch?v=...">
+            <small>Full YouTube video URL</small>
+          </div>
+
+          <div class="form-group">
+            <label for="soundcloud_link">SoundCloud Link</label>
+            <input type="url" id="soundcloud_link" name="soundcloud_link" placeholder="https://soundcloud.com/...">
+            <small>Link to the song on SoundCloud</small>
+          </div>
+
+          <div class="form-group">
+            <label for="tuf_link">TUF Link</label>
+            <input type="url" id="tuf_link" name="tuf_link" placeholder="https://tuforums.com/levels/...">
+            <small>Link to the level on TU Forums</small>
+          </div>
+        </div>
+
+        <!-- Category Selection -->
+        <div class="form-section">
+          <h3>Category</h3>
+          
+          <div class="form-group">
+            <label for="category">Level Category <span class="required">*</span></label>
+            <select id="category" name="category" required>
+              <option value="">-- Select Category --</option>
+              <option value="indie">Indie/Custom Level (Solo work)</option>
+              <option value="plcr">PLCR/Team Level (Collaborative)</option>
+            </select>
+            <small>Choose whether this is solo work or a collaboration</small>
+          </div>
+        </div>
+
+        <!-- Submit Section -->
+        <div class="submit-section">
+          <button type="submit" class="submit-button">
+            <img src="icons/upload.svg" alt="Submit" class="icon icon-inline">
+            Submit Level
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      © 2025 nuomibinggao • MIT License
+      <div class="footer-note" id="splashText">Loading...</div>
+    </footer>
+  </div>
+
+  <script>
+    // Splash text functionality - load from splash.json
+    const splashElement = document.getElementById('splashText');
+    
+    fetch('splash.json')
+      .then(response => response.json())
+      .then(splashTexts => {
+        function getRandomSplash() {
+          const randomIndex = Math.floor(Math.random() * splashTexts.length);
+          return splashTexts[randomIndex];
+        }
+        
+        function updateSplashText() {
+          splashElement.textContent = getRandomSplash();
+        }
+        
+        // Initialize with a random splash text
+        updateSplashText();
+        
+        // Change splash text on click
+        splashElement.addEventListener('click', updateSplashText);
+      })
+      .catch(error => {
+        console.error('Error loading splash texts:', error);
+        splashElement.textContent = 'Crafted with care';
+      });
+
+    // Scroll header functionality
+    const header = document.getElementById('header');
+    const container = document.getElementById('container');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      if (scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        
+        // Only prevent default for anchor links within the page
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 100; // Account for fixed header
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        }
+        // For external links or page links, let the default behavior happen
+      });
+    });
+
+    // Form submission functionality
+    const form = document.getElementById('levelForm');
+    const previewBtn = document.getElementById('previewBtn');
+    const previewSection = document.getElementById('previewSection');
+    const previewCode = document.getElementById('previewCode');
+
+    function generateLevelObject() {
+      const formData = new FormData(form);
+      const levelObj = {};
+
+      // Required fields
+      levelObj.title = formData.get('title');
+      levelObj.icon = formData.get('icon');
+      levelObj.date = formData.get('date');
+      levelObj.duration = formData.get('duration');
+      levelObj.description = formData.get('description');
+
+      // Optional fields - only add if they have values
+      if (formData.get('secondary_icon')) {
+        levelObj.secondary_icon = formData.get('secondary_icon');
+      }
+      if (formData.get('bilibili_bvid')) {
+        levelObj.bilibili_bvid = formData.get('bilibili_bvid');
+      }
+      if (formData.get('youtube_link')) {
+        levelObj.youtube_link = formData.get('youtube_link');
+      }
+      if (formData.get('soundcloud_link')) {
+        levelObj.soundcloud_link = formData.get('soundcloud_link');
+      }
+      if (formData.get('tuf_link')) {
+        levelObj.tuf_link = formData.get('tuf_link');
+      }
+
+      return levelObj;
+    }
+
+    previewBtn.addEventListener('click', () => {
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const levelObj = generateLevelObject();
+      const jsonStr = JSON.stringify(levelObj, null, 2);
+      previewCode.textContent = jsonStr;
+      previewSection.classList.add('active');
+      previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const category = document.getElementById('category').value;
+      if (!category) {
+        alert('Please select a category for your level.');
+        return;
+      }
+
+      const levelObj = generateLevelObject();
+      const jsonStr = JSON.stringify(levelObj, null, 2);
+    });
+
+    // Set today's date as default
+    document.getElementById('date').valueAsDate = new Date();
+  </script>
+</body>
+</html>
