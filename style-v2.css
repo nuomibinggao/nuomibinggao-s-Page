@@ -1629,5 +1629,128 @@ footer a:hover {
 
   .doc-section pre {
     font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+}
+
+/* ADOFAI Upload Form Styles */
+.upload-form {
+  background: var(--card-background-color);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color-light);
+  padding-bottom: 2rem;
+}
+
+.form-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.form-section h3 {
+  font-size: 1.3rem;
+  color: var(--text-color-lightest);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: var(--text-color-light);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-group .required {
+  color: var(--error-color);
+  margin-left: 4px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color-dark);
+  background: var(--button-background-color);
+  color: var(--text-color-lighter);
+  font-family: 'Chillax', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: var(--background-color);
+}
+
+.form-group small {
+  display: block;
+  color: var(--text-color-darkest);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit-section {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.submit-button {
+  padding: 0.8rem 2rem;
+  background: var(--primary-color);
+  color: var(--text-color-lightest);
+  border: none;
+  border-radius: 6px;
+  font-family: 'Chillax', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submit-button:hover {
+  background: var(--primary-color-light);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .upload-form {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
