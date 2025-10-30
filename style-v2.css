@@ -1718,6 +1718,22 @@ footer a:hover {
   resize: vertical;
 }
 
+.submit-button:hover {
+  background: var(--primary-color-light);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .upload-form {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 .submit-section {
   text-align: center;
   margin-top: 2rem;
@@ -1744,13 +1760,62 @@ footer a:hover {
   transform: translateY(-2px);
 }
 
-@media (max-width: 600px) {
-  .upload-form {
-    padding: 1.5rem;
-  }
+.submit-button.shake-error {
+  animation: shake 0.6s ease-in-out;
+  background: var(--error-color);
+}
 
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+.submit-button.success-submit {
+  background: #28a745;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-8px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(8px);
+  }
+}
+
+.error-hint {
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: rgba(220, 53, 69, 0.15);
+  border: 1px solid rgba(220, 53, 69, 0.4);
+  border-radius: 6px;
+  color: var(--error-color);
+  font-size: 0.95rem;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(-10px);
+}
+
+.error-hint.show {
+  opacity: 1;
+  max-height: 100px;
+  transform: translateY(0);
+  animation: slideDown 0.3s ease-out;
+}
+
+.error-hint.success {
+  background: rgba(40, 167, 69, 0.15);
+  border-color: rgba(40, 167, 69, 0.4);
+  color: #28a745;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

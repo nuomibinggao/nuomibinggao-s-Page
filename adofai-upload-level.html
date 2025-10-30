@@ -19,13 +19,14 @@
       </div>
     </header>
 
-  <div class="intro">
-    <h2><img src="icons/upload.svg" alt="Upload" class="icon icon-large">Submit New Custom Level</h2>
-    <p>Fill out this form to submit a new level to show on the website. Make sure to check critical information to avoid misinformation.</p>
-    <div style="margin-top: 1rem;">
-      <a href="adofai-index.html" class="link-button"><img src="icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">Back to ADOFAI Hub</a>
+    <div class="intro">
+      <h2><img src="icons/upload.svg" alt="Upload" class="icon icon-large">Submit New Custom Level</h2>
+      <p>Fill out this form to submit a new level to show on the website. Make sure to check critical information to avoid misinformation.</p>
+      <div style="margin-top: 1rem;">
+        <a href="adofai-index.html" class="link-button"><img src="icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">Back to ADOFAI Hub</a>
+      </div>
     </div>
-  </div>
+
     <div class="upload-form">
       <form id="levelForm" novalidate>
         <!-- Basic Information -->
@@ -125,6 +126,7 @@
             <img src="icons/upload.svg" alt="Submit" class="icon icon-inline">
             Submit Level
           </button>
+          <div class="error-hint" id="errorHint"></div>
         </div>
       </form>
     </div>
@@ -174,8 +176,8 @@
       });
 
     // Scroll header functionality
-    const header = document.getElementById('header');
-    const container = document.getElementById('container');
+    const header = document.querySelector('header');
+    const container = document.querySelector('.container');
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
@@ -214,9 +216,6 @@
 
     // Form submission functionality
     const form = document.getElementById('levelForm');
-    const previewBtn = document.getElementById('previewBtn');
-    const previewSection = document.getElementById('previewSection');
-    const previewCode = document.getElementById('previewCode');
 
     function generateLevelObject() {
       const formData = new FormData(form);
@@ -249,32 +248,79 @@
       return levelObj;
     }
 
-    previewBtn.addEventListener('click', () => {
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      const levelObj = generateLevelObject();
-      const jsonStr = JSON.stringify(levelObj, null, 2);
-      previewCode.textContent = jsonStr;
-      previewSection.classList.add('active');
-      previewSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       
+      const submitButton = document.querySelector('.submit-button');
+      const errorHint = document.getElementById('errorHint');
+      
+      // Check form validity
+      if (!form.checkValidity()) {
+        // Find the first invalid field
+        const invalidField = form.querySelector(':invalid');
+        let errorMessage = 'Please fill in all required fields';
+        
+        if (invalidField) {
+          const label = document.querySelector(`label[for="${invalidField.id}"]`);
+          if (label) {
+            const labelText = label.textContent.replace('*', '').trim();
+            errorMessage = `Please fill in: ${labelText}`;
+          }
+          
+          // Scroll to the invalid field
+          invalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          invalidField.focus();
+        }
+        
+        // Show error hint with animation
+        errorHint.textContent = errorMessage;
+        submitButton.classList.add('shake-error');
+        errorHint.classList.add('show');
+        
+        // Remove animation classes after animation completes
+        setTimeout(() => {
+          submitButton.classList.remove('shake-error');
+        }, 600);
+        
+        setTimeout(() => {
+          errorHint.classList.remove('show');
+        }, 4000);
+        
+        return;
+      }
+      
       const category = document.getElementById('category').value;
       if (!category) {
-        alert('Please select a category for your level.');
+        errorHint.textContent = 'Please select a category for your level';
+        submitButton.classList.add('shake-error');
+        errorHint.classList.add('show');
+        
+        setTimeout(() => {
+          submitButton.classList.remove('shake-error');
+        }, 600);
+        
+        setTimeout(() => {
+          errorHint.classList.remove('show');
+        }, 4000);
+        
         return;
       }
 
       const levelObj = generateLevelObject();
       const jsonStr = JSON.stringify(levelObj, null, 2);
+      
+      // Success feedback
+      errorHint.textContent = 'Level submitted successfully!';
+      errorHint.classList.add('show', 'success');
+      submitButton.classList.add('success-submit');
+      
+      setTimeout(() => {
+        errorHint.classList.remove('show', 'success');
+        submitButton.classList.remove('success-submit');
+      }, 3000);
+      
+      // This is where you would typically send the data to a server (WIP)
     });
-
   </script>
 </body>
 </html>
