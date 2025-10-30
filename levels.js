@@ -16,6 +16,7 @@ export const indieLevels = [
     duration: "5:27",
     bilibili_bvid: "BV1n6sEzNE2n",
     description: "<p>Just another level made to test my charting limit, the goal was to make a U14J/U15J level and a U13 level.</p>",
+    tuf_link: "https://tuforums.com/levels/11050",
     soundcloud_link: "https://soundcloud.com/xhmus_ic/secret-malware-adofai-team-championship-2023-finals-tiebreakers-2"
   },
   {
@@ -25,6 +26,7 @@ export const indieLevels = [
     duration: "5:27",
     bilibili_bvid: "BV1n6sEzNE2n",
     description: "<p>This is the 100% judgment version of the level, it does not contain timing scale/judgment limits.</p>",
+    tuf_link: "https://tuforums.com/levels/11051",
     soundcloud_link: "https://soundcloud.com/xhmus_ic/secret-malware-adofai-team-championship-2023-finals-tiebreakers-2"
   },
   {
