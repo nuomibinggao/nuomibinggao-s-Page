@@ -1,4 +1,4 @@
-import { comingSoonLevel, indieLevels, legacyLevel } from './levels.js';
+import { comingSoonLevel, indieLevels, legacyLevel } from './adofai-levels.js';
 function createComingSoonCard() {
   const levelCardContainer = document.createElement('div');
   levelCardContainer.classList.add('level-card-container', 'coming-soon-container');

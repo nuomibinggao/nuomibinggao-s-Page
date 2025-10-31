@@ -1,4 +1,4 @@
-import { plcrLevels } from './levels.js';
+import { plcrLevels } from './adofai-levels.js';
 
 function createLevelCard(level) {
   const levelCardContainer = document.createElement('div');
