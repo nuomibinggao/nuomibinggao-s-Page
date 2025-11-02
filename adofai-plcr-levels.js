@@ -1,4 +1,4 @@
-import { plcrLevels } from './adofai-levels.js';
+import { plcrLevels } from 'https://api.melty-studios.com/get-levels';
 
 function createLevelCard(level) {
   const levelCardContainer = document.createElement('div');
