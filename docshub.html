@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Documents | Melty Pages</title>
+  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+  <div class="container" id="mainContainer">
+    <header id="mainHeader">
+      <div class="header-content">
+        <h1>Melty Pages</h1>
+        <p class="subtitle">Learning Documents</p>
+        <nav class="nav">
+          <a href="projecthub.html">
+            <img src="icons/arrow_back_ios_new.svg" alt="Arrow back" class="icon icon-inline">Back to Hub
+          </a>
+          <a href="index.html">
+            <img src="icons/home.svg" alt="Home" class="icon icon-inline">Back to Main Page
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="intro">
+      <h2><img src="icons/article_person.svg" alt="Article" class="icon icon-large">Document Collection</h2>
+      <p>Welcome to my collection of learning documents! Here you'll find documentation I've created to help understand various technologies and concepts.</p>
+      <div style="margin-top: 1rem;">
+        <a href="projecthub.html" class="link-button">
+          <img src="icons/arrow_back_ios_new.svg" alt="Arrow back" class="icon icon-inline">Back to Hub
+        </a>
+        <a href="index.html" class="link-button">
+          <img src="icons/home.svg" alt="Home" class="icon icon-inline">Back to Main Page
+        </a>
+      </div>
+    </div>
+
+    <div class="filters">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="Rust">Rust</button>
+    </div>
+
+    <div class="controls">
+      <div class="search-section">
+        <input type="text" id="docSearch" placeholder="Search documents..." />
+        <label>Sort by:</label>
+        <select id="sortOptions">
+          <option value="date-desc">Date (Newest First)</option>
+          <option value="date-asc">Date (Oldest First)</option>
+          <option value="name-asc">Name (A-Z)</option>
+          <option value="name-desc">Name (Z-A)</option>
+        </select>
+      </div>
+    </div>
+
+    <main class="grid" id="docsGrid">
+      <div class="card" data-tags="Programming Rust" data-date="2025-10-15" data-project="rust-docs" id="rust-docs">
+        <h2><img src="icons/code.svg" alt="Code" class="icon icon-inline">Rust Programming Notes</h2>
+        <div class="date">2025-10-15</div>
+        <div class="tags">
+          <span class="tag">Rust</span>
+        </div>
+        <p>Personal notes for learning the <a href="https://rust-lang.org" target="_blank" rel="noopener">Rust</a> Programming Language.</p>
+        <div class="links">
+          <a href="md-docs/rust-learning-docs/rust-learning-docs.html" class="link-button">
+            <img src="icons/article_person.svg" alt="Article" class="icon icon-inline">Read Document
+          </a>
+          <a href="md-docs/rust-learning-docs/rust-learning-docs.md" download class="link-button">
+            <img src="icons/download.svg" alt="Download" class="icon icon-inline">Download Document</a>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 nuomibinggao • MIT License
+      <div class="footer-note" id="splashText">Loading...</div>
+    </footer>
+  </div>
+
+  <script>
+    // Only select tag filter buttons (buttons with data-filter attribute)
+    const tagButtons = document.querySelectorAll('.filters button[data-filter]');
+    const cards = document.querySelectorAll('.card');
+    const searchInput = document.getElementById('docSearch');
+    const sortSelect = document.getElementById('sortOptions');
+    const grid = document.getElementById('docsGrid');
+
+    // Navigation and scroll handling
+    const header = document.getElementById('mainHeader');
+    const container = document.getElementById('mainContainer');
+
+    // Handle scroll for sticky header
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+        container.classList.add('with-fixed-header');
+      } else {
+        header.classList.remove('scrolled');
+        container.classList.remove('with-fixed-header');
+      }
+    });
+
+    // Multi-select tag buttons. "All" behaves as a reset: activating it clears other tags.
+    tagButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        if (filter === 'all') {
+          // Activate All, deactivate others
+          tagButtons.forEach(b => {
+            if (b.getAttribute('data-filter') === 'all') b.classList.add('active');
+            else b.classList.remove('active');
+          });
+        }
+        else {
+          // Toggle this tag, and ensure 'All' is deactivated when any specific tag is active
+          btn.classList.toggle('active');
+          const anySpecificActive = Array.from(tagButtons).some(b => b.getAttribute('data-filter') !== 'all' && b.classList.contains('active'));
+          tagButtons.forEach(b => {
+            if (b.getAttribute('data-filter') === 'all') {
+              b.classList.toggle('active', !anySpecificActive);
+            }
+          });
+        }
+        filterProjects();
+      });
+    });
+
+    // Search input event
+    searchInput.addEventListener('input', filterProjects);
+
+    // Sort select event
+    sortSelect.addEventListener('change', sortProjects);
+
+    function filterProjects() {
+      // Gather active filters (excluding any buttons without data-filter)
+      const activeButtons = Array.from(document.querySelectorAll('.filters button.active')).filter(b => b.hasAttribute('data-filter'));
+      const activeFilters = activeButtons.map(b => b.getAttribute('data-filter'));
+      const query = searchInput.value.toLowerCase();
+
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+
+        // If 'all' is active or no specific tag is selected, show all tags
+        let matchesFilter = true;
+        if (activeFilters.length > 0 && !activeFilters.includes('all')) {
+          const cardTagsStr = (card.dataset.tags || '').toLowerCase();
+          // OR semantics: display the card if its data-tags string contains any of the selected tags
+          matchesFilter = activeFilters.some(f => cardTagsStr.includes(f.toLowerCase()));
+        }
+
+        const matchesSearch = title.includes(query) || description.includes(query);
+        card.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
+      });
+    }
+
+    function sortProjects() {
+      const option = sortSelect.value;
+      const cardsArray = Array.from(cards);
+      let sorted;
+
+      if(option === 'date-desc') {
+        sorted = cardsArray.sort((a,b) => b.dataset.date.localeCompare(a.dataset.date));
+      } else if(option === 'date-asc') {
+        sorted = cardsArray.sort((a,b) => a.dataset.date.localeCompare(a.dataset.date));
+      } else if(option === 'name-asc') {
+        sorted = cardsArray.sort((a,b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
+      } else if(option === 'name-desc') {
+        sorted = cardsArray.sort((a,b) => b.querySelector('h2').textContent.localeCompare(a.querySelector('h2').textContent));
+      }
+
+      sorted.forEach(card => grid.appendChild(card));
+    }
+
+    // Splash text functionality - load from splash.json
+    const splashElement = document.getElementById('splashText');
+    
+    fetch('splash.json')
+      .then(response => response.json())
+      .then(splashTexts => {
+        function getRandomSplash() {
+          const randomIndex = Math.floor(Math.random() * splashTexts.length);
+          return splashTexts[randomIndex];
+        }
+        
+        function updateSplashText() {
+          splashElement.textContent = getRandomSplash();
+        }
+        
+        // Initialize with a random splash text
+        updateSplashText();
+        
+        // Change splash text on click
+        splashElement.addEventListener('click', updateSplashText);
+      })
+      .catch(error => {
+        console.error('Error loading splash texts:', error);
+        splashElement.textContent = 'Crafted with care';
+      });
+  </script>
+</body>
+</html>

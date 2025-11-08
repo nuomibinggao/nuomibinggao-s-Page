@@ -1,38 +1,25 @@
-# sv
+# Melty Pages
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is the source code for my personal website, Melty Pages (formally known as nuomibinggao's Page), created with the help of some AI tools.
 
-## Creating a project
+## Live Demo
+[pages.melty-studios.com](https://pages.melty-studios.com)
 
-If you're seeing this, you've probably already done this step. Congrats!
+---
 
-```sh
-# create a new project in the current directory
-npx sv create
+## Font Usage Warning
+This project uses the **Chillax** font family from [Fontshare](https://www.fontshare.com/fonts/chillax).
 
-# create a new project in my-app
-npx sv create my-app
-```
+- The font is free for **personal use**.  
+- For **commercial use**, please review the license on [Fontshare](https://www.fontshare.com/fonts/chillax) and obtain proper permission before using it.  
 
-## Developing
+---
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## License
+This project is open source under the [MIT License](./LICENSE).  
+You are free to use, modify, and share the code with attribution.
 
-```sh
-npm run dev
+---
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Credits
+This project uses the [TUF Forums API](https://api.tuforums.com/docs) service, clicking on this text takes you to the docs of the API.
