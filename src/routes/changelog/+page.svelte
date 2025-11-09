@@ -8,9 +8,14 @@
 			notes: ['Currently Migrated Pages:'],
 			changes: [
 				'Home Page (index.html → +page.svelte)',
-				'Error Page (404.html → +error.svelte)',
+				'Error 404 Page (404.html → +error.svelte)',
 				'Links Page (links.html → links/+page.svelte)',
-				'Changelog Page (changelog.html → changelog/+page.svelte)'
+				'Changelog Page (changelog.html → changelog/+page.svelte)',
+				'Project Hub Page (projecthub.html → projecthub/+page.svelte)',
+				'API Docs Page (api-docs.html → api-docs/+page.svelte)',
+				'Docs Hub Page (docs.html → docshub/+page.svelte)',
+				'Docs Page (docshub.html → docs/+page.svelte)',
+				'Rust Learning Docs Page (md-docs/rust-learning-docs/rust-learning-docs.html → docs/rust-learning-docs/+page.svelte)'
 			]
 		},
 		{

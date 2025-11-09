@@ -7,7 +7,7 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	<link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="style-v2.css">
+	<link rel="stylesheet" href="/style-v2.css">
 </svelte:head>
 
 {@render children()}

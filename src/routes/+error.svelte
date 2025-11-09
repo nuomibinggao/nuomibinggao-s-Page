@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 
 	let errorClass = '#4a9eff';
 	let header: HTMLElement | null = null;
@@ -97,9 +95,9 @@
 			<a href="/" class="error-button primary">
 				<img src="/icons/home.svg" alt="Home" class="icon-inline">Go Home
 			</a>
-			<a href="/" class="error-button">
+			<button class="error-button" on:click={goBack}>
 				<img src="/icons/arrow_back_ios_new.svg" alt="Back" class="icon-inline">Go Back
-			</a>
+			</button>
 		</div>
 
 		<div class="suggestions">
@@ -107,8 +105,8 @@
 			<ul>
 				<li><img src="/icons/spellcheck.svg" alt="Spellcheck" class="icon-small">Check the URL for typos</li>
 				<li><img src="/icons/web.svg" alt="Home" class="icon-small">Visit the <a href="/">homepage</a> to start over</li>
-				<li><img src="/icons/folder.svg" alt="Work" class="icon-small">Browse my <a href="/projecthub.html">projects</a></li>
-				<li><img src="/icons/add_link.svg" alt="Link" class="icon-small">Find my <a href="/links.html">social links</a></li>
+				<li><img src="/icons/folder.svg" alt="Work" class="icon-small">Browse my <a href="/projecthub">projects</a></li>
+				<li><img src="/icons/add_link.svg" alt="Link" class="icon-small">Find my <a href="/links">social links</a></li>
 			</ul>
 		</div>
 	</div>

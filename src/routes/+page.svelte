@@ -111,7 +111,7 @@
       <section class="section-card" id="projects">
         <h3><img src="icons/folder.svg" alt="Folder" class="icon icon-large">Projects Hub</h3>
         <p>Browse through my various projects and contributions.</p>
-        <a href="projecthub.html" class="link-button"><img src="icons/arrow_forward_ios.svg" alt="Arrow forward" class="icon icon-inline">View Projects</a>
+        <a href="/projecthub" class="link-button"><img src="icons/arrow_forward_ios.svg" alt="Arrow forward" class="icon icon-inline">View Projects</a>
       </section>
 
       <section class="section-card" id="adofai">
