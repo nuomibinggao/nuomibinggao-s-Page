@@ -499,16 +499,16 @@ footer {
   color: var(--primary-color);
   margin: 0;
   line-height: 1;
-  text-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
+  /* text-shadow will be handled by the animation using CSS variables */
   animation: glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
+    text-shadow: 0 0 20px var(--error-glow-color-from);
   }
   to {
-    text-shadow: 0 0 30px rgba(74, 158, 255, 0.6);
+    text-shadow: 0 0 30px var(--error-glow-color-to);
   }
 }
 

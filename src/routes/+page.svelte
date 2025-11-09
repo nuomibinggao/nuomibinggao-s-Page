@@ -123,7 +123,7 @@
       <section class="section-card" id="links">
         <h3><img src="icons/add_link.svg" alt="Link" class="icon icon-large">Connect</h3>
         <p>Find me across various platforms and social media.</p>
-        <a href="links.html" class="link-button"><img src="icons/arrow_forward_ios.svg" alt="Arrow forward" class="icon icon-inline">My Links</a>
+        <a href="links" class="link-button"><img src="icons/arrow_forward_ios.svg" alt="Arrow forward" class="icon icon-inline">My Links</a>
       </section>
     </div>
 
