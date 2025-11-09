@@ -3,7 +3,7 @@
 This is the source code for my personal website, Melty Pages (formally known as nuomibinggao's Page), created with the help of some AI tools.
 
 ## Live Demo
-[pages.melty-studios.com](https://pages.melty-studios.com)
+[melty-studios.com](https://melty-studios.com)
 
 ---
 
