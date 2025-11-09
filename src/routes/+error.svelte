@@ -112,7 +112,7 @@
 	</div>
 
 	<footer>
-		&copy 2025 nuomibinggao • MIT License
+		&copy; 2025 nuomibinggao • MIT License
 		<div class="footer-note">Even errors can look good</div>
 	</footer>
 </div>

@@ -128,7 +128,7 @@
     </div>
 
     <footer>
-      &copy 2025 nuomibinggao • MIT License
+      &copy; 2025 nuomibinggao • MIT License
       <div class="footer-note" id="splashText">Loading...</div>
     </footer>
 </div>
