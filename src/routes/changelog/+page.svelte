@@ -3,6 +3,17 @@
 
 	const changelog = [
 		{
+			date: '2025-11-9 Log 3',
+			version: 'v3 - Svelte Migration Completed',
+			changes: [
+				'Migrated all of the ADOFAI related pages.',
+				'Changed some splash text.',
+				'Added a "Loading Levels..." text when levels are being loaded.',
+				'Restructured the ADOFAI section for better navigation.',
+				'Splash texts can now be changed by either left clicking, pressing [Enter], or [Space] when focused on the splash text element. (idk why i did this)'
+			]
+		},
+		{
 			date: '2025-11-9 Log 2',
 			version: 'v3 - Svelte Migration Started',
 			notes: ['Currently Migrated Pages:'],

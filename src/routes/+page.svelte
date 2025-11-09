@@ -117,7 +117,7 @@
       <section class="section-card" id="adofai">
         <h3><img src="icons/adofai_logo.png" alt="Groups" class="icon icon-adofai"></h3>
         <p>This is a section dedicated to ADOFAI content, see our custom levels and other resources here.</p>
-        <a href="adofai-index.html" class="link-button"><img src="icons/arrow_forward_ios.svg" alt="Arrow forward" class="icon icon-inline">View Section</a>
+        <a href="/adofai" class="link-button"><img src="icons/arrow_forward_ios.svg" alt="Arrow forward" class="icon icon-inline">View Section</a>
       </section>
 
       <section class="section-card" id="links">
