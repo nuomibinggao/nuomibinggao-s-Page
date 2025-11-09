@@ -104,7 +104,7 @@
     <div class="sections">
 
       <section class="section-card" id="studios">
-        <h3><img src="icons/diversity_3.svg" alt="Studios" class="icon icon-large">Melty Studios</h3>
+        <h3><img src="icons/melty-icon.png" alt="Studios" class="icon icon-large">Melty Studios</h3>
         <p>This is our team portfolio website, it is still under construction. Maybe come back later...</p>
       </section>
 
