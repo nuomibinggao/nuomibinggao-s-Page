@@ -240,7 +240,7 @@
 						style="cursor: pointer; border-radius: {comingSoonLevel.expanded ? '0.75rem 0.75rem 0 0' : '0.75rem'}"
 					>
 						<div class="level-info">
-							<img src="/icons/{comingSoonLevel.icon}" alt="Coming Soon" class="level-icon coming-soon-icon" />
+							<img src="/{comingSoonLevel.icon}" alt="Coming Soon" class="level-icon coming-soon-icon" />
 							<span>{comingSoonLevel.title}</span>
 						</div>
 						<div class="level-meta">
