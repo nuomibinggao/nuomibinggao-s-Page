@@ -84,7 +84,7 @@
         <h1>Melty Pages</h1>
         <p class="subtitle">A Website By nuomibinggao</p>
         <nav class="nav">
-          <a href="changelog.html"><img src="icons/update.svg" alt="Update" class="icon icon-inline">Changelog</a>
+          <a href="/changelog"><img src="icons/update.svg" alt="Update" class="icon icon-inline">Changelog</a>
           <a href="https://github.com/nuomibinggao/Melty-Pages" target="_blank" rel="noopener"><img src="icons/code.svg" alt="Code" class="icon icon-inline">Source Code</a>
           <a href="https://github.com/nuomibinggao/Melty-Pages/issues" target="_blank" rel="noopener"><img src="icons/bug_report.svg" alt="Report" class="icon icon-inline">Report an Issue</a>
         </nav>
@@ -97,7 +97,7 @@
       <p>Feel free to explore my work and reach out through the links below.</p>
       <p>Why "Melty Pages"? Because the bugs on this website makes it melt down... Slowly...</p>
       <p>This website is open source on <a href="https://github.com/nuomibinggao/Melty-Pages" target="_blank" rel="noopener"><img src="icons/code.svg" alt="Code" class="icon icon-inline">GitHub</a>.</p>
-      <a href="changelog.html" class="link-button"><img src="icons/update.svg" alt="Update" class="icon icon-inline">View Website Changelog</a>
+      <a href="/changelog" class="link-button"><img src="icons/update.svg" alt="Update" class="icon icon-inline">View Website Changelog</a>
       <a href="https://github.com/nuomibinggao/Melty-Pages/issues" target="_blank" rel="noopener" class="link-button"><img src="icons/bug_report.svg" alt="Report" class="icon icon-inline">Report an Issue</a>
     </section>
 
