@@ -3,8 +3,18 @@
 
 	const changelog = [
 		{
-			date: '2025-11-10',
-			version: 'v3 - Update 1 & Deployed',
+			date: '2025-11-10 Log 2',
+			version: 'v3 Update 2 - UI Improvements',
+			changes: [
+				'Added some depth to backgrounds and buttons.',
+				'Changed all buttons to a pill shape.',
+				'Modified the border radius of backgrounds to match the buttons.',
+				'Re-aligned the icons.'
+			]
+		},
+		{
+			date: '2025-11-10 Log 1',
+			version: 'v3 Update 1 - Deployed',
 			notes: [
 				'Future updates will focus on UI improvements and API intergration.',
 				'API development is still ongoing, stay tuned for more updates!'

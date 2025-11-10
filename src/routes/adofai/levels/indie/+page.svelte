@@ -237,7 +237,7 @@
 						tabindex="0"
 						on:click={() => comingSoonLevel!.expanded = !comingSoonLevel!.expanded}
 						on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { comingSoonLevel!.expanded = !comingSoonLevel!.expanded; e.preventDefault(); } }}
-						style="cursor: pointer; border-radius: {comingSoonLevel.expanded ? '0.75rem 0.75rem 0 0' : '0.75rem'}"
+						style="cursor: pointer; border-radius: {comingSoonLevel.expanded ? '24px 24px 0 0' : '24px'}"
 					>
 						<div class="level-info">
 							<img src="/{comingSoonLevel.icon}" alt="Coming Soon" class="level-icon coming-soon-icon" />
@@ -292,7 +292,7 @@
 						tabindex="0"
 						on:click={() => level.expanded = !level.expanded}
 						on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { level.expanded = !level.expanded; e.preventDefault(); } }}
-						style="cursor: pointer; border-radius: {level.expanded ? '0.75rem 0.75rem 0 0' : '0.75rem'}"
+						style="cursor: pointer; border-radius: {level.expanded ? '24px 24px 0 0' : '24px'}"
 					>
 						<div class="level-info">
 							{#if level.secondary_icon}

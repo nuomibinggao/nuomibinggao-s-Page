@@ -175,7 +175,7 @@
 		<p>This is the custom levels page for our team. Here you can find all our carefully crafted levels, use the filters below to explore.</p>
 		<p>You can also check out my indie levels.</p>
 		<div style="margin-top: 1rem;">
-			<a href="/adofai/indie-levels" class="link-button">
+			<a href="/adofai/levels/indie" class="link-button">
 				<img src="/icons/person.svg" alt="Person" class="icon icon-inline">To Indie Levels Page
 			</a>
 			<a href="/adofai/about-plcr" class="link-button">
@@ -223,7 +223,7 @@
 					tabindex="0"
 					on:click={() => level.expanded = !level.expanded}
 					on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { level.expanded = !level.expanded; e.preventDefault(); } }}
-					style="cursor: pointer; border-radius: {level.expanded ? '0.75rem 0.75rem 0 0' : '0.75rem'}"
+					style="cursor: pointer; border-radius: {level.expanded ? '24px 24px 0 0' : '24px'}"
 				>
 					<div class="level-info">
 						{#if level.secondary_icon}
