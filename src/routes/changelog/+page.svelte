@@ -3,6 +3,21 @@
 
 	const changelog = [
 		{
+			date: '2025-11-10',
+			version: 'v3 - Update 1 & Deployed',
+			notes: [
+				'Future updates will focus on UI improvements and API intergration.',
+				'API development is still ongoing, stay tuned for more updates!'
+			],
+			changes: [
+				'Deployed the Svelte version of the website.',
+				'Migrated the WIP ADOFAI Levels Upload Page to Svelte (adofai-upload-level.html → /adofai/levels/upload/+page.svelte).',
+				'Added the missing title of the main page back.',
+				'Changed the README.md file back to the original version (File was overwritten by SvelteKit installation).',
+				'Fixed some minor bugs and tweaked some styles.'
+			]
+		},
+		{
 			date: '2025-11-9 Log 3',
 			version: 'v3 - Svelte Migration Completed',
 			changes: [
@@ -18,15 +33,15 @@
 			version: 'v3 - Svelte Migration Started',
 			notes: ['Currently Migrated Pages:'],
 			changes: [
-				'Home Page (index.html → +page.svelte)',
-				'Error 404 Page (404.html → +error.svelte)',
-				'Links Page (links.html → links/+page.svelte)',
-				'Changelog Page (changelog.html → changelog/+page.svelte)',
-				'Project Hub Page (projecthub.html → projecthub/+page.svelte)',
-				'API Docs Page (api-docs.html → api-docs/+page.svelte)',
-				'Docs Hub Page (docs.html → docshub/+page.svelte)',
-				'Docs Page (docshub.html → docs/+page.svelte)',
-				'Rust Learning Docs Page (md-docs/rust-learning-docs/rust-learning-docs.html → docs/rust-learning-docs/+page.svelte)'
+				'Home Page (index.html → /+page.svelte)',
+				'Error 404 Page (404.html → /+error.svelte)',
+				'Links Page (links.html → /links/+page.svelte)',
+				'Changelog Page (changelog.html → /changelog/+page.svelte)',
+				'Project Hub Page (projecthub.html → /projecthub/+page.svelte)',
+				'API Docs Page (api-docs.html → /api-docs/+page.svelte)',
+				'Docs Hub Page (docs.html → /docshub/+page.svelte)',
+				'Docs Page (docshub.html → /docs/+page.svelte)',
+				'Rust Learning Docs Page (md-docs/rust-learning-docs/rust-learning-docs.html → /docs/rust-learning-docs/+page.svelte)'
 			]
 		},
 		{

@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Melty Pages</title>
+</svelte:head>
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 
