@@ -101,7 +101,7 @@
 		</div>
 
 		<div class="section-card" id="team-levels">
-			<h3><img src="/icons/groups_3.svg" alt="Groups" class="icon icon-large">Team Polychrome Portfolio</h3>
+			<h3><img src="/icons/groups_3.svg" alt="Groups" class="icon icon-large">Team Polychrome</h3>
 			<p>Discover the collaborative works of <strong>Team Polychrome</strong>. We're a dedicated group creating experimental and innovative custom levels through teamwork and shared creativity.</p>
 			<p><strong>What We Offer</strong></p>
 			<ul style="color: var(--text-color-light); margin-left: 1.5rem; margin-bottom: 1rem;">
