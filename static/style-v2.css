@@ -309,12 +309,6 @@ header.scrolled .nav {
     transition: all 0.3s ease;
 }
 
-.nav a .material-icons {
-  position: relative;
-  top: 0;
-  margin-right: 4px;
-}
-
 .nav a:hover {
   color: var(--text-color-lightest);
 }
@@ -603,6 +597,7 @@ footer {
 }
 
 .error-button .icon {
+  display: inline-flex;
   position: relative;
   top: 1px;
 }
@@ -889,7 +884,6 @@ footer {
 }
 
 /* Icon alignment for buttons and links in other pages */
-.back-button a,
 .additional-buttons a,
 .filters button,
 .error-button {
