@@ -7,6 +7,11 @@ This is the source code for my personal website, Melty Pages (formally known as 
 
 ---
 
+## Framework
+This website uses [SvelteKit](https://svelte.dev), a framework that compiles .svelte files to JavaScript for fast performance.
+
+---
+
 ## Font Usage Warning
 This project uses the **Chillax** font family from [Fontshare](https://www.fontshare.com/fonts/chillax).
 
