@@ -1225,7 +1225,7 @@ header.scrolled .nav {
 .changelog {
   background: var(--card-background-color);
   border: 1px solid var(--border-color-light);
-  border-radius: 8px;
+  border-radius: 36px;
   padding: 2rem;
   margin-bottom: 3rem;
 }

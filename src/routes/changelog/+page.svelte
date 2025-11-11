@@ -10,6 +10,7 @@
 				'Added a <a href="/503-service-unavaliable">503 Service Unavailable page</a> for unfinished pages.',
 				'Added an admin panel for managing ADOFAI levels and debugging API features (WIP, clicking on unfinished links will lead to new 503 Service Unavailable page).',
 				'Added more icons.',
+				'Changed the style of the navigation bar.',
 				'Tweaked some UI styles.',
 				'Tweaked the file structure.',
 				'Removed some unused styles.'
