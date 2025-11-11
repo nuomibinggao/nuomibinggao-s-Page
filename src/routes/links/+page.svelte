@@ -82,7 +82,7 @@
 	<div class="intro">
 		<h2><img src="/icons/add_link.svg" alt="Link" class="icon icon-large">My Links</h2>
 		<p>Find me across various platforms and social media. Feel free to reach out!</p>
-		<div style="margin-top: 1rem;">
+		<div>
 			<a href="/" class="link-button">
 				<img src="/icons/home.svg" alt="Home" class="icon icon-inline">Back to Main Page
 			</a>
@@ -95,7 +95,7 @@
 			<p>Check out my coding projects and contributions.</p>
 			<div class="links">
 				<a href="https://github.com/nuomibinggao" target="_blank" rel="noopener" class="link-button github-button">
-					<img src="/icons/code.svg" alt="Code" class="icon icon-small">GitHub
+					<img src="/icons/code.svg" alt="Code" class="icon icon-inline">GitHub
 				</a>
 			</div>
 		</div>
@@ -105,7 +105,7 @@
 			<p>Watch my ADOFAI content and enjoy some funny moments.</p>
 			<div class="links">
 				<a href="https://space.bilibili.com/1223643343" target="_blank" rel="noopener" class="link-button bilibili-button">
-					<img src="/icons/play_circle.svg" alt="Play" class="icon icon-small">Bilibili
+					<img src="/icons/play_circle.svg" alt="Play" class="icon icon-inline">Bilibili
 				</a>
 			</div>
 		</div>
@@ -115,7 +115,7 @@
 			<p>Find my Minecraft mods and modpacks.</p>
 			<div class="links">
 				<a href="https://modrinth.com/user/nuomibinggao" target="_blank" rel="noopener" class="link-button modrinth-button">
-					<img src="/icons/sports_esports.svg" alt="Gaming" class="icon icon-small">Modrinth
+					<img src="/icons/sports_esports.svg" alt="Gaming" class="icon icon-inline">Modrinth
 				</a>
 			</div>
 		</div>
@@ -125,7 +125,7 @@
 			<p>Feel free to support my work, thank you for your generosity.</p>
 			<div class="links">
 				<a href="https://afdian.com/a/nuomibinggao" target="_blank" rel="noopener" class="link-button donate-button">
-					<img src="/icons/volunteer_activism.svg" alt="Support" class="icon icon-small">Donate
+					<img src="/icons/volunteer_activism.svg" alt="Support" class="icon icon-inline">Donate
 				</a>
 			</div>
 		</div>

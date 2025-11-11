@@ -101,12 +101,12 @@
 		</div>
 
 		<div class="suggestions">
-			<h3><img src="/icons/help.svg" alt="Help" class="icon-large">What you can do:</h3>
+			<h3><img src="/icons/help.svg" alt="Help" class="icon-inline">What you can do:</h3>
 			<ul>
-				<li><img src="/icons/spellcheck.svg" alt="Spellcheck" class="icon-small">Check the URL for typos</li>
-				<li><img src="/icons/web.svg" alt="Home" class="icon-small">Visit the <a href="/">homepage</a> to start over</li>
-				<li><img src="/icons/folder.svg" alt="Work" class="icon-small">Browse my <a href="/projecthub">projects</a></li>
-				<li><img src="/icons/add_link.svg" alt="Link" class="icon-small">Find my <a href="/links">social links</a></li>
+				<li><img src="/icons/spellcheck.svg" alt="Spellcheck" class="icon-inline">Check the URL for typos</li>
+				<li><img src="/icons/web.svg" alt="Home" class="icon-inline">Visit the <a href="/">homepage</a> to start over</li>
+				<li><img src="/icons/folder.svg" alt="Work" class="icon-inline">Browse my <a href="/projecthub">projects</a></li>
+				<li><img src="/icons/add_link.svg" alt="Link" class="icon-inline">Find my <a href="/links">social links</a></li>
 			</ul>
 		</div>
 	</div>

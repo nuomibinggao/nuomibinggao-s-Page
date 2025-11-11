@@ -64,7 +64,7 @@
 			<p class="subtitle">ADOFAI - Step-by-step KeyViewer installation guide</p>
 			<nav class="nav">
 				<a href="https://www.fontshare.com/fonts/chillax" target="_blank" rel="noopener">
-					<img src="/icons/download.svg" alt="Download" class="icon icon-small">Download Fonts
+					<img src="/icons/download.svg" alt="Download" class="icon icon-inline">Download Fonts
 				</a>
 				<a href="/adofai/kv/download">
 					<img src="/icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">Back to Downloads Page
@@ -78,7 +78,7 @@
 		<p>Follow this step-by-step guide to install and configure KeyViewer profiles for ADOFAI.</p>
 		<div style="margin-top: 1rem;">
 			<a href="https://www.fontshare.com/fonts/chillax" target="_blank" rel="noopener" class="link-button">
-				<img src="/icons/download.svg" alt="Download" class="icon icon-small">Download Fonts
+				<img src="/icons/download.svg" alt="Download" class="icon icon-inline">Download Fonts
 			</a>
 			<a href="/adofai/kv/download" class="link-button">
 				<img src="/icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">Back to Downloads Page

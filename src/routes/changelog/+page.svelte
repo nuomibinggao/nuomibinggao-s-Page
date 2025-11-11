@@ -1,7 +1,15 @@
 <script lang="ts">
+	import { version } from 'os';
 	import { onMount } from 'svelte';
 
 	const changelog = [
+		{
+			date: '2025-11-11',
+			version: 'v3 Update 3 - UI Tweaks',
+			changes: [
+				''
+			]
+		},
 		{
 			date: '2025-11-10 Log 2',
 			version: 'v3 Update 2 - UI Improvements',

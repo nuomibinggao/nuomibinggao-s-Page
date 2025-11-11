@@ -69,7 +69,6 @@ body {
   justify-content: center;
   fill: currentColor;
   flex-shrink: 0;
-  vertical-align: middle;
 }
 
 .icon-inline {
@@ -78,12 +77,14 @@ body {
   margin-right: 6px;
   position: relative;
   top: -1px;
+  vertical-align: -4px;
 }
 
 .icon-large {
   width: 24px;
   height: 24px;
   margin-right: 8px;
+  vertical-align: -4px;
 }
 
 .icon-small {
@@ -97,6 +98,7 @@ body {
   height: 32px;
   margin-left: -2px;
   margin-right: 4px;
+  margin-bottom: -12px;
   position: relative;
   top: -4px;
 }
@@ -240,21 +242,26 @@ header.scrolled {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color-light);
+  /* Removed background, backdrop-filter, and border-bottom */
   margin-bottom: 0;
   padding: 1rem 0;
-  text-align: left;
+  text-align: center; /* Changed to center */
 }
 
 header.scrolled .header-content {
-  max-width: 800px;
+  /* max-width: 800px; Removed fixed max-width */
   margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
+  padding: 1rem; /* Adjusted padding to be slightly wider */
+  display: inline-flex; /* Changed to inline-flex */
+  flex-direction: column; /* Changed to column */
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* Changed to center */
+  gap: 0.5rem; /* Added gap */
+  background: rgba(10, 10, 10, 0.95); /* Added background */
+  backdrop-filter: blur(10px); /* Added backdrop-filter */
+  border: 1px solid var(--border-color-light); /* Added border */
+  border-radius: 36px; /* Added border-radius */
+  box-shadow: var(--shadow-small); /* Changed to small shadow */
 }
 
 .header-content {
@@ -297,6 +304,7 @@ header.scrolled .nav {
   position: relative;
 }
 
+/*
 .nav a::after {
     content: '';
     position: absolute;
@@ -308,15 +316,18 @@ header.scrolled .nav {
     background-color: transparent;
     transition: all 0.3s ease;
 }
+*/
 
 .nav a:hover {
   color: var(--text-color-lightest);
 }
 
+/*
 .nav a:hover::after {
     width: 100%;
     background-color: var(--primary-color);
 }
+*/
 
 .subtitle {
   color: var(--text-color-darkest);
@@ -1116,6 +1127,11 @@ footer {
 header.scrolled .nav {
   display: flex;
   margin-top: 1rem;
+  background-color: var(--button-background-color); /* Added background color */
+  padding: 0.5rem 1rem; /* Added padding */
+  border-radius: 9999px; /* Added border-radius */
+  border: 1px solid var(--border-color-dark); /* Added border */
+  box-shadow: var(--shadow-small); /* Added shadow */
 }
 
 .back-button-wrapper {

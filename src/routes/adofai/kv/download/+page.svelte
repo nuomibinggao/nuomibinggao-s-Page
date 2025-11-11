@@ -179,10 +179,10 @@
 			<p class="subtitle">ADOFAI - KeyViewer Profiles</p>
 			<nav class="nav">
 				<a href="/adofai/kv/install">
-					<img src="/icons/help.svg" alt="Help" class="icon icon-small">How to Install Profiles
+					<img src="/icons/help.svg" alt="Help" class="icon icon-inline">How to Install Profiles
 				</a>
 				<a href="https://www.fontshare.com/fonts/chillax" target="_blank" rel="noopener">
-					<img src="/icons/download.svg" alt="Download" class="icon icon-small">Download Fonts
+					<img src="/icons/download.svg" alt="Download" class="icon icon-inline">Download Fonts
 				</a>
 				<a href="/adofai">
 					<img src="/icons/arrow_back_ios_new.svg" alt="Home" class="icon icon-inline">Back to ADOFAI Hub
@@ -197,10 +197,10 @@
 		<p>You can watch <a href="https://www.bilibili.com/video/BV1xRHZz7Eeq" target="_blank" rel="noopener">this video</a> for preview.</p>
 		<div style="margin-top: 1rem;">
 			<a href="/adofai/kv/install" class="link-button">
-				<img src="/icons/help.svg" alt="Help" class="icon icon-small">How to Install Profiles
+				<img src="/icons/help.svg" alt="Help" class="icon icon-inline">How to Install Profiles
 			</a>
 			<a href="https://www.fontshare.com/fonts/chillax" target="_blank" rel="noopener" class="link-button">
-				<img src="/icons/download.svg" alt="Download" class="icon icon-small">Download Fonts
+				<img src="/icons/download.svg" alt="Download" class="icon icon-inline">Download Fonts
 			</a>
 			<a href="/adofai" class="link-button">
 				<img src="/icons/arrow_back_ios_new.svg" alt="Home" class="icon icon-inline">Back to ADOFAI Hub

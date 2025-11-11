@@ -96,7 +96,7 @@
     </header>
 
     <section class="intro">
-      <h2><img src="icons/waving_hand.svg" alt="Waving hand" class="icon icon-large">Welcome</h2>
+      <h2><span><img src="icons/waving_hand.svg" alt="Waving hand" class="icon icon-large">Welcome</span></h2>
       <p>I'm <b>nuomibinggao</b>, a student passionate about technology and games. This minimal space showcases my projects and provides ways to connect with me.</p>
       <p>Feel free to explore my work and reach out through the links below.</p>
       <p>Why "Melty Pages"? Because the bugs on this website makes it melt down... Slowly...</p>
