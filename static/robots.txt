@@ -1,3 +1,4 @@
-# allow crawling everything by default
+# only allow crawling ADOFAI levels data
 User-agent: *
-Disallow:
+Allow: /adofai/levels
+Disallow: /adofai/levels/upload
