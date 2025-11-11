@@ -1228,6 +1228,7 @@ header.scrolled .nav {
   border-radius: 36px;
   padding: 2rem;
   margin-bottom: 3rem;
+  box-shadow: var(--shadow-small);
 }
 
 .changelog-entry {
