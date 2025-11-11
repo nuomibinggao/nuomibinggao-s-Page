@@ -91,6 +91,7 @@
           <a href="/changelog"><img src="icons/update.svg" alt="Update" class="icon icon-inline">Changelog</a>
           <a href="https://github.com/nuomibinggao/Melty-Pages" target="_blank" rel="noopener"><img src="icons/code.svg" alt="Code" class="icon icon-inline">Source Code</a>
           <a href="https://github.com/nuomibinggao/Melty-Pages/issues" target="_blank" rel="noopener"><img src="icons/bug_report.svg" alt="Report" class="icon icon-inline">Report an Issue</a>
+					<a href="/adofai/admin"><img src="icons/admin_panel_settings.svg" alt="Admin Panel" class="icon icon-inline">Admin Panel</a>
         </nav>
       </div>
     </header>
@@ -103,6 +104,7 @@
       <p>This website is open source on <a href="https://github.com/nuomibinggao/Melty-Pages" target="_blank" rel="noopener"><img src="icons/code.svg" alt="Code" class="icon icon-inline">GitHub</a>.</p>
       <a href="/changelog" class="link-button"><img src="icons/update.svg" alt="Update" class="icon icon-inline">View Website Changelog</a>
       <a href="https://github.com/nuomibinggao/Melty-Pages/issues" target="_blank" rel="noopener" class="link-button"><img src="icons/bug_report.svg" alt="Report" class="icon icon-inline">Report an Issue</a>
+			<a href="/admin" class="link-button"><img src="icons/admin_panel_settings.svg" alt="Admin Panel" class="icon icon-inline">Admin Panel</a>
     </section>
 
     <div class="sections">

@@ -110,6 +110,7 @@
 'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19', 'G20',
 'U1', 'U2', 'U3', 'U4', 'U5', 'U6', 'U7', 'U8', 'U9', 'U10', 'U11', 'U12', 'U13', 'U14', 'U15', 'U16', 'U17', 'U18', 'U19', 'U20',
 'U1J', 'U2J', 'U3J', 'U4J', 'U5J', 'U6J', 'U7J', 'U8J', 'U9J', 'U10J', 'U11J', 'U12J', 'U13J', 'U14J', 'U15J', 'U16J', 'U17J', 'U18J', 'U19J', 'U20J',
+'U15M',
 'Q0', 'Q1', 'Q2', 'Q3', 'Q4', 'QQ',
 'UNRANKED', '0', 'MARATHON', 'MA', 'GIMMICK', 'CENSORED', '-2', 'IMPOSSIBLE', '-21'];
 
@@ -240,7 +241,7 @@
 		}
 
 		// Success feedback
-		errorHint = 'Level submitted successfully!';
+		errorHint = 'Level submitted successfully! (Under construction)';
 		isSuccess = true;
 		showError = true;
 		successSubmit = true;
@@ -273,9 +274,9 @@
       <h1>Melty Pages</h1>
       <p class="subtitle">ADOFAI - Submit New Level</p>
       <nav class="nav">
-        <a href="/adofai">
+        <a href="/admin">
           <img src="/icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">
-          Back to ADOFAI Hub
+          Back to Admin Panel
         </a>
       </nav>
     </div>
@@ -286,11 +287,12 @@
       <img src="/icons/upload.svg" alt="Upload" class="icon icon-large">
       Submit New Custom Level
     </h2>
+    <p><strong><img src="/icons/construction.svg" alt="Under Construction" class="icon icon-inline">This page is under construction, please come back later.</strong></p>
     <p>Fill out this form to submit a new level to show on the website. Make sure to check critical information to avoid misinformation.</p>
     <div style="margin-top: 1rem;">
-      <a href="/adofai" class="link-button">
+      <a href="/admin" class="link-button">
         <img src="/icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">
-        Back to ADOFAI Hub
+        Back to Admin Panel
       </a>
     </div>
   </div>

@@ -64,7 +64,7 @@
 </script>
 
 <svelte:head>
-	<title>404 Not Found | Melty Pages</title>
+	<title>503 Service Unavaliable | Melty Pages</title>
 </svelte:head>
 
 <div class="container" id="container">
@@ -82,13 +82,13 @@
 			role="button"
 			tabindex="0"
 			style="color: {errorClass}; --error-glow-color-from: {errorGlowColorFrom}; --error-glow-color-to: {errorGlowColorTo}"
-		>404</div>
+		>503</div>
 		<h2 class="error-title">
-			<img src="/icons/error.svg" alt="Error" class="icon-large">Page Not Found
+			<img src="/icons/error.svg" alt="Error" class="icon-large">Unfinished Page
 		</h2>
 		<p class="error-message">
-			Oops! The page you're looking for seems to have wandered off into the digital void. 
-			Don't worry though, it happens to the best of us.
+			Oops! The page you're looking for is still under construction. 
+			Don't worry though, come back later for a surprise!
 		</p>
 		
 		<div class="error-actions">
@@ -103,7 +103,7 @@
 		<div class="suggestions">
 			<h3><img src="/icons/help.svg" alt="Help" class="icon-inline">What you can do:</h3>
 			<ul>
-				<li><img src="/icons/spellcheck.svg" alt="Spellcheck" class="icon-inline">Check the URL for typos</li>
+				<li><img src="/icons/hourglass_empty.svg" alt="Hourglass" class="icon-inline">Come back later</li>
 				<li><img src="/icons/web.svg" alt="Home" class="icon-inline">Visit the <a href="/">homepage</a> to start over</li>
 				<li><img src="/icons/folder.svg" alt="Projects" class="icon-inline">Browse my <a href="/projecthub">projects</a></li>
 				<li><img src="/icons/add_link.svg" alt="Link" class="icon-inline">Find my <a href="/links">social links</a></li>
