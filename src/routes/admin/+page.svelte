@@ -87,7 +87,7 @@
 
   <div class="sections">
     <div class="section-card">
-      <h3><img src="/icons/panorama.svg" alt="Level" class="icon icon-large">Level Managment</h3>
+      <h3><img src="/icons/panorama.svg" alt="Level" class="icon icon-large">ADOFAI Level Managment</h3>
 
       <a href="/admin/adofai/upload" class="link-button">
         <img src="/icons/upload.svg" alt="Upload" class="icon icon-inline">Upload a Level
@@ -101,8 +101,7 @@
     <div class="section-card">
       <h3><img src="/icons/bug_report.svg" alt="Level" class="icon icon-large">API Debug</h3>
 
-      <!-- Replace with actual link after service is up -->
-      <a href="/503-service-unavaliable" class="link-button">
+      <a href="/admin/api-raw-data" class="link-button">
         <img src="/icons/data_object.svg" alt="Data" class="icon icon-inline">View Raw API Returned Data
       </a>
       <a href="https://github.com/nuomibinggao/Melty-API" rel="noopener" class="link-button github-button">

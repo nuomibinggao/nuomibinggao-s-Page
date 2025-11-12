@@ -4,6 +4,13 @@
 
 	const changelog = [
 		{
+			date: '2025-11-12',
+			version: 'v3 Update 4 - Admin Debug Tools',
+			changes: [
+				'Added the API Enpoint Raw Data Viewer page.'
+			]
+		},
+		{
 			date: '2025-11-11',
 			version: 'v3 Update 3 - Admin Panel Preupload',
 			changes: [

@@ -563,5 +563,42 @@ let subject = AlwaysEqual;</code></pre>
 </div>
 
 <style>
-	/* The CSS is already loaded in style-v2.css */
+	:global(pre) {
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		background-color: #21252b;
+		padding: 1rem;
+		border-radius: 6px;
+		border: 1px solid #181a1f;
+		overflow-x: auto;
+        color: #abb2bf;
+	}
+	:global(pre code) {
+		font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+		font-size: 0.95em;
+		line-height: 1.4;
+		display: block;
+		padding: 0.5rem;
+	}
+    :global(.output-box), :global(.error-box) {
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    :global(.output-box) {
+        background-color: #282c34;
+        border: 1px solid #2c313a;
+        color: #abb2bf;
+    }
+    :global(.error-box) {
+        background-color: #4d3e3e;
+        border: 1px solid #5a4a4a;
+        color: #ffb3b3;
+    }
+    :global(.output-box strong), :global(.error-box strong) {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
 </style>

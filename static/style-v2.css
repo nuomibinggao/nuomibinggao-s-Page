@@ -390,7 +390,7 @@ header.scrolled .nav {
 
 .link-button {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
+  padding: 0.8rem 1.2rem; /* Adjusted vertical padding to match form-control */
   background: var(--button-background-color);
   color: var(--text-color-lighter);
   text-decoration: none;
@@ -1987,4 +1987,44 @@ footer a:hover {
   max-height: 300px;
   margin: 0;
   box-shadow: var(--shadow-medium)
+}
+
+/* API Debug Styles */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.form-row .form-control {
+  flex: 1;
+  height: calc(2 * 0.8rem + 1rem + 2 * 1px); /* Match the height of the link-button */
+  box-sizing: border-box;
+}
+
+.form-row .link-button {
+  white-space: nowrap;
+  height: 2.5rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: row;
+  }
+  
+  .form-row .form-control,
+  .form-row .link-button {
+    height: 2.5rem;
+    width: auto;
+  }
+}
+
+.response-code {
+  white-space: pre-wrap;
+  word-break: break-all;
 }

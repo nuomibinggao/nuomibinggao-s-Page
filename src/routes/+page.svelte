@@ -91,7 +91,7 @@
           <a href="/changelog"><img src="icons/update.svg" alt="Update" class="icon icon-inline">Changelog</a>
           <a href="https://github.com/nuomibinggao/Melty-Pages" target="_blank" rel="noopener"><img src="icons/code.svg" alt="Code" class="icon icon-inline">Source Code</a>
           <a href="https://github.com/nuomibinggao/Melty-Pages/issues" target="_blank" rel="noopener"><img src="icons/bug_report.svg" alt="Report" class="icon icon-inline">Report an Issue</a>
-					<a href="/adofai/admin"><img src="icons/admin_panel_settings.svg" alt="Admin Panel" class="icon icon-inline">Admin Panel</a>
+					<a href="/admin"><img src="icons/admin_panel_settings.svg" alt="Admin Panel" class="icon icon-inline">Admin Panel</a>
         </nav>
       </div>
     </header>
