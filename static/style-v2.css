@@ -1969,7 +1969,6 @@ footer a:hover {
   border-radius: 24px;
   padding: 1rem;
   background-color: var(--card-bg);
-  box-shadow: var(--shadow-small)
 }
 
 .json-preview h4 {
