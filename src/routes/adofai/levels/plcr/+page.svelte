@@ -13,6 +13,15 @@
 		soundcloud_link?: string;
 		youtube_link?: string;
 		expanded?: boolean;
+		variation_of?: string;
+		variation_name?: string;
+		variations?: {
+			title: string;
+			tuf_link: string;
+			variation_name?: string;
+			icon: string;
+			secondary_icon?: string;
+		}[];
 	}
 
 	let levels: Level[] = [];
@@ -33,15 +42,43 @@
 					const match = text.match(/export const plcrLevels = (\[[\s\S]*?\]);/);
 					if (match && match[1]) {
 						// Parse the array portion of the text
-						const plcrLevels = JSON.parse(match[1]);
-						if (Array.isArray(plcrLevels)) {
-							levels = plcrLevels;
+						const parsedLevels: Level[] = JSON.parse(match[1]);
+						if (Array.isArray(parsedLevels)) {
+							const levelMap = new Map<string, Level>();
+							const processedLevels: Level[] = [];
+
+							// First pass: populate map with base levels and initialize variations array
+							for (const level of parsedLevels) {
+								if (!level.variation_of) {
+									level.variations = [];
+									levelMap.set(level.title, level);
+									processedLevels.push(level);
+								}
+							}
+
+							// Second pass: handle variations
+							for (const level of parsedLevels) {
+								if (level.variation_of) {
+									const parentLevel = levelMap.get(level.variation_of);
+									if (parentLevel && level.tuf_link) {
+										parentLevel.variations?.push({
+											title: level.title,
+											tuf_link: level.tuf_link,
+											variation_name: level.variation_name,
+											icon: level.icon,
+											secondary_icon: level.secondary_icon
+										});
+									}
+								}
+							}
+
+							levels = processedLevels;
 							filteredLevels = [...levels];
 							applySort();
 							loadError = null;
 						} else {
 							loadError = 'Invalid data format received';
-							console.error('plcrLevels is not an array:', plcrLevels);
+							console.error('plcrLevels is not an array:', parsedLevels);
 						}
 					} else {
 						loadError = 'Could not find levels data in response';
@@ -308,6 +345,29 @@
 							</button>
 						{/if}
 					</div>
+
+					{#if level.variations && level.variations.length > 0}
+						<div class="level-actions level-variations-container">
+								{#each level.variations as variation}
+									<a href={variation.tuf_link} target="_blank" rel="noopener" class="link-button">
+										<img
+											src={variation.icon}
+											alt="Variation Icon"
+											class="icon icon-inline"
+										/>
+										{#if variation.secondary_icon}
+											<span style="margin: 0 0.1em;">/</span>
+											<img
+												src={variation.secondary_icon}
+												alt="Secondary Variation Icon"
+												class="icon icon-inline"
+											/>
+										{/if}
+										<span>{`${variation.variation_name || variation.title} Version`}</span>
+									</a>							
+									{/each}
+						</div>
+					{/if}
 				</div>
 			</div>
 		{/each}

@@ -14,6 +14,15 @@
 		soundcloud_link?: string;
 		youtube_link?: string;
 		expanded?: boolean;
+		variation_of?: number;
+		variation_name?: string;
+		variations?: {
+			title: string;
+			tuf_link: string;
+			variation_name?: string;
+			icon: string;
+			secondary_icon?: string;
+		}[];
 	};
 
 	type ComingSoonLevel = {
@@ -60,7 +69,36 @@
 						comingSoonLevel = JSON.parse(comingSoonMatch[1]);
 					}
 					if (indieLevelsMatch && indieLevelsMatch[1]) {
-						levels = JSON.parse(indieLevelsMatch[1]);
+						const parsedLevels: Level[] = JSON.parse(indieLevelsMatch[1]);
+						const levelMap = new Map<number, Level>();
+						const processedLevels: Level[] = [];
+
+						// First pass: populate map with base levels and initialize variations array
+						for (const level of parsedLevels) {
+							if (!level.variation_of) {
+								level.variations = [];
+								levelMap.set(level.id, level);
+								processedLevels.push(level);
+							}
+						}
+
+						// Second pass: handle variations
+						for (const level of parsedLevels) {
+							if (level.variation_of) {
+								const parentLevel = levelMap.get(level.variation_of);
+								if (parentLevel && level.tuf_link) {
+									parentLevel.variations?.push({
+										title: level.title,
+										tuf_link: level.tuf_link,
+										variation_name: level.variation_name,
+										icon: level.icon,
+										secondary_icon: level.secondary_icon
+									});
+								}
+							}
+						}
+
+						levels = processedLevels;
 						filteredLevels = [...levels];
 						applySort();
 					}
@@ -377,6 +415,29 @@
 								</button>
 							{/if}
 						</div>
+
+						{#if level.variations && level.variations.length > 0}
+							<div class="level-actions level-variations-container">
+									{#each level.variations as variation}
+										<a href={variation.tuf_link} target="_blank" rel="noopener" class="link-button">
+											<img
+												src={variation.icon}
+												alt="Variation Icon"
+												class="icon icon-inline"
+											/>
+											{#if variation.secondary_icon}
+												<span>/</span>
+												<img
+													src={variation.secondary_icon}
+													alt="Secondary Variation Icon"
+													class="icon icon-inline"
+												/>
+											{/if}
+											<span>{`${variation.variation_name || variation.title} Version`}</span>
+										</a>
+									{/each}
+							</div>
+						{/if}
 					</div>
 				</div>
 			{/each}

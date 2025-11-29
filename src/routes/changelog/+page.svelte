@@ -4,6 +4,16 @@
 
 	const changelog = [
 		{
+			date: '2025-11-29',
+			version: 'v3 Update 5 - ADOFAI Level Structure Cleanup',
+			notes: [
+				'These changes are made due to an API endpoint restructure.'
+			],
+			changes: [
+				'Levels that are variations of other levels are now nested under their parent levels to improve organization and clarity.'
+			]
+		},
+		{
 			date: '2025-11-12',
 			version: 'v3 Update 4 - Admin Debug Tools',
 			changes: [
