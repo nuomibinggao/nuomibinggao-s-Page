@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { setupSplashText } from '$lib/splash';
 
 
-	let splashText = 'Loading...';
 	let header: HTMLElement | null = null;
 	let container: HTMLElement | null = null;
 
@@ -25,39 +25,12 @@
 
 		window.addEventListener('scroll', handleScroll);
 
-		// Splash text functionality
-		fetch('/splash.json')
-			.then(response => response.json())
-			.then(splashTexts => {
-				function getRandomSplash() {
-					const randomIndex = Math.floor(Math.random() * splashTexts.length);
-					return splashTexts[randomIndex];
-				}
-				
-				splashText = getRandomSplash();
-			})
-			.catch(error => {
-				console.error('Error loading splash texts:', error);
-				splashText = 'Crafted with care';
-			});
+		setupSplashText('splashText');
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
-
-	function updateSplashText() {
-		fetch('/splash.json')
-			.then(response => response.json())
-			.then(splashTexts => {
-				const randomIndex = Math.floor(Math.random() * splashTexts.length);
-				splashText = splashTexts[randomIndex];
-			})
-			.catch(error => {
-				console.error('Error loading splash texts:', error);
-				splashText = 'Crafted with care';
-			});
-	}
 </script>
 
 <svelte:head>
@@ -139,6 +112,6 @@
 
 	<footer>
 		&copy; 2025 nuomibinggao • MIT License
-		<div class="footer-note" id="splashText" on:click={updateSplashText} role="button" tabindex="0" on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { updateSplashText(); e.preventDefault(); } }}>{splashText}</div>
+		<div class="footer-note" id="splashText" role="button" tabindex="0">Loading...</div>
 	</footer>
 </div>

@@ -1,28 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-
-	let splashText = 'Loading...';
-	let splashTexts: string[] = [];
+	import { setupSplashText } from '$lib/splash';
 
 	onMount(async () => {
-		try {
-			const response = await fetch('/splash.json');
-			splashTexts = await response.json();
-			updateSplashText();
-		} catch (error) {
-			console.error('Error loading splash texts:', error);
-			splashText = 'Crafted with care';
-		}
+		setupSplashText('splashText');
 	});
-
-	function updateSplashText() {
-		const randomIndex = Math.floor(Math.random() * splashTexts.length);
-		splashText = splashTexts[randomIndex];
-	}
-
-	function handleSplashClick() {
-		updateSplashText();
-	}
 
 	let isHeaderScrolled = false;
 
@@ -551,14 +533,7 @@ let subject = AlwaysEqual;</code></pre>
 			class="footer-note"
 			role="button"
 			tabindex="0"
-			on:click={handleSplashClick}
-			on:keydown={(e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					handleSplashClick();
-					e.preventDefault();
-				}
-			}}
-		>{splashText}</div>
+		>Loading...</div>
 	</footer>
 </div>
 

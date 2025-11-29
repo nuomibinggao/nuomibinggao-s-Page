@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { setupSplashText } from '$lib/splash';
 
 	interface Level {
 		title: string;
@@ -95,16 +96,7 @@
 				console.error('Error loading levels:', error);
 			});
 
-		// Load splash texts
-		fetch('/splash.json')
-			.then(response => response.json())
-			.then(splashTexts => {
-				splashText = getRandomSplash(splashTexts);
-			})
-			.catch(error => {
-				console.error('Error loading splash texts:', error);
-				splashText = 'Crafted with care';
-			});
+		setupSplashText('splashText');
 
 		// Set up scroll handler
 		const header = document.getElementById('mainHeader');
@@ -126,22 +118,7 @@
 		return () => window.removeEventListener('scroll', handleScroll);
 	});
 
-	function getRandomSplash(splashTexts: string[]): string {
-		const randomIndex = Math.floor(Math.random() * splashTexts.length);
-		return splashTexts[randomIndex];
-	}
 
-	function updateSplashText() {
-		fetch('/splash.json')
-			.then(response => response.json())
-			.then(splashTexts => {
-				splashText = getRandomSplash(splashTexts);
-			})
-			.catch(error => {
-				console.error('Error loading splash texts:', error);
-				splashText = 'Crafted with care';
-			});
-	}
 
 	function applySort() {
 		const sorted = [...filteredLevels].sort((a, b) => {
@@ -377,11 +354,10 @@
 	<footer>
 		&copy; 2025 nuomibinggao • MIT License
 		<div 
-			class="footer-note"
+			class="footer-note" 
+			id="splashText" 
 			role="button"
 			tabindex="0"
-			on:click={updateSplashText}
-			on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { updateSplashText(); e.preventDefault(); } }}
-		>{splashText}</div>
+		>Loading...</div>
 	</footer>
 </div>

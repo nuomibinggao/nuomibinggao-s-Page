@@ -4,39 +4,10 @@
 
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { setupSplashText } from '$lib/splash';
 
 	onMount(() => {
-		// Splash text functionality - load from splash.json
-		const splashElement = document.getElementById('splashText');
-		
-		fetch('splash.json')
-		.then(response => response.json())
-		.then(splashTexts => {
-			function getRandomSplash() {
-			const randomIndex = Math.floor(Math.random() * splashTexts.length);
-			return splashTexts[randomIndex];
-			}
-			
-			function updateSplashText() {
-			if (splashElement) {
-				splashElement.textContent = getRandomSplash();
-			}
-			}
-			
-			// Initialize with a random splash text
-			updateSplashText();
-			
-			// Change splash text on click
-			if (splashElement) {
-				splashElement.addEventListener('click', updateSplashText);
-			}
-		})
-		.catch(error => {
-			console.error('Error loading splash texts:', error);
-			if (splashElement) {
-				splashElement.textContent = 'Crafted with care';
-			}
-		});
+		setupSplashText('splashText');
 
 		// Scroll header functionality
 		const header = document.getElementById('header');
@@ -135,6 +106,6 @@
 
     <footer>
       &copy; 2025 nuomibinggao • MIT License
-      <div class="footer-note" id="splashText">Loading...</div>
+      <div class="footer-note" id="splashText" role="button" tabindex="0">Loading...</div>
     </footer>
 </div>

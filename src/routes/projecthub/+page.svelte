@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { setupSplashText } from '$lib/splash';
 
 	let projects = [
 		{
@@ -139,24 +140,7 @@
 		applyFilters();
 	}
 
-	function updateSplashText() {
-		fetch('/splash.json')
-			.then(response => response.json())
-			.then(splashTexts => {
-				const randomIndex = Math.floor(Math.random() * splashTexts.length);
-				const splashElement = document.getElementById('splashText');
-				if (splashElement) {
-					splashElement.textContent = splashTexts[randomIndex];
-				}
-			})
-			.catch(error => {
-				console.error('Error loading splash texts:', error);
-				const splashElement = document.getElementById('splashText');
-				if (splashElement) {
-					splashElement.textContent = 'Crafted with care';
-				}
-			});
-	}
+
 
 	onMount(() => {
 		const fetchData = async () => {
@@ -218,28 +202,7 @@
 				console.error('Error fetching latest commit dates:', error);
 			}
 			
-			// Load splash texts
-			fetch('/splash.json')
-				.then(response => response.json())
-				.then(splashTexts => {
-					function getRandomSplash() {
-						const randomIndex = Math.floor(Math.random() * splashTexts.length);
-						return splashTexts[randomIndex];
-					}
-
-					const splashElement = document.getElementById('splashText');
-					if (splashElement) {
-						splashElement.textContent = getRandomSplash();
-						splashTexts = splashTexts; // Store for later use
-					}
-				})
-				.catch(error => {
-					console.error('Error loading splash texts:', error);
-					const splashElement = document.getElementById('splashText');
-					if (splashElement) {
-						splashElement.textContent = 'Crafted with care';
-					}
-				});
+			setupSplashText('splashText');
 		};
 
 		fetchData();
@@ -351,8 +314,6 @@
 			id="splashText" 
 			role="button"
 			tabindex="0"
-			on:click={updateSplashText}
-			on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { updateSplashText(); e.preventDefault(); } }}
 		>Loading...</div>
 	</footer>
 </div>

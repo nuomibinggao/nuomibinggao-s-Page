@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { setupSplashText } from '$lib/splash';
   
   interface FormData {
     title: string;
@@ -59,30 +60,9 @@
     formData.date = `${yyyy}-${mm}-${dd}`;
     
     updatePreview();
-    loadSplashText();
+    setupSplashText('splashText');
     setupScrollHeader();
   });
-  
-  async function loadSplashText(): Promise<void> {
-    try {
-      const response = await fetch('/splash.json');
-      const splashTexts: string[] = await response.json();
-      
-      function getRandomSplash(): string {
-        const randomIndex = Math.floor(Math.random() * splashTexts.length);
-        return splashTexts[randomIndex];
-      }
-      
-      splashText = getRandomSplash();
-    } catch (error) {
-      console.error('Error loading splash texts:', error);
-      splashText = 'Crafted with care';
-    }
-  }
-  
-  function updateSplashText(): void {
-    loadSplashText();
-  }
   
   function setupScrollHeader(): () => void {
     const handleScroll = (): void => {

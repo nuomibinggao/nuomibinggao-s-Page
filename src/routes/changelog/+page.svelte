@@ -1,16 +1,18 @@
 <script lang="ts">
 	import { version } from 'os';
 	import { onMount } from 'svelte';
+	import { setupSplashText } from '$lib/splash';
 
 	const changelog = [
 		{
 			date: '2025-11-29',
 			version: 'v3 Update 5 - ADOFAI Level Structure Cleanup',
 			notes: [
-				'These changes are made due to an API endpoint restructure.'
+				'Some changes are made due to an API endpoint restructure.'
 			],
 			changes: [
-				'Levels that are variations of other levels are now nested under their parent levels to improve organization and clarity.'
+				'Levels that are variations of other levels are now nested under their parent levels to improve organization and clarity.',
+				'Made the splash function more modular.'
 			]
 		},
 		{
@@ -205,34 +207,7 @@
 	];
 
 	onMount(() => {
-		const splashElement = document.getElementById('splashText');
-		
-		if (splashElement) {
-			fetch('/splash.json')
-				.then(response => response.json())
-				.then(splashTexts => {
-					function getRandomSplash() {
-						const randomIndex = Math.floor(Math.random() * splashTexts.length);
-						return splashTexts[randomIndex];
-					}
-					
-					function updateSplashText() {
-						if (splashElement) {
-							splashElement.textContent = getRandomSplash();
-						}
-					}
-					
-					updateSplashText();
-					
-				splashElement.addEventListener('click', updateSplashText);
-				})
-				.catch(error => {
-					console.error('Error loading splash texts:', error);
-					if (splashElement) {
-						splashElement.textContent = 'Crafted with care';
-					}
-				});
-		}
+		setupSplashText('splashText');
 
 		const header = document.getElementById('header');
 		const container = document.getElementById('container');
@@ -312,6 +287,6 @@
 
 	<footer>
 		&copy; 2025 nuomibinggao • MIT License
-		<div class="footer-note" id="splashText">Loading...</div>
+		<div class="footer-note" id="splashText" role="button" tabindex="0">Loading...</div>
 	</footer>
 </div>

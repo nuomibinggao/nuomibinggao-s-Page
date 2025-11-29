@@ -1,47 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-
-	function updateSplashText() {
-		fetch('/splash.json')
-			.then(response => response.json())
-			.then(splashTexts => {
-				const randomIndex = Math.floor(Math.random() * splashTexts.length);
-				const splashElement = document.getElementById('splashText');
-				if (splashElement) {
-					splashElement.textContent = splashTexts[randomIndex];
-				}
-			})
-			.catch(error => {
-				console.error('Error loading splash texts:', error);
-				const splashElement = document.getElementById('splashText');
-				if (splashElement) {
-					splashElement.textContent = 'Crafted with care';
-				}
-			});
-	}
+	import { setupSplashText } from '$lib/splash';
 
 	onMount(() => {
-		// Load splash texts
-		fetch('/splash.json')
-			.then(response => response.json())
-			.then(splashTexts => {
-				function getRandomSplash() {
-					const randomIndex = Math.floor(Math.random() * splashTexts.length);
-					return splashTexts[randomIndex];
-				}
-
-				const splashElement = document.getElementById('splashText');
-				if (splashElement) {
-					splashElement.textContent = getRandomSplash();
-				}
-			})
-			.catch(error => {
-				console.error('Error loading splash texts:', error);
-				const splashElement = document.getElementById('splashText');
-				if (splashElement) {
-					splashElement.textContent = 'Crafted with care';
-				}
-			});
+		setupSplashText('splashText');
 
 		const header = document.getElementById('header');
 		const container = document.getElementById('container');
@@ -153,8 +115,6 @@ export const legacyLevel = &#123; /* level data */ &#125;;
 			id="splashText" 
 			role="button"
 			tabindex="0"
-			on:click={updateSplashText}
-			on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { updateSplashText(); e.preventDefault(); } }}
 		>Loading...</div>
 	</footer>
 </div>
