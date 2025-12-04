@@ -3,6 +3,7 @@
   import { setupSplashText } from '$lib/splash';
   
   interface FormData {
+    id: number | null;
     title: string;
     date: string;
     duration: string;
@@ -12,14 +13,17 @@
     bilibili_bvid: string;
     youtube_link: string;
     soundcloud_link: string;
-    tuf_link: number | null;
+    tuf_id: number | null;
     category: 'indie' | 'plcr';
     variation_of: number | null;
-    variation_name: string;
+    variation_name: string | null;
   }
   
   interface LevelObject {
+    id: number | null;
     title: string;
+    variation_of?: number | null;
+    variation_name?: string | null;
     date: string;
     duration: string;
     description: string;
@@ -28,12 +32,11 @@
     bilibili_bvid?: string;
     youtube_link?: string;
     soundcloud_link?: string;
-    tuf_link?: string;
-    variation_of?: number;
-    variation_name?: string;
+    tuf_id?: string;
   }
   
   let formData: FormData = {
+    id: null,
     title: '',
     date: '',
     duration: '',
@@ -43,26 +46,144 @@
     bilibili_bvid: '',
     youtube_link: '',
     soundcloud_link: '',
-    tuf_link: null,
+    tuf_id: null,
     category: 'indie',
     variation_of: null,
     variation_name: ''
   };
   
+  let latest_level_id: number = 0;
   let jsonOutput: string = '{}';
   let errorHint: string = '';
   let showError: boolean = false;
   let isSuccess: boolean = false;
   let shakeError: boolean = false;
   let successSubmit: boolean = false;
+  let levelsResponseText: string = '';
+
+  function updateIdForCategory(category: 'indie' | 'plcr') {
+    // Prefer extracting the first id from the specific export matching the selected category
+    const firstId = extractFirstId(levelsResponseText, category);
+    if (firstId && firstId > 0) {
+      latest_level_id = firstId;
+      formData = { ...formData, id: latest_level_id + 1 };
+    } else {
+      // Fallback: parse the JS response into objects and compute global max
+      const levels = parseJsResponse(levelsResponseText) || {};
+      const ids: number[] = [];
+      if (Array.isArray(levels.indieLevels)) {
+        for (const l of levels.indieLevels) ids.push(Number(l?.id || 0));
+      }
+      if (Array.isArray(levels.plcrLevels)) {
+        for (const l of levels.plcrLevels) ids.push(Number(l?.id || 0));
+      }
+      const maxId = ids.length ? Math.max(...ids) : 0;
+      if (maxId > 0) {
+        latest_level_id = maxId;
+        formData = { ...formData, id: latest_level_id + 1 };
+      } else {
+        formData = { ...formData, id: 1 };
+      }
+    }
+  }
+
+  function handleCategoryChange() {
+    updateIdForCategory(formData.category);
+    updatePreview();
+  }
   
-  onMount(() => {
+  function parseJsResponse(text: string): any | null {
+    if (!text) return null;
+    // Try strict JSON first
+    try {
+      return JSON.parse(text);
+    } catch (e) {}
+
+    // Look for assignment/definition patterns like: export const indieLevels = [...] or var foo = {...};
+    const assignMatch = text.match(/=[\s\n]*([\[{][\s\S]*[\]}])/);
+    if (assignMatch && assignMatch[1]) {
+      const candidate = assignMatch[1];
+      try { return JSON.parse(candidate); } catch (e) {}
+      try { return Function('"use strict"; return (' + candidate + ');')(); } catch (e) {}
+    }
+
+    // JSONP / callback style: callback({...});
+    const callMatch = text.match(/^[^(]*\(\s*([\[{][\s\S]*[\]}])\s*\);?\s*$/m);
+    if (callMatch && callMatch[1]) {
+      const candidate = callMatch[1];
+      try { return JSON.parse(candidate); } catch (e) {}
+      try { return Function('"use strict"; return (' + candidate + ');')(); } catch (e) {}
+    }
+
+    // Fallback: extract first { ... } or [ ... ] block
+    const firstObj = text.indexOf('{');
+    const lastObj = text.lastIndexOf('}');
+    if (firstObj !== -1 && lastObj !== -1 && lastObj > firstObj) {
+      const sub = text.slice(firstObj, lastObj + 1);
+      try { return JSON.parse(sub); } catch (e) {}
+      try { return Function('"use strict"; return (' + sub + ');')(); } catch (e) {}
+    }
+
+    const firstArr = text.indexOf('[');
+    const lastArr = text.lastIndexOf(']');
+    if (firstArr !== -1 && lastArr !== -1 && lastArr > firstArr) {
+      const sub = text.slice(firstArr, lastArr + 1);
+      try { return JSON.parse(sub); } catch (e) {}
+      try { return Function('"use strict"; return (' + sub + ');')(); } catch (e) {}
+    }
+
+    return null;
+  }
+
+  function extractFirstId(text: string, category: 'indie' | 'plcr'): number | null {
+    if (!text) return null;
+    const name = category === 'indie' ? 'indieLevels' : 'plcrLevels';
+
+    // Try a direct export match first
+    const exportToken = `export const ${name} = [`;
+    let start = text.indexOf(exportToken);
+    if (start === -1) {
+      // Fallback to a looser match: const <name> = [
+      const looseToken = `const ${name} = [`;
+      start = text.indexOf(looseToken);
+    }
+
+    if (start !== -1) {
+      const sub = text.slice(start);
+      const idMatch = sub.match(/["']?id["']?\s*:\s*(\d+)/);
+      if (idMatch && idMatch[1]) return Number(idMatch[1]);
+    }
+
+    // If no export block found, try a general search for the array name then id
+    const generalMatch = text.match(new RegExp(`${name}\s*=\s*\[`, 'm'));
+    if (generalMatch && generalMatch.index !== undefined) {
+      const sub = text.slice(generalMatch.index);
+      const idMatch = sub.match(/["']?id["']?\s*:\s*(\d+)/);
+      if (idMatch && idMatch[1]) return Number(idMatch[1]);
+    }
+
+    return null;
+  }
+
+  onMount(async () => {
+    try {
+        const response = await fetch('https://api.melty-studios.com/get-levels');
+        if (response.ok) {
+            levelsResponseText = await response.text();
+            updateIdForCategory(formData.category);
+        } else {
+            console.error('Failed to fetch latest level ID');
+        }
+    } catch (error) {
+        console.error('Failed to fetch latest level ID:', error);
+    }
+
     // Set today's date as default
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
-    formData.date = `${yyyy}-${mm}-${dd}`;
+    formData = { ...formData, date: `${yyyy}-${mm}-${dd}` };
     
     updatePreview();
     setupSplashText('splashText');
@@ -133,13 +254,16 @@
   
   function generateLevelObject(): LevelObject {
     const levelObj: LevelObject = {
+      id: formData.id,
       title: formData.title,
+      variation_of: formData.variation_of,
+      variation_name: formData.variation_name || null,
       date: formData.date,
       duration: formData.duration,
       description: formData.description,
-      icon: getIconUrl(formData.icon)
+      icon: getIconUrl(formData.icon),
     };
-    
+
     if (formData.secondary_icon) {
       levelObj.secondary_icon = getIconUrl(formData.secondary_icon);
     }
@@ -152,16 +276,19 @@
     if (formData.soundcloud_link) {
       levelObj.soundcloud_link = formData.soundcloud_link;
     }
-    if (formData.tuf_link) {
-      levelObj.tuf_link = `https://tuforms.com/levels/${formData.tuf_link}`;
-    }
-    if (formData.variation_of) {
-      levelObj.variation_of = formData.variation_of;
-    }
-    if (formData.variation_name) {
-      levelObj.variation_name = formData.variation_name;
+    if (formData.tuf_id) {
+      levelObj.tuf_id = `https://tuforms.com/levels/${formData.tuf_id}`;
     }
     
+    // Clean up optional fields that are empty, so they don't appear in the JSON
+    if (!levelObj.variation_of) delete levelObj.variation_of;
+    if (!levelObj.variation_name) delete levelObj.variation_name;
+    if (!levelObj.secondary_icon) delete levelObj.secondary_icon;
+    if (!levelObj.bilibili_bvid) delete levelObj.bilibili_bvid;
+    if (!levelObj.youtube_link) delete levelObj.youtube_link;
+    if (!levelObj.soundcloud_link) delete levelObj.soundcloud_link;
+    if (!levelObj.tuf_id) delete levelObj.tuf_id;
+
     return levelObj;
   }
   
@@ -222,7 +349,7 @@
             displayError('Invalid Secondary Icon URL. Please use a valid difficulty (e.g., U14J).');
             return;
         }
-        if (formData.tuf_link !== null && formData.tuf_link !== null && isNaN(Number(formData.tuf_link))) {
+        if (formData.tuf_id !== null && formData.tuf_id !== null && isNaN(Number(formData.tuf_id))) {
             displayError('Invalid TUF Forums Link. Please enter only numbers for the level ID.');
             return;
         }
@@ -230,6 +357,15 @@
             displayError('Invalid Variation Of ID. Please enter only numbers for the level ID.');
             return;
         }
+		
+		const isVariationOfFilled = formData.variation_of !== null && formData.variation_of <= 0;
+		const isVariationNameFilled = formData.variation_name !== null && formData.variation_name.trim() !== '';
+
+		if (isVariationOfFilled !== isVariationNameFilled) {
+			displayError('Both "Variation Of" and "Variation Name" must be filled if the level is a variation.');
+			return;
+		}
+
 		if (!formData.category) {
 			displayError('Please select a category for your level');
 			return;
@@ -417,11 +553,11 @@
         </div>
 
         <div class="form-group">
-          <label for="tuf_link">TUF Forums Level ID</label>
+          <label for="tuf_id">TUF Forums Level ID</label>
           <input 
             type="number"
-            id="tuf_link" 
-            bind:value={formData.tuf_link}
+            id="tuf_id" 
+            bind:value={formData.tuf_id}
             on:input={handleInput}
             placeholder="e.g., 11050"
           >
@@ -467,7 +603,7 @@
           <select 
             id="category" 
             bind:value={formData.category}
-            on:change={handleInput}
+            on:change={handleCategoryChange}
             required
           >
             <option value="indie">Indie / Custom Level (Solo work)</option>

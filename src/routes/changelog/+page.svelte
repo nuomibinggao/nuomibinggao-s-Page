@@ -5,6 +5,14 @@
 
 	const changelog = [
 		{
+			date: '2025-12-04',
+			version: 'v3 Update 6 - ADOFAI Levels Upload Frontend Complete',
+			changes: [
+				'Since the JSON format of storing ADOFAI levels has been changed, changes were made to the level upload page to support the new format.',
+				'Added documentation for the new "get-level-by-id" API endpoint in the API Docs page.'
+			]
+		},
+		{
 			date: '2025-11-29',
 			version: 'v3 Update 5 - ADOFAI Level Structure Cleanup',
 			notes: [

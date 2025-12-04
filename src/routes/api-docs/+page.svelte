@@ -99,6 +99,37 @@ export const indieLevels = [ /* array of levels */ ];
 export const plcrLevels = [ /* array of levels */ ];
 export const legacyLevel = &#123; /* level data */ &#125;;
       </pre>
+
+			<div>
+				<span class="endpoint-method get">GET</span>
+				<span class="endpoint-path">/get-level-by-id</span>
+			</div>
+			<p>Returns data of a single level in JSON format, determined by the inserted unique ID in the URL.</p>
+			<p><strong>/get-level-by-id/indie/1</strong> returns an indie level with the ID of 1</p>
+			<p><strong>/get-level-by-id/plcr/1</strong> returns an Team Polychrome level with the ID of 1</p>
+
+			<h4>Response Format</h4>
+			<p>The response is a JSON formatted object with the following structure (using /indie/1 as an example):</p>
+
+			<pre class="code-example">
+&#123;
+	"type": "indie",
+	"level": &#123;
+		"id": 1,
+		"variation_of": null,
+		"variation_name": "",
+		"title": "trung-nova - REFLECTION»«REFRACTION",
+		"icon": "https://api.tuforums.com/v2/media/image/icon/Q3.png",
+		"secondary_icon": "https://api.tuforums.com/v2/media/image/icon/U14J.png",
+		"date": "2025-08-01",
+		"duration": "3:07",
+		"bilibili_bvid": "BV1CmhnzfEjF",
+		"description": "\u003Cp\u003EThis level was made to experiment high keycount rolling patterns and the judgment limiting gimmicks, it is a high-difficulty level.\u003C/p\u003E\u003Cp\u003EThis song was made for COEGTS 2025 Main Mappool NM2.\u003C/p\u003E",
+		"tuf_link": "https://tuforums.com/levels/9729",
+		"soundcloud_link": "https://soundcloud.com/trung-nova_727/reflectionrefraction"
+	&#125;
+&#125;
+			</pre>
 		</div>
 		
 		<div class="doc-footer">
