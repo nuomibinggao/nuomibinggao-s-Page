@@ -14,6 +14,8 @@
     soundcloud_link: string;
     tuf_link: number | null;
     category: 'indie' | 'plcr';
+    variation_of: number | null;
+    variation_name: string;
   }
   
   interface LevelObject {
@@ -27,6 +29,8 @@
     youtube_link?: string;
     soundcloud_link?: string;
     tuf_link?: string;
+    variation_of?: number;
+    variation_name?: string;
   }
   
   let formData: FormData = {
@@ -40,7 +44,9 @@
     youtube_link: '',
     soundcloud_link: '',
     tuf_link: null,
-    category: 'indie'
+    category: 'indie',
+    variation_of: null,
+    variation_name: ''
   };
   
   let jsonOutput: string = '{}';
@@ -49,7 +55,6 @@
   let isSuccess: boolean = false;
   let shakeError: boolean = false;
   let successSubmit: boolean = false;
-  let splashText: string = 'Loading...';
   
   onMount(() => {
     // Set today's date as default
@@ -150,6 +155,12 @@
     if (formData.tuf_link) {
       levelObj.tuf_link = `https://tuforms.com/levels/${formData.tuf_link}`;
     }
+    if (formData.variation_of) {
+      levelObj.variation_of = formData.variation_of;
+    }
+    if (formData.variation_name) {
+      levelObj.variation_name = formData.variation_name;
+    }
     
     return levelObj;
   }
@@ -215,6 +226,10 @@
             displayError('Invalid TUF Forums Link. Please enter only numbers for the level ID.');
             return;
         }
+        if (formData.variation_of !== null && formData.variation_of !== null && isNaN(Number(formData.variation_of))) {
+            displayError('Invalid Variation Of ID. Please enter only numbers for the level ID.');
+            return;
+        }
 		if (!formData.category) {
 			displayError('Please select a category for your level');
 			return;
@@ -235,12 +250,6 @@
 		// This is where you would typically send the data to a server (WIP)
 		console.log('Submitting:', jsonOutput);
 	}
-  
-  function handleKeyPress(e: KeyboardEvent): void {
-    if (e.key === 'Enter' || e.key === ' ') {
-      updateSplashText();
-    }
-  }
 </script>
 
 <svelte:head>
@@ -410,13 +419,42 @@
         <div class="form-group">
           <label for="tuf_link">TUF Forums Level ID</label>
           <input 
-            type="url" 
+            type="number"
             id="tuf_link" 
             bind:value={formData.tuf_link}
             on:input={handleInput}
             placeholder="e.g., 11050"
           >
           <small>The Level ID for the level on TUF Forums (tuforums.com/levels/<strong>11050</strong>)</small>
+        </div>
+      </div>
+
+      <!-- Variations -->
+      <div class="form-section">
+        <h3>Variations</h3>
+        
+        <div class="form-group">
+          <label for="variation_of">Variation Of (Level ID)</label>
+          <input 
+            type="number" 
+            id="variation_of" 
+            bind:value={formData.variation_of}
+            on:input={handleInput}
+            placeholder="e.g., 7"
+          >
+          <small>If this level is a variation, enter the ID of the original level</small>
+        </div>
+
+        <div class="form-group">
+          <label for="variation_name">Variation Name</label>
+          <input 
+            type="text" 
+            id="variation_name" 
+            bind:value={formData.variation_name}
+            on:input={handleInput}
+            placeholder="e.g., Nerfed"
+          >
+          <small>Name of this variation (e.g., "Nerfed", "EX")</small>
         </div>
       </div>
 
@@ -473,16 +511,13 @@
     </form>
   </div>
 
-  <footer>
-    &copy; 2025 nuomibinggao • MIT License
-    <div 
-      class="footer-note" 
-      on:click={updateSplashText} 
-      on:keypress={handleKeyPress}
-      role="button" 
-      tabindex="0"
-    >
-      {splashText}
-    </div>
-  </footer>
+	<footer>
+		&copy; 2025 nuomibinggao • MIT License
+		<div 
+			class="footer-note"
+			id="splashText"
+			role="button"
+			tabindex="0"
+		>Loading...</div>
+	</footer>
 </div>
