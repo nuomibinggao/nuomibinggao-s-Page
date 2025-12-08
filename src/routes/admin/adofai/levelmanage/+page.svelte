@@ -13,7 +13,7 @@
     bilibili_bvid: string;
     youtube_link: string;
     soundcloud_link: string;
-    tuf_id: number | null;
+    tuf_link: number | null;
     category: 'indie' | 'plcr';
     variation_of: number | null;
     variation_name: string | null;
@@ -32,7 +32,7 @@
     bilibili_bvid?: string;
     youtube_link?: string;
     soundcloud_link?: string;
-    tuf_id?: string;
+    tuf_link?: string;
   }
   
   let formData: FormData = {
@@ -46,7 +46,7 @@
     bilibili_bvid: '',
     youtube_link: '',
     soundcloud_link: '',
-    tuf_id: null,
+    tuf_link: null,
     category: 'indie',
     variation_of: null,
     variation_name: ''
@@ -61,34 +61,136 @@
   let successSubmit: boolean = false;
   let levelsResponseText: string = '';
 
+  let selectedModifyCategory: 'indie' | 'plcr' | 'new' = 'new';
+  let levelsForCategory: { id: number; title: string }[] = [];
+  let selectedLevelId: number | null = null;
+
+  async function fetchLevelsForCategory(category: 'indie' | 'plcr') {
+    try {
+      const response = await fetch(`https://api.melty-studios.com/get-levels/json/${category}`);
+      if (response.ok) {
+        levelsForCategory = await response.json();
+        selectedLevelId = null; // Reset level selection
+      } else {
+        console.error(`Failed to fetch levels for category ${category}`);
+        levelsForCategory = [];
+      }
+    } catch (error) {
+      console.error(`Error fetching levels for category ${category}:`, error);
+      levelsForCategory = [];
+    }
+  }
+
+  function resetFormForNewLevel() {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+
+    // Default form data
+    const defaultFormData = {
+        id: null,
+        title: '',
+        date: `${yyyy}-${mm}-${dd}`,
+        duration: '',
+        description: '',
+        icon: '',
+        secondary_icon: '',
+        bilibili_bvid: '',
+        youtube_link: '',
+        soundcloud_link: '',
+        tuf_link: null,
+        category: selectedModifyCategory === 'new' ? 'indie' : selectedModifyCategory,
+        variation_of: null,
+        variation_name: ''
+    };
+
+    formData = defaultFormData;
+
+    // Only update ID if we are in "new level" mode
+    if (selectedModifyCategory === 'new') {
+        updateIdForCategory(formData.category);
+    }
+    updatePreview();
+  }
+
+  async function handleLevelSelectionChange() {
+    if (selectedLevelId === null) {
+        resetFormForNewLevel();
+        return;
+    }
+
+    try {
+      const response = await fetch(`https://api.melty-studios.com/get-level-by-id/${selectedModifyCategory as 'indie' | 'plcr'}/${selectedLevelId}`);
+      if (response.ok) {
+        const level: LevelObject = (await response.json()).level;
+        
+        const getDifficultyFromUrl = (url: string | null | undefined) => {
+          if (!url) return '';
+          const match = url.match(/icon\/([^/]+)\.png/);
+          return match ? match[1] : '';
+        };
+
+        formData = {
+          id: level.id,
+          title: level.title,
+          date: level.date,
+          duration: level.duration,
+          description: level.description,
+          icon: getDifficultyFromUrl(level.icon),
+          secondary_icon: getDifficultyFromUrl(level.secondary_icon),
+          bilibili_bvid: level.bilibili_bvid || '',
+          youtube_link: level.youtube_link || '',
+          soundcloud_link: level.soundcloud_link || '',
+          tuf_link: level.tuf_link ? Number(level.tuf_link.replace('https://tuforums.com/levels/', '')) : null,
+          category: selectedModifyCategory as 'indie' | 'plcr',
+          variation_of: level.variation_of || null,
+          variation_name: level.variation_name || ''
+        };
+        updatePreview();
+      } else {
+        console.error(`Failed to fetch level details for ID ${selectedLevelId}`);
+      }
+    } catch (error) {
+      console.error(`Error fetching level details for ID ${selectedLevelId}:`, error);
+    }
+  }
+
+  function handleCategorySelectionChange() {
+    if (selectedModifyCategory === 'new') {
+        levelsForCategory = [];
+        selectedLevelId = null; // Add this line
+        resetFormForNewLevel();
+    } else {
+        fetchLevelsForCategory(selectedModifyCategory as 'indie' | 'plcr');
+        resetFormForNewLevel();
+    }
+  }
+
   function updateIdForCategory(category: 'indie' | 'plcr') {
-    // Prefer extracting the first id from the specific export matching the selected category
-    const firstId = extractFirstId(levelsResponseText, category);
-    if (firstId && firstId > 0) {
-      latest_level_id = firstId;
+    if (selectedLevelId !== null) return;
+    
+    const levels = parseJsResponse(levelsResponseText) || {};
+    const ids: number[] = [];
+    if (Array.isArray(levels.indieLevels)) {
+      for (const l of levels.indieLevels) ids.push(Number(l?.id || 0));
+    }
+    if (Array.isArray(levels.plcrLevels)) {
+      for (const l of levels.plcrLevels) ids.push(Number(l?.id || 0));
+    }
+    const maxId = ids.length ? Math.max(...ids) : 0;
+    if (maxId > 0) {
+      latest_level_id = maxId;
       formData = { ...formData, id: latest_level_id + 1 };
     } else {
-      // Fallback: parse the JS response into objects and compute global max
-      const levels = parseJsResponse(levelsResponseText) || {};
-      const ids: number[] = [];
-      if (Array.isArray(levels.indieLevels)) {
-        for (const l of levels.indieLevels) ids.push(Number(l?.id || 0));
-      }
-      if (Array.isArray(levels.plcrLevels)) {
-        for (const l of levels.plcrLevels) ids.push(Number(l?.id || 0));
-      }
-      const maxId = ids.length ? Math.max(...ids) : 0;
-      if (maxId > 0) {
-        latest_level_id = maxId;
-        formData = { ...formData, id: latest_level_id + 1 };
-      } else {
-        formData = { ...formData, id: 1 };
-      }
+      formData = { ...formData, id: 1 };
     }
   }
 
   function handleCategoryChange() {
-    updateIdForCategory(formData.category);
+    if (selectedModifyCategory === 'new') {
+        updateIdForCategory(formData.category);
+    }
     updatePreview();
   }
   
@@ -155,7 +257,7 @@
     }
 
     // If no export block found, try a general search for the array name then id
-    const generalMatch = text.match(new RegExp(`${name}\s*=\s*\[`, 'm'));
+    const generalMatch = text.match(new RegExp(`${name}\\s*=\\s*\\[`, 'm'));
     if (generalMatch && generalMatch.index !== undefined) {
       const sub = text.slice(generalMatch.index);
       const idMatch = sub.match(/["']?id["']?\s*:\s*(\d+)/);
@@ -167,15 +269,30 @@
 
   onMount(async () => {
     try {
-        const response = await fetch('https://api.melty-studios.com/get-levels');
-        if (response.ok) {
-            levelsResponseText = await response.text();
-            updateIdForCategory(formData.category);
-        } else {
-            console.error('Failed to fetch latest level ID');
-        }
+      const [indieResponse, plcrResponse] = await Promise.all([
+        fetch('https://api.melty-studios.com/get-levels/json/indie'),
+        fetch('https://api.melty-studios.com/get-levels/json/plcr')
+      ]);
+
+      const indieLevels = indieResponse.ok ? await indieResponse.json() : [];
+      const plcrLevels = plcrResponse.ok ? await plcrResponse.json() : [];
+
+      const ids = [...indieLevels, ...plcrLevels].map(level => level.id);
+      const maxId = ids.length > 0 ? Math.max(...ids) : 0;
+
+      if (maxId > 0) {
+        latest_level_id = maxId;
+        formData = { ...formData, id: latest_level_id + 1 };
+      } else {
+        formData = { ...formData, id: 1 };
+      }
     } catch (error) {
         console.error('Failed to fetch latest level ID:', error);
+        formData = { ...formData, id: 1 };
+    }
+
+    if (selectedModifyCategory !== 'new') {
+      fetchLevelsForCategory(selectedModifyCategory as 'indie' | 'plcr');
     }
 
     // Set today's date as default
@@ -187,27 +304,7 @@
     
     updatePreview();
     setupSplashText('splashText');
-    setupScrollHeader();
   });
-  
-  function setupScrollHeader(): () => void {
-    const handleScroll = (): void => {
-      const header = document.querySelector('header');
-      const container = document.querySelector('.container');
-      const scrollY = window.scrollY;
-      
-      if (scrollY > 100) {
-        header?.classList.add('scrolled');
-        container?.classList.add('with-fixed-header');
-      } else {
-        header?.classList.remove('scrolled');
-        container?.classList.remove('with-fixed-header');
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }
   
   function getIconUrl(difficulty: string): string | null {
     if (!difficulty) return null;
@@ -276,8 +373,8 @@
     if (formData.soundcloud_link) {
       levelObj.soundcloud_link = formData.soundcloud_link;
     }
-    if (formData.tuf_id) {
-      levelObj.tuf_id = `https://tuforms.com/levels/${formData.tuf_id}`;
+    if (formData.tuf_link) {
+      levelObj.tuf_link = `https://tuforms.com/levels/${formData.tuf_link}`;
     }
     
     // Clean up optional fields that are empty, so they don't appear in the JSON
@@ -287,7 +384,7 @@
     if (!levelObj.bilibili_bvid) delete levelObj.bilibili_bvid;
     if (!levelObj.youtube_link) delete levelObj.youtube_link;
     if (!levelObj.soundcloud_link) delete levelObj.soundcloud_link;
-    if (!levelObj.tuf_id) delete levelObj.tuf_id;
+    if (!levelObj.tuf_link) delete levelObj.tuf_link;
 
     return levelObj;
   }
@@ -338,18 +435,18 @@
 			return;
 		}
 		if (!formData.icon) {
-			displayError('Please fill in: Primary Icon URL');
+			displayError('Please fill in: Primary Icon Name');
 			return;
 		}
         if (getIconUrl(formData.icon) === null) {
-            displayError('Invalid Primary Icon URL. Please use a valid difficulty (e.g., Q3, P1, Unranked).');
+            displayError('Invalid Primary Icon Name. Please use a valid difficulty (e.g., Q3, P1, Unranked).');
             return;
         }
         if (formData.secondary_icon && getIconUrl(formData.secondary_icon) === null) {
-            displayError('Invalid Secondary Icon URL. Please use a valid difficulty (e.g., U14J).');
+            displayError('Invalid Secondary Icon Name. Please use a valid difficulty (e.g., U14J).');
             return;
         }
-        if (formData.tuf_id !== null && formData.tuf_id !== null && isNaN(Number(formData.tuf_id))) {
+        if (formData.tuf_link !== null && formData.tuf_link !== null && isNaN(Number(formData.tuf_link))) {
             displayError('Invalid TUF Forums Link. Please enter only numbers for the level ID.');
             return;
         }
@@ -389,15 +486,14 @@
 </script>
 
 <svelte:head>
-  <title>ADOFAI - Submit New Level</title>
-  <link href="https://api.fontshare.com/css?f[]=chillax@400,700&display=swap" rel="stylesheet">
+  <title>ADOFAI - Modify Level Data</title>
 </svelte:head>
 
 <div class="container">
   <header>
     <div class="header-content">
       <h1>Melty Pages</h1>
-      <p class="subtitle">ADOFAI - Submit New Level</p>
+      <p class="subtitle">ADOFAI - Modify Level Data</p>
       <nav class="nav">
         <a href="/admin">
           <img src="/icons/arrow_back_ios_new.svg" alt="Back" class="icon icon-inline">
@@ -410,7 +506,7 @@
   <div class="intro">
     <h2>
       <img src="/icons/upload.svg" alt="Upload" class="icon icon-large">
-      Submit New Custom Level
+      Modify Level Data
     </h2>
     <p><strong><img src="/icons/construction.svg" alt="Under Construction" class="icon icon-inline">This page is under construction, please come back later.</strong></p>
     <p>Fill out this form to submit a new level to show on the website. Make sure to check critical information to avoid misinformation.</p>
@@ -423,7 +519,33 @@
   </div>
 
   <div class="upload-form">
-    <form id="levelForm" on:submit={handleSubmit} novalidate>
+    <form id="levelForm" on:submit|preventDefault={handleSubmit} novalidate>
+      <!-- Level Selection -->
+      <div class="form-section">
+        <h3>Action</h3>
+        <div class="form-group">
+          <select id="modify-category" bind:value={selectedModifyCategory} on:change={handleCategorySelectionChange}>
+            <option value="new">Upload New Level</option>
+            <option value="indie">Modify Indie Level</option>
+            <option value="plcr">Modify PLCR (Team Collab) Level</option>
+          </select>
+          <small>Select if you want to upload a new level or modify an existing one.</small>
+        </div>
+        
+        {#if selectedModifyCategory !== 'new' && levelsForCategory.length > 0}
+        <div class="form-group">
+          <label for="level-select">Select Level</label>
+          <select id="level-select" bind:value={selectedLevelId} on:change={handleLevelSelectionChange}>
+            <option value={null}>-- Select a level --</option>
+            {#each levelsForCategory as level}
+              <option value={level.id}>ID: {level.id} | {level.title}</option>
+            {/each}
+          </select>
+          <small>After selecting a level, the form below will be auto-filled.</small>
+        </div>
+        {/if}
+      </div>
+
       <!-- Basic Information -->
       <div class="form-section">
         <h3>Basic Information</h3>
@@ -487,7 +609,7 @@
         <h3>Difficulty & Icons</h3>
         
         <div class="form-group">
-          <label for="icon">Primary Icon URL <span class="required">*</span></label>
+          <label for="icon">Primary Icon Name <span class="required">*</span></label>
           <input 
             type="text" 
             id="icon" 
@@ -500,7 +622,7 @@
         </div>
 
         <div class="form-group">
-          <label for="secondary_icon">Secondary Icon URL</label>
+          <label for="secondary_icon">Secondary Icon Name</label>
           <input 
             type="text" 
             id="secondary_icon" 
@@ -553,11 +675,11 @@
         </div>
 
         <div class="form-group">
-          <label for="tuf_id">TUF Forums Level ID</label>
+          <label for="tuf_link">TUF Forums Level ID</label>
           <input 
             type="number"
-            id="tuf_id" 
-            bind:value={formData.tuf_id}
+            id="tuf_link" 
+            bind:value={formData.tuf_link}
             on:input={handleInput}
             placeholder="e.g., 11050"
           >
@@ -619,7 +741,7 @@
         <div class="preview-container">
           <div class="json-preview">
             <h4>Generated JSON</h4>
-            <pre id="jsonOutput">{jsonOutput}</pre>
+            <pre id="jsonOutput" style="white-space: pre-wrap;">{jsonOutput}</pre>
           </div>
         </div>
       </div>

@@ -61,12 +61,8 @@
     <div class="section-card">
       <h3><img src="/icons/panorama.svg" alt="Level" class="icon icon-large">ADOFAI Level Managment</h3>
 
-      <a href="/admin/adofai/upload" class="link-button">
-        <img src="/icons/upload.svg" alt="Upload" class="icon icon-inline">Upload a Level
-      </a>
-      <!-- Replace with actual link after service is up -->
-      <a href="/503-service-unavaliable" class="link-button">
-        <img src="/icons/settings.svg" alt="Modify" class="icon icon-inline">Modify Level Data
+      <a href="/admin/adofai/levelmanage" class="link-button">
+        <img src="/icons/settings.svg" alt="Manage" class="icon icon-inline">Manage Levels
       </a>
     </div>
 

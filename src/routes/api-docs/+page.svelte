@@ -35,7 +35,7 @@
 <div class="container" id="container">
 	<header id="header">
 		<div class="header-content">
-			<h1><a href="/" style="color: inherit; text-decoration: none;">Melty Pages</a></h1>
+			<h1>Melty Pages</h1>
 			<p class="subtitle">Melty API Documentation</p>
 			<nav class="nav">
 				<a href="https://github.com/nuomibinggao/Melty-API" target="_blank" rel="noopener">
@@ -91,7 +91,7 @@
 			<p>Returns all levels data as a JavaScript module that can be directly imported.</p>
 			
 			<h4>Response Format</h4>
-			<p>The response is a JavaScript module with the following structure:</p>
+			<p>When using <strong>/get-levels/js</strong>, the response is a JavaScript module with the following structure:</p>
 			
       <pre class="code-example">
 export const comingSoonLevel = &#123; /* level data */ &#125;;
@@ -99,6 +99,8 @@ export const indieLevels = [ /* array of levels */ ];
 export const plcrLevels = [ /* array of levels */ ];
 export const legacyLevel = &#123; /* level data */ &#125;;
       </pre>
+
+			<p>When using <strong>/get-levels/json/indie</strong>, the response is an JSON array of all the levels data of the specified category. These categories can be chosen from <strong>"indie"</strong>, <strong>"plcr"</strong>, or <strong>"comingsoon"</strong>.</p>
 
 			<div>
 				<span class="endpoint-method get">GET</span>

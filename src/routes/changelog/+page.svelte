@@ -5,7 +5,23 @@
 
 	const changelog = [
 		{
-			date: '2025-12-04',
+			date: '2025-12-8',
+			version: 'v3 Update 7 - Tweaks and Admin Panel Improvements',
+			notes: [
+				'Started work on authentication system for the Admin Panel.'
+			],
+			changes: [
+				'Added Modify Level Data page in the Admin Pane.l',
+				'Changed the API link due to API endpoint changes.',
+				'Added documentation for the new "get-levels" API endpoint changes in the API Docs page.',
+				'Merged the Upload Level and Modify Level pages into one page: Manage Level Data.',
+				'Deleted the "What We Offer" sections in the ADOFAI Hub page for a cleaner look.',
+				'Removed the box shadow around all text inputs for consistant design.',
+				'Added a Steam color.'
+			]
+		},
+		{
+			date: '2025-12-4',
 			version: 'v3 Update 6 - ADOFAI Levels Upload Frontend Complete',
 			changes: [
 				'Since the JSON format of storing ADOFAI levels has been changed, changes were made to the level upload page to support the new format.',
@@ -247,7 +263,7 @@
 <div class="container" id="container">
 	<header id="header">
 		<div class="header-content">
-			<h1><a href="/" style="color: inherit; text-decoration: none;">Melty Pages</a></h1>
+			<h1>Melty Pages</h1>
 			<p class="subtitle">Website Changelog</p>
 			<nav class="nav">
 				<a href="/"><img src="/icons/home.svg" alt="Home" class="icon icon-inline">Back to Home Page</a>

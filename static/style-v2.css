@@ -22,6 +22,8 @@
 	--level-link-color-hover: #0056b3;
 	--soundcloud-color: #ff8800;
 	--soundcloud-color-hover: #ff3300;
+	--steam-color: #1b2838;
+	--steam-color-hover: #0d161f;
 	--modrinth-color: #1bd96a;
 	--modrinth-color-hover: #17c85e;
 	--tuf-color: #331d4b;
@@ -74,7 +76,6 @@ body {
 	height: 18px;
 	margin-right: 6px;
 	position: relative;
-	top: -1px;
 	vertical-align: -4px;
 }
 
@@ -724,7 +725,6 @@ footer {
 	font-family: 'Chillax', sans-serif;
 	background: var(--button-background-color);
 	color: var(--text-color-lighter);
-	box-shadow: var(--shadow-small);
 }
 
 .list-view {
@@ -1031,21 +1031,30 @@ footer {
 }
 
 .github-button {
-	background-color: var(--border-color-dark) !important;
-	color: var(--text-color-lightest) !important;
+	background-color: var(--border-color-dark);
+	color: var(--text-color-lightest);
 }
 
 .github-button:hover {
-	background-color: var(--border-color-darker) !important;
+	background-color: var(--border-color-darker);
 }
 
 .modrinth-button {
-	background-color: var(--modrinth-color) !important;
-	color: var(--text-color-lightest) !important;
+	background-color: var(--modrinth-color);
+	color: var(--text-color-lightest);
 }
 
 .modrinth-button:hover {
-	background-color: var(--modrinth-color-hover) !important;
+	background-color: var(--modrinth-color-hover);
+}
+
+.steam-button {
+	background-color: var(--steam-color);
+	color: var(--text-color-lightest);
+}
+
+.steam-button:hover {
+	background-color: var(--steam-color-hover);
 }
 
 .controls {
@@ -1074,7 +1083,6 @@ footer {
 	font-family: 'Chillax', sans-serif;
 	min-width: 250px;
 	transition: border-color 0.3s ease;
-	box-shadow: var(--shadow-medium);
 }
 
 .search-section input:focus {
@@ -1090,7 +1098,6 @@ footer {
 	color: var(--text-color-lighter);
 	font-family: 'Chillax', sans-serif;
 	cursor: pointer;
-	box-shadow: var(--shadow-small);
 }
 
 .search-section label {

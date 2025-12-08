@@ -245,7 +245,7 @@
 <div class="container" id="mainContainer">
 	<header id="mainHeader">
 		<div class="header-content">
-			<h1><a href="/" style="color: inherit; text-decoration: none;">Melty Pages</a></h1>
+			<h1>Melty Pages</h1>
 			<p class="subtitle">Projects Hub</p>
 			<nav class="nav">
 				<a href="/">
