@@ -64,11 +64,11 @@
 
 	<main class="grid">
 		<div class="card">
-			<h2><img src="/icons/code.svg" alt="Code" class="icon icon-large">GitHub Profile</h2>
+			<h2><img src="/icons/github_icon.svg" alt="Code" class="icon icon-large">GitHub Profile</h2>
 			<p>Check out my coding projects and contributions.</p>
 			<div class="links">
 				<a href="https://github.com/nuomibinggao" target="_blank" rel="noopener" class="link-button github-button">
-					<img src="/icons/code.svg" alt="Code" class="icon icon-inline">GitHub
+					<img src="/icons/github_icon.svg" alt="Code" class="icon icon-inline">GitHub
 				</a>
 			</div>
 		</div>
@@ -88,7 +88,7 @@
 			<p>Find my Minecraft mods and modpacks.</p>
 			<div class="links">
 				<a href="https://modrinth.com/user/nuomibinggao" target="_blank" rel="noopener" class="link-button modrinth-button">
-					<img src="/icons/sports_esports.svg" alt="Gaming" class="icon icon-inline">Modrinth
+					<img src="/icons/modrinth_icon.svg" alt="Gaming" class="icon icon-inline">Modrinth
 				</a>
 			</div>
 		</div>

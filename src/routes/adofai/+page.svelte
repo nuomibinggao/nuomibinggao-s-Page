@@ -95,7 +95,7 @@
 			<p>Extra QoL tags focused on customization for the Overlayer mod. Mod minimum version 3.29.0 and scripting minimum 1.7.5 required.</p>
 			<div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
 				<a href="https://github.com/nuomibinggao/Not-Enough-Tags" class="link-button github-button">
-					<img src="/icons/code.svg" alt="Info" class="icon icon-inline">GitHub
+					<img src="/icons/github_icon.svg" alt="Info" class="icon icon-inline">GitHub
 				</a>
 			</div>
 		</div>

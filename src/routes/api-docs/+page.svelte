@@ -39,7 +39,7 @@
 			<p class="subtitle">Melty API Documentation</p>
 			<nav class="nav">
 				<a href="https://github.com/nuomibinggao/Melty-API" target="_blank" rel="noopener">
-					<img src="/icons/code.svg" alt="GitHub" class="icon icon-inline">GitHub
+					<img src="/icons/github_icon.svg" alt="GitHub" class="icon icon-inline">GitHub
 				</a>
 				<a href="https://github.com/nuomibinggao/Melty-API/issues" target="_blank" rel="noopener">
 					<img src="/icons/bug_report.svg" alt="Report" class="icon icon-inline">Report an Issue
@@ -60,7 +60,7 @@
 		<p>All API endpoints are accessible via <code>https://api.melty-studios.com</code>.</p>
 		<div>
 			<a href="https://github.com/nuomibinggao/Melty-API" class="link-button" target="_blank" rel="noopener">
-				<img src="/icons/code.svg" alt="GitHub" class="icon icon-inline">GitHub
+				<img src="/icons/github_icon.svg" alt="GitHub" class="icon icon-inline">GitHub
 			</a>
 			<a href="https://github.com/nuomibinggao/Melty-API/issues" class="link-button" target="_blank" rel="noopener">
 				<img src="/icons/bug_report.svg" alt="Report" class="icon icon-inline">Report an Issue

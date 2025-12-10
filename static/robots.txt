@@ -1,4 +1,4 @@
 # only allow crawling ADOFAI levels data
 User-agent: *
 Allow: /adofai/levels
-Disallow: /adofai/levels/upload
+Disallow: /admin

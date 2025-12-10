@@ -73,7 +73,7 @@
         <img src="/icons/data_object.svg" alt="Data" class="icon icon-inline">View Raw API Returned Data
       </a>
       <a href="https://github.com/nuomibinggao/Melty-API" rel="noopener" class="link-button github-button">
-        <img src="/icons/code.svg" alt="Code" class="icon icon-inline">GitHub
+        <img src="/icons/github_icon.svg" alt="Code" class="icon icon-inline">GitHub
       </a>
     </div>
   </div>

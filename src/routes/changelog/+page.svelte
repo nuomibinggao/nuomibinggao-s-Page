@@ -5,6 +5,20 @@
 
 	const changelog = [
 		{
+			date: '2025-12-10',
+			version: 'v4 Preperation | v3 Tweaks',
+			notes: [
+				'The stylesheet is being reworked from scratch, a UI overhaul is coming in the next major update.'
+			],
+			changes: [
+				'Added a GitHub icon.',
+				'Changed some splash texts.',
+				'Unified the naming method of icon files.',
+				'Tweaked the robots.txt due to file structure changes (supposed to be fixed in previous updates).',
+				'Added a debug page for testing new UI styles. (Can be accessed at /ui-v4)',
+			]
+		},
+		{
 			date: '2025-12-8',
 			version: 'v3 Update 7 - Tweaks and Admin Panel Improvements',
 			notes: [
@@ -304,7 +318,7 @@
 		{/each}
 
 		<div class="changelog-footer">
-			<p>For technical details and source code changes, visit the <a href="https://github.com/nuomibinggao/Melty-Pages/commits" target="_blank" rel="noopener"><img src="/icons/code.svg" alt="Code" class="icon icon-inline">commit history</a>.</p>
+			<p>For technical details and source code changes, visit the <a href="https://github.com/nuomibinggao/Melty-Pages/commits" target="_blank" rel="noopener"><img src="/icons/github_icon.svg" alt="Code" class="icon icon-inline">commit history</a>.</p>
 			<p>Have suggestions or found a bug? <a href="https://github.com/nuomibinggao/Melty-Pages/issues" target="_blank" rel="noopener"><img src="/icons/bug_report.svg" alt="Bug report" class="icon icon-inline">Report an issue</a>.</p>
 		</div>
 	</section>

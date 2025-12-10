@@ -21,7 +21,7 @@
 		{
 			id: 'rust-docs',
 			title: 'Rust Programming Notes',
-			icon: 'code.svg',
+			icon: 'github_icon.svg',
 			date: '2025-10-15',
 			tags: ['Rust'],
 			description: 'Personal notes for learning the <a href="https://rust-lang.org" target="_blank" rel="noopener">Rust</a> Programming Language.',

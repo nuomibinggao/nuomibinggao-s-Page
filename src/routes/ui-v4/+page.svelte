@@ -1,5 +1,6 @@
 <svelte:head>
 	<title>Melty Pages</title>
+  <link rel="stylesheet" href="style-v3.css">
 </svelte:head>
 
 <script lang="ts">

@@ -8,13 +8,13 @@
 			name: 'Melty Pages',
 			icon: 'web.svg',
 			date: '2025-10-23',
-			tags: ['HTML 5', 'CSS', 'JavaScript', 'Svelte'],
+			tags: ['HTML', 'CSS', 'JavaScript', 'Svelte'],
 			description: 'The source code of this website, licensed under the <a href="https://opensource.org/license/mit" target="_blank" rel="noopener">MIT License</a>, so it\'s free to use if you provide credit.',
 			links: [
 				{
 					href: 'https://github.com/nuomibinggao/Melty-Pages',
 					text: 'GitHub',
-					icon: 'code.svg',
+					icon: 'github_icon.svg',
 					class: 'github-button'
 				}
 			]
@@ -30,7 +30,7 @@
 				{
 					href: 'https://github.com/nuomibinggao/Melty-API',
 					text: 'GitHub',
-					icon: 'code.svg',
+					icon: 'github_icon.svg',
 					class: 'github-button'
 				},
 				{
@@ -51,7 +51,7 @@
 				{
 					href: 'https://modrinth.com/modpack/vanyllia',
 					text: 'Modrinth',
-					icon: 'sports_esports.svg',
+					icon: 'modrinth_icon.svg',
 					class: 'modrinth-button'
 				}
 			]
