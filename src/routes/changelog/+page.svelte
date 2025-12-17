@@ -5,6 +5,18 @@
 
 	const changelog = [
 		{
+			date: '2025-12-17',
+			version: 'Birthday!',
+			notes: [
+				'Nothing special, just having a birthday party.'
+			],
+			changes: [
+				'Had some fun.',
+				'Had more fun.',
+				'Had even more fun.'
+			]
+		},
+		{
 			date: '2025-12-10',
 			version: 'v4 Preperation | v3 Tweaks',
 			notes: [
